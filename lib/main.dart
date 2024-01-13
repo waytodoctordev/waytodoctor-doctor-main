@@ -200,8 +200,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
       locale: MySharedPreferences.language.isNotEmpty
           ? Locale(MySharedPreferences.language)
           : Get.deviceLocale,
-      // locale: const Locale('ar', 'JO'),//Locale(MySharedPreferences.language),
-      fallbackLocale: const Locale('en', 'US'),//Locale(MySharedPreferences.language),
+      fallbackLocale: const Locale('en', 'US'),
       theme: AppThemeData().materialTheme,
       home: internetConnection ? _toggleScreen() : const NoInternet(),
     );
