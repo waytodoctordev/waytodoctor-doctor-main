@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>560929593008-j6of8qk761rdmmg0j83p82ctvi8sja1b.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB9Abe2Myz9ghECSpLbsQyecuhO_A3u12w</string>
+	<key>GCM_SENDER_ID</key>
+	<string>560929593008</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.waytodoctors.doctor</string>
+	<key>PROJECT_ID</key>
+	<string>way-to-doctor-7a9d5</string>
+	<key>STORAGE_BUCKET</key>
+	<string>way-to-doctor-7a9d5.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:560929593008:ios:2186f12b9e2dfcaeaf4d75</string>
+</dict>
+</plist>
