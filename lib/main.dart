@@ -197,6 +197,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         Locale('ar', 'JO'),
         Locale('tr', 'TR'),
       ],
+
       locale: MySharedPreferences.language.isNotEmpty
           ? Locale(MySharedPreferences.language)
           : Get.deviceLocale,
