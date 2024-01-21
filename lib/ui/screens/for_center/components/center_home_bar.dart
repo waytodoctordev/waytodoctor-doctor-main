@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ import '../../../../api/logout/logout_api.dart';
 import '../../../../binding/registration/registration_binding.dart';
 import '../../../../controller/for_doctor/doctor_home_screen/edit_accountr_ctrl.dart';
 import '../../../../controller/form/form_ctrl.dart';
+import '../../../../utils/api_url.dart';
 import '../../../../utils/colors.dart';
 import '../../../../utils/icons.dart';
 import '../../../../utils/images.dart';
@@ -22,10 +24,7 @@ class CenterHomeBar extends StatelessWidget {
   FormCtrl formCtrl = Get.put(FormCtrl());
   SpecializationCtrl specializationCtrl= Get.put(SpecializationCtrl());
   EditAccountCtrl editAccountCtrl= Get.put(EditAccountCtrl());
-  @override
-
-
-
+bool isEditCenterInfo=false;
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CenterCtrl>(
@@ -43,21 +42,18 @@ class CenterHomeBar extends StatelessWidget {
                 children: [
                   /// Profile Image
                   GestureDetector(
-                    onTap: () {
-                      formCtrl.getFile(context);
-                      print(editAccountCtrl.nameCtrl.text);
-                      print(editAccountCtrl.phoneNumberCtrl.text);
-                      print(formCtrl.image);
-                      print(formCtrl.addressCtrl.text);
-                      print(specializationCtrl.professionalLicense);
-                      specializationCtrl.professionalLicenseRequest(
-                          context: context,
-                          name: editAccountCtrl.nameCtrl.text,
-                          phone: editAccountCtrl.phoneNumberCtrl.text,
-                          imageProfile: formCtrl.image,
-                          address: formCtrl.addressCtrl.text,
-                          professionalLicense: specializationCtrl.professionalLicense);
-                      } ,//onTap: () => formCtrl.getFile(context),
+                    onTap: () async {
+
+                     formCtrl.editProfileImage(
+                         context:context,
+                         name: editAccountCtrl.nameCtrl.text,
+                       professionalLicense:  specializationCtrl.professionalLicense,
+                       phone: editAccountCtrl.phoneNumberCtrl.text,
+                       address: '${formCtrl.currentCountry}'
+                           '|${formCtrl.currentCity}'
+                           '|${formCtrl.addressCtrl.text}',
+                     );
+                      } ,
                     child: CircleAvatar(
                       radius: Get.width * .110,
                       backgroundColor: MyColors.blue14B.withOpacity(0.1),
@@ -68,14 +64,14 @@ class CenterHomeBar extends StatelessWidget {
                               .isNotEmpty || formCtrl.profileImage.value!=''
                               ?  ClipOval(
                             clipBehavior: Clip.antiAliasWithSaveLayer,
-                            child: Obx(() =>  Image.asset(
-                              width: Get.width, // Adjust the size as needed
-                              height: Get.height,//213231342
-                              formCtrl.profileImage.value!=''
-                                  ? MySharedPreferences.userImage
-                                  : formCtrl.profileImage.value,
-                              fit: BoxFit.cover,
-                            ),)
+                            child:
+                                CachedNetworkImage(
+                                    width: Get.width, // Adjust the size as needed
+                                    height: Get.height,
+                                    fit: BoxFit.cover,
+                                    imageUrl: '${ApiUrl.mainUrl}/${MySharedPreferences.userImage}'),
+
+
                           )
                               : Image.asset(
                             MyImages.blankProfile,

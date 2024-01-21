@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:way_to_doctor_doctor/controller/for_center/center_ctrl.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/loading_indicator.dart';
-
 import '../../../../model/categories/categories_model.dart';
 import '../../../../model/center/category_centers.dart';
 import '../../../../utils/colors.dart';
@@ -16,7 +13,7 @@ import '../../../../utils/shared_prefrences.dart';
 import '../../../widgets/custom_elevated_button.dart';
 
 class JoiningCenter extends StatefulWidget {
-  JoiningCenter({super.key});
+  const JoiningCenter({super.key});
 
   @override
   State<JoiningCenter> createState() => _JoiningCenterState();
@@ -193,16 +190,8 @@ class _JoiningCenterState extends State<JoiningCenter> {
                                       );
                                     },
                                   ).toList(),
-                                  onChanged: (int? value) {
-                                    print(centerCtrl.centerID.value);
-                                    centerCtrl.centerID.value = value!;
-
-                                    // setState(() {
-                                    //   MySharedPreferences.isDoctor
-                                    //       ? print('yes nancy')
-                                    //       : print('no nancy');
-                                    // });
-                                  },
+                                  onChanged: (int? value) =>
+                                      centerCtrl.centerID.value = value!,
                                 ),
                               ),
                             ),

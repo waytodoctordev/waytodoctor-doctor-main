@@ -148,17 +148,13 @@ class _CenterSignInScreenState extends State<CenterSignInScreen> {
                   title: 'Sign in'.tr,
                   radius: 24,
                   onPressed: () {
-
-                    // MySharedPreferences.countryCode.value = signInCtrl.currentCountryCode;
                     if (_formKey.currentState!.validate()) {
                       FocusManager.instance.primaryFocus?.unfocus();
                       CenterCtrl.find.fetchCenterLoginData(
-                        phone:controller.phoneNumberCtrl.text.trim(),
+                        phone:controller.phoneNumberCtrl.text.trim(),//MySharedPreferences.countryCode+
                         password: controller.passwordCtrl.text.trim(),
                         context: context,
-                      );
-
-                    }
+                      );}
                   },
                   color: MyColors.blue14B,
                 ),

@@ -35,21 +35,17 @@ class SpecializationCtrl extends GetxController {
   getFile(context) async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
         type: FileType.image,
-        allowMultiple: false); //!MySharedPreferences.isProfileImage
+        allowMultiple: false);
     if (result != null) {
       File file = File(result.files.single.path.toString());
       if (MySharedPreferences.isDoctor) {
-        // MySharedPreferences.isProfileImage
-        //     ? image = file
-        //     :
+
         specializationCertificate = file;
         isAttachmentAdded.value= true;
 
-        // isImageAdded = true;
+
       } else {
-        // MySharedPreferences.isProfileImage
-        //     ? image = file
-        //     :
+
         professionalLicense = file;
         isAttachmentAdded.value = true;
       }
@@ -101,19 +97,25 @@ class SpecializationCtrl extends GetxController {
     required File imageProfile,
     required String address,
     required File professionalLicense,
+    bool isEditCenterInfo = false
 
   }) async {
+    print('professionalLicenseRequest');
+    print('imageProfile $imageProfile');
+    print('professionalLicenseRequest isEditCenterInfo $isEditCenterInfo');
+    // print('professionalLicense ${professionalLicense}');
     AppConstants.showLoading(context);
     profLicense = await EditCenterInfoApi.data(
         imageProfile: imageProfile,
         name:name,
         address: address,
         phone: phone,
-        professionalLicense: professionalLicense
+        professionalLicense: professionalLicense,
+        isEditCenterInfo:isEditCenterInfo
     );
     if (profLicense == null) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
-      Loader.hide();
+      // Loader.hide();
       return;
     }
     if (profLicense!.code == 200) {
@@ -121,15 +123,10 @@ class SpecializationCtrl extends GetxController {
      MySharedPreferences.address = profLicense!.data!.address!;
      MySharedPreferences.userNumber = profLicense!.data!.phoneNumber!;
      MySharedPreferences.userImage = profLicense!.data!.image!;
-     MySharedPreferences.userNumber = profLicense!.data!.phoneNumber!;
 
+
+     // MySharedPreferences.professionalLicense = profLicense!.data!.!;
       Get.offAll(() =>  CenterHomeScreen(),);
-      // FormCtrl.find.updateUserData(
-      //     dataBody: {'step': '3'}, context: context).whenComplete(() {
-      //   MySharedPreferences.formCurrentIndex = 0;
-      //   MySharedPreferences.formIndicatorCurrentIndex = 0;
-      // }); // payment passed step 1
-
       AppConstants().showMsgToast(context, msg: AppConstants.addedSuccessfully);
     } else {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);

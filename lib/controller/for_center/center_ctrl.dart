@@ -120,6 +120,7 @@ class CenterCtrl extends GetxController {
       return;
     }
     if (categoryModel.code == 200) {
+      print('categoryModel.code == 200');
       Loader.hide();
       categories = categoryModel.data;
       categoriesName.value = categories![0].name!;
@@ -129,7 +130,7 @@ class CenterCtrl extends GetxController {
       categoriesLength.value = true;
 
       MySharedPreferences.isDoctor
-          ? getCategoriesCentersList(context: context)
+          ? await getCategoriesCentersList(context: context)
           : null;
       // MySharedPreferences.countryDigits = currentCountryDigit;
 
@@ -165,11 +166,12 @@ class CenterCtrl extends GetxController {
   }) async {
     OverLayLoader.showLoading(context);
     try {
+
       final centerLoginModel =
           await CenterLoginApi().data(phone: phone, password: password);
       if (centerLoginModel == null) {
         AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
-        Loader.hide(); //233233323
+        Loader.hide();
         return;
       }
       if (centerLoginModel.code == 200) {
@@ -177,6 +179,7 @@ class CenterCtrl extends GetxController {
         MySharedPreferences.id = centerLoginModel!.data!.data!.id;
         MySharedPreferences.fName = centerLoginModel!.data!.data!.name;
         MySharedPreferences.userImage = centerLoginModel!.data!.data!.image;
+        MySharedPreferences.address = centerLoginModel!.data!.data!.address;
         MySharedPreferences.subscriptionId =
             centerLoginModel!.data!.data!.subscriptionId;
         MySharedPreferences.centerCategoryID =

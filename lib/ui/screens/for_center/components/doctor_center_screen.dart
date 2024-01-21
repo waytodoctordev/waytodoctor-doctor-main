@@ -16,9 +16,12 @@ class DoctorsCenterScreen extends StatefulWidget {
 }
 
 class _DoctorsCenterScreenState extends State<DoctorsCenterScreen> {
-  CenterCtrl centerCtrl = Get.put(CenterCtrl());
+  CenterCtrl centerCtrl = Get.find<CenterCtrl>();
   @override
   void initState() {
+    MySharedPreferences.lastScreen = 'DoctorsCenterScreen';
+
+    // DoctorsCenterCtrl
     Get.lazyPut(() => DoctorsCenterCtrl());
     DoctorsCenterCtrl.find.init(
         categoryId: int.parse(MySharedPreferences.centerCategoryID),

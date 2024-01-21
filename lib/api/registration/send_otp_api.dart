@@ -11,7 +11,6 @@ class SendOtpApi {
     required String code,
   }) async {
     try {
-      print('SendOtpApi');
       String url = '${ApiUrl.mainUrl}${ApiUrl.checkOtp}';
       Uri uri = Uri.parse(url);
       var headers = {
@@ -26,14 +25,10 @@ class SendOtpApi {
       // log("Response:: CheckOtpResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
       http.Response response =
           await http.post(uri, body: body, headers: headers);
-      print(response.statusCode);
-      print('response.statusCode');
+
       // log("CheckOtpStatusCode:: ${response.statusCode}  CheckOtpBody:: ${response.body}");
       OtpModel checkOtpModel = OtpModel.fromJson(json.decode(response.body));
-      print('checkOtpModel');
-      print(checkOtpModel.status);
       if (response.statusCode == 200) {
-        print(response.statusCode);
         return checkOtpModel;
       } else if (response.statusCode == 500) {
         return checkOtpModel;

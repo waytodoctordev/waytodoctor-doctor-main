@@ -16,22 +16,23 @@ import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 class Address extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   UserLocationCtrl userLocationCtrl = Get.put(UserLocationCtrl());
-  // FormCtrl formCtrl = Get.put(FormCtrl());
-   Address({
+  FormCtrl controller = Get.put(FormCtrl());
+  Address({
     super.key,
     required this.formKey,
   });
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<FormCtrl>(
       builder: (controller) {
         return Form(
           key: formKey,
           child: ListView(
             physics: const NeverScrollableScrollPhysics(),
-          // const BouncingScrollPhysics(
-          //       parent: AlwaysScrollableScrollPhysics()),
+            // const BouncingScrollPhysics(
+            //       parent: AlwaysScrollableScrollPhysics()),
             children: [
               Text(
                 'Address :'.tr,
@@ -42,9 +43,10 @@ class Address extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 5),
-              Text(MySharedPreferences.isDoctor
-                  ? 'Specify the address of your clinic'.tr
-                  : 'Specify the address of your center'.tr,
+              Text(
+                MySharedPreferences.isDoctor
+                    ? 'Specify the address of your clinic'.tr
+                    : 'Specify the address of your center'.tr,
                 style: const TextStyle(
                   fontSize: 16,
                   color: MyColors.textColor,
@@ -54,12 +56,13 @@ class Address extends StatelessWidget {
               const SizedBox(height: 5),
               MySharedPreferences.isDoctor
                   ? GestureDetector(
-                onTap: () => Get.to(() =>  MapScreen()),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(24),
-                  child: Image.asset(MyImages.address, height: 120),
-                ),
-              ):SizedBox(),
+                      onTap: () => Get.to(() => MapScreen()),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(24),
+                        child: Image.asset(MyImages.address, height: 120),
+                      ),
+                    )
+                  : const SizedBox(),
               const SizedBox(height: 5),
               FadeInDown(
                 from: 6,
@@ -93,8 +96,8 @@ class Address extends StatelessWidget {
                               height: 250,
                               child: CupertinoPicker(
                                 onSelectedItemChanged: (value) {
-                                  controller.getCurrentCountry(controller
-                                      .countries![value].name
+                                  controller.getCurrentCountry(
+                                      controller.countries![value].name
                                       .toString());
                                   controller.getcitiesList(
                                       countryId: controller.countries![value].id

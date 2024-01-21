@@ -21,6 +21,8 @@ import 'package:way_to_doctor_doctor/ui/widgets/overlay_loader.dart';
 import 'package:way_to_doctor_doctor/utils/app_constants.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
+import '../registration/specialization_ctrl.dart';
+
 class FormCtrl extends GetxController {
   static FormCtrl get find => Get.find();
   late PageController formPageCtrl;
@@ -90,26 +92,57 @@ class FormCtrl extends GetxController {
     update();
   }
 
-  late File image;
+   File image=File('');
   final RxString profileImage=''.obs ;
   RxBool isImageAdded = false.obs;
 
-  getFile(context) async {
+ getFile(context) async {
     FilePickerResult? result =
         await FilePicker.platform.pickFiles(type: FileType.image);
     if (result != null) {
       File file = File(
-        result.files.single.path.toString(),
-      );
+        result.files.single.path.toString(),);
       image = file;
       profileImage.value = image.path;
       isImageAdded.value = true;
       MySharedPreferences.profileImage=image;
       MySharedPreferences.userImage = image.path;//profileImage.value;
-
       update();
     } else {
       AppConstants().showMsgToast(context, msg: 'No file selected'.tr);
+    }
+  }
+  Future<bool> editProfileImage({
+    context,
+    required String name,
+    required File professionalLicense,
+    required String phone,
+    required String address,
+  }) async {
+    FilePickerResult? result =
+    await FilePicker.platform.pickFiles(type: FileType.image);
+
+    if (result != null) {
+      File file = File(
+        result.files.single.path.toString(),);
+      image = file;
+      profileImage.value = image.path;
+      isImageAdded.value = true;
+      MySharedPreferences.profileImage=image;
+      MySharedPreferences.userImage = image.path;//profileImage.value;
+      SpecializationCtrl.find.professionalLicenseRequest(
+          context: context,
+          name:name,
+          phone: phone,
+          imageProfile:image,
+          address: address,
+          professionalLicense:professionalLicense,
+          isEditCenterInfo:true);
+      update();
+      return true;
+    } else {
+      AppConstants().showMsgToast(context, msg: 'No file selected'.tr);
+      return false;
     }
   }
 
@@ -123,7 +156,7 @@ class FormCtrl extends GetxController {
     dayCtrl.dispose();
     monthCtrl.dispose();
     yearCtrl.dispose();
-    addressCtrl.dispose();
+    // addressCtrl.dispose();
     formPageCtrl.dispose();
     super.onClose();
   }

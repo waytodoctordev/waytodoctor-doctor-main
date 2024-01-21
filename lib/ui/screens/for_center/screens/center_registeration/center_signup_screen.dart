@@ -6,14 +6,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:way_to_doctor_doctor/controller/for_center/center_ctrl.dart';
-import 'package:way_to_doctor_doctor/model/categories/categories_model.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/widgets/prefix_icon.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/custom_elevated_button.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/custom_text_field.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/heder_logo.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/icons.dart';
-import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 import '../../../../../controller/registration/sign_in_ctrl.dart';
 import '../../../../common/category_center_component.dart';
 import '../../../../widgets/custom_network_image.dart';
@@ -26,7 +24,7 @@ class CenterSignUpScreen extends StatefulWidget {
 }
 
 class _CenterSignUpScreenState extends State<CenterSignUpScreen> {
-  CenterCtrl centerCtrl = Get.put(CenterCtrl()); // Get.find<CenterCtrl>();//
+  CenterCtrl centerCtrl = Get.find<CenterCtrl>();
 
   final emailRegExp = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
@@ -36,7 +34,6 @@ class _CenterSignUpScreenState extends State<CenterSignUpScreen> {
   late TextEditingController phoneNumberController;
   @override
   void initState() {
-    // centerCtrl.phoneNumberCtrl==TextEditingController();
     centerCtrl.passwordCtrl == TextEditingController();
     centerCtrl.getCountriesList(context:context);
     centerCtrl.centerAddressCtrl.text='';
@@ -45,7 +42,6 @@ class _CenterSignUpScreenState extends State<CenterSignUpScreen> {
 
   @override
   void dispose() {
-    print('dispose');
     centerCtrl.userNameCtrl.clear();
     centerCtrl.passwordCtrl.clear();
     centerCtrl.phoneNumberCtrl.clear();
@@ -116,7 +112,6 @@ class _CenterSignUpScreenState extends State<CenterSignUpScreen> {
 
             /// COUNTRIES
             GetBuilder<SignInCtrl>(
-              // init: SignInCtrl(),
               builder: (controller) => Column(
                 children: [
                   CustomTextField(
@@ -222,11 +217,9 @@ class _CenterSignUpScreenState extends State<CenterSignUpScreen> {
                       inputFormatters: [
                         LengthLimitingTextInputFormatter(
                             centerCtrl.currentCountryDigit),
-                        // LengthLimitingTextInputFormatter(9),
                         FilteringTextInputFormatter.digitsOnly,
                       ],
                       controller: centerCtrl.phoneNumberCtrl,
-                      // keyboardType: TextInputType.number,
                       hintText: 'Phone number'.tr,
                       validator: (value) {
                         if (value!.isEmpty) {

@@ -21,13 +21,23 @@ class PersonalInfoComponent extends StatefulWidget {
   State<PersonalInfoComponent> createState() => _PersonalInfoComponentState();
 }
 
+
 class _PersonalInfoComponentState extends State<PersonalInfoComponent> {
   // FormCtrl formCtrl = Get.put(FormCtrl());
+  EditAccountCtrl controller = Get.put(EditAccountCtrl());
+  TextEditingController nameCtrl = TextEditingController();
+  TextEditingController phoneNumberCtrl= TextEditingController();
 
-  // CenterCtrl centerCtrl = Get.put(CenterCtrl());
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
+    controller.nameCtrl.text=MySharedPreferences.fName;
+    phoneNumberCtrl = TextEditingController(
+        text: MySharedPreferences.userNumber
+            .toString()
+            .split(MySharedPreferences.countryCode)
+            .join());
     return GetBuilder<EditAccountCtrl>(
       builder: (controller) => Form(
         key: controller.personalFormKey,

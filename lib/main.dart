@@ -21,6 +21,7 @@ import 'package:way_to_doctor_doctor/translation/translation.dart';
 import 'package:way_to_doctor_doctor/ui/base/for_clinic/clinic_base_nav_bar.dart';
 import 'package:way_to_doctor_doctor/ui/base/for_doctor/doctor_base_nav_bar.dart';
 import 'package:way_to_doctor_doctor/ui/forms/form_screen/form_screen.dart';
+import 'package:way_to_doctor_doctor/ui/screens/for_center/components/doctor_center_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_center/screens/center_home_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/check_practice/widgets/check_practice_end.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/language/language_screen.dart';
@@ -162,8 +163,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
           return const DoctorBaseNavBar();
         case 'ClinicBaseNavBar':
           return const ClinicBaseNavBar();
-        case 'CenterHomeScreen':
-          return   CenterHomeScreen();
+        case 'DoctorsCenterScreen':
+          return const  DoctorsCenterScreen();
         case 'PhoneSignUpScreen':
           return const PhoneSignUpScreen();
         case 'PhoneVerificationScreen':

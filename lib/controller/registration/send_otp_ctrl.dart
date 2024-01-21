@@ -35,11 +35,15 @@ class SendOtpCtrl {
     OverLayLoader.showLoading(context);
     checkOtpModel = await SendOtpApi.data(phone: phone, code: code);
     if (checkOtpModel == null) {
+      print('checkOtpModel!.code == null');
+      print('${checkOtpModel!.msg}!');
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
       Loader.hide();
       return;
     }
     if (checkOtpModel!.code == 200) {
+      print('checkOtpModel!.code == 200');
+      print('${checkOtpModel!.msg}!');
       MySharedPreferences.userNumber = phone;
       if (MySharedPreferences.isDoctor) {
         updateDoctorNumber(
@@ -57,6 +61,8 @@ class SendOtpCtrl {
       }
     }
     else if (checkOtpModel!.code == 500) {
+      print('checkOtpModel!.code == 500');
+      print('${checkOtpModel!.msg}!');
       AppConstants().showMsgToast(context, msg: checkOtpModel!.msg!);
       Loader.hide();
     }

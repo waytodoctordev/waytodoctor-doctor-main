@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:way_to_doctor_doctor/controller/for_center/center_ctrl.dart';
+import '../../../../controller/form/form_ctrl.dart';
+import '../../../../controller/registration/specialization_ctrl.dart';
 import '../../../../utils/app_constants.dart';
 import '../../../../utils/shared_prefrences.dart';
 import '../../../forms/form_components/address.dart';
@@ -9,8 +11,12 @@ import 'package:get/get.dart';
 import 'doctor_center_screen.dart';
 
 class CenterAdditionalInfoPage extends StatelessWidget {
+   CenterAdditionalInfoPage({super.key});
+
   CenterCtrl centerCtrl = Get.put(CenterCtrl());
-   final GlobalKey<FormState> formKey = GlobalKey();
+  FormCtrl formCtrl = Get.put(FormCtrl());
+  SpecializationCtrl specializationCtrl = Get.put(SpecializationCtrl());
+  final GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -33,21 +39,26 @@ class CenterAdditionalInfoPage extends StatelessWidget {
                       height: Get.height * .45,
                       child: Address(
                         formKey: centerCtrl.formKey,
-                      )), //5
+                      )),
 
                   CustomElevatedButton(
                     title: 'Next'.tr,
                     onPressed: () {
                       if(formKey.currentState!.validate()){
-                        // print(MySharedPreferences.professionalLicense);
-                        // if (MySharedPreferences.userImage.isNotEmpty ) {
-                          Get.to(() => const DoctorsCenterScreen());
-                        // }
+                        if (MySharedPreferences.userImage.isNotEmpty && formCtrl.addressCtrl.text.isNotEmpty ) {
+                          specializationCtrl.professionalLicenseRequest(
+                              context: context,
+                              name: MySharedPreferences.fName,
+                              phone:MySharedPreferences.userNumber,
+                              imageProfile: formCtrl.image,
+                              address:'${formCtrl.currentCountry}|${formCtrl.currentCity}|${formCtrl.addressCtrl.text}',
+                              professionalLicense: MySharedPreferences.professionalLicense);
+                        } else{
+                          AppConstants().showMsgToast(context,
+                              msg: 'please provide your profile image'.tr);
+                        }
                       }
-                    else{
-                        AppConstants().showMsgToast(context,
-                            msg: 'please provide your profile image'.tr);
-                      }
+
                     },
                   ),
                 ],

@@ -25,11 +25,12 @@ class CenterLoginApi {
       });
       http.Response response =
           await http.post(uri, body: body, headers: headers);
-      log("center LoginStatusCode:: ${response.statusCode}  center LoginBody:: ${response.body}");
+
+      // log("center LoginStatusCode:: ${response.statusCode}  center LoginBody:: ${response.body}");
 
       if (response.statusCode == 200) {
         CenterLoginModel centerLoginModel =
-        CenterLoginModel.fromJson(json.decode(response.body));
+            CenterLoginModel.fromJson(json.decode(response.body));
         return centerLoginModel;
       } else if (response.statusCode == 500) {
         ErrorModel errorModel = ErrorModel.fromJson(json.decode(response.body));

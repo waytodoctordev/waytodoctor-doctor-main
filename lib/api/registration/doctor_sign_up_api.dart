@@ -24,9 +24,9 @@ class DoctorSignUpApi {
         "email": email,
         "name": name,
       });
-      log("Response:: Doctor SignUpResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
+      // log("Response:: Doctor SignUpResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
       http.Response response = await http.post(uri, body: body, headers: headers);
-      log("DoctorSignUpStatusCode:: ${response.statusCode}  SignUpBody:: ${response.body}");
+      // log("DoctorSignUpStatusCode:: ${response.statusCode}  SignUpBody:: ${response.body}");
       DoctorSignUpModel signUpModel = DoctorSignUpModel.fromJson(json.decode(response.body));
       if (response.statusCode == 200) {
         return signUpModel;

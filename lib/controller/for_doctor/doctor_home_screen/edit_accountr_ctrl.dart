@@ -34,12 +34,12 @@ class EditAccountCtrl extends GetxController {
     update();
   }
 
-  late TextEditingController nameCtrl;
-  late TextEditingController phoneNumberCtrl;
+   TextEditingController nameCtrl= TextEditingController();
+   TextEditingController phoneNumberCtrl= TextEditingController();
 
-  late TextEditingController newPasswordCtrl;
-  late TextEditingController currentPasswordCtrl;
-  late TextEditingController confirmPasswordCtrl;
+   TextEditingController newPasswordCtrl= TextEditingController();
+   TextEditingController currentPasswordCtrl= TextEditingController();
+   TextEditingController confirmPasswordCtrl= TextEditingController();
 
   final GlobalKey<FormState> personalFormKey = GlobalKey<FormState>();
   final GlobalKey<FormState> passwordFormKey = GlobalKey<FormState>();
@@ -65,8 +65,7 @@ class EditAccountCtrl extends GetxController {
 
   @override
   void onInit() {
-    nameCtrl = TextEditingController(text: MySharedPreferences.fName);
-
+    // nameCtrl = TextEditingController(text: MySharedPreferences.fName);
     phoneNumberCtrl = TextEditingController(
         text: MySharedPreferences.userNumber
             .toString()
@@ -81,13 +80,13 @@ class EditAccountCtrl extends GetxController {
 
   @override
   void onClose() {
-    nameCtrl.dispose();
-
-    phoneNumberCtrl.dispose();
-    newPasswordCtrl.dispose();
-
-    currentPasswordCtrl.dispose();
-    confirmPasswordCtrl.dispose();
+    // nameCtrl.dispose();
+    //
+    // phoneNumberCtrl.dispose();
+    // newPasswordCtrl.dispose();
+    //
+    // currentPasswordCtrl.dispose();
+    // confirmPasswordCtrl.dispose();
     super.onClose();
   }
 

@@ -151,39 +151,14 @@ class PaymentCtrl extends GetxController {
       return;
     }
     if (subscriptionModel!.code == 200) {
-            Get.offAll(() => const SubscriptionEnd());
+print('subscriptionModel!.code == 200');
+      // MySharedPreferences.isSubscriped = true;
+      Get.to(() => const SubscriptionEnd());
       // 4475 2235 0488 9847
-      // 1/26
+      // 01/26
       // 611
       // ALA ALBAWANEH
-      /// MySharedPreferences.subscriptionId > 0 doctor already completed personal info
-      // if (int.parse(MySharedPreferences.subscriptionId) > 0) {
-      //   print('MySharedPreferences.subscriptionId) > 0');
-      //  AppConstants().showMsgToast(context, msg: 'Your subscription has been successfully renewed'.tr);
-      //   MySharedPreferences.formCurrentIndex = 0;
-      //   MySharedPreferences.subscriptionId =
-      //       subscriptionModel!.data.id as String;
-      //   MySharedPreferences.isSubscriped = true;
-      //   MySharedPreferences.lastScreen = 'DoctorBaseNavBar';
-      //
-      }  /// doctor registered for the first time
-      // else {
-      //   print('MySharedPreferences.subscriptionId) > else');
-      //   await FormCtrl.find.updateUserData(dataBody: {
-      //     'step': '1',
-      //   }, context: context).whenComplete(
-      //     () {
-      //       MySharedPreferences.formCurrentIndex = 0;
-      //       AppConstants().showMsgToast(context,
-      //               msg: 'You have make subscription successfully'.tr);
-      //       MySharedPreferences.lastScreen = 'SubscriptionEnd';
-      //       MySharedPreferences.subscriptionId =
-      //           subscriptionModel!.data.id as String;
-      //       MySharedPreferences.isSubscriped = true;
-      //       Get.offAll(() => const SubscriptionEnd());
-      //     },
-      //   );
-      // }
+    }
     else if (subscriptionModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
     } else {
@@ -205,14 +180,16 @@ class PaymentCtrl extends GetxController {
     transactionModel =
         await TransactionStatusApi.data(orderNumber: orderNumber);
     if (transactionModel == null) {
+      print('transactionModel == null');
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
       Get.offAll(const PlansScreen());
       Loader.hide();
       return;
     }
     if (transactionModel!.code == 200) {
+      print(transactionModel!.code == 200);
+      print( ' transactionModel!.data.status ${transactionModel!.data.status}');
       status = transactionModel!.data.status;
-      update();
       if (transactionModel!.data.status == 'success') {
         await createSubscription(
             startDate: DateTime.now().toString().split(' ')[0],
@@ -222,17 +199,17 @@ class PaymentCtrl extends GetxController {
                 .split(' ')[0],
             planId: planId,
             context: context);
+        update();
       }
       if (transactionModel!.data.status == 'fail') {
         AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
-        Get.offAll(const PlansScreen());
+
       }
     } else if (transactionModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
-      Get.offAll(const PlansScreen());
+
     } else {
       AppConstants().showMsgToast(context, msg: transactionModel!.msg);
-      Get.offAll(const PlansScreen());
     }
     Loader.hide();
   }

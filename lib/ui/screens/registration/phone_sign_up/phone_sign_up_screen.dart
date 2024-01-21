@@ -260,7 +260,10 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                   child: CustomElevatedButton(
                     title: 'Send code'.tr,
                     onPressed: () {
+
                       print(MySharedPreferences.userNumber);
+                      print('${UpdateNumberCtrl.find.currentCountryCode}'
+                          '${UpdateNumberCtrl.find.phoneNumberCtrl.text}');
                       // print(MySharedPreferences.skipOtp);
                       print(MySharedPreferences.id);
                       if (_formKey.currentState!.validate()) {
@@ -268,12 +271,12 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                         MySharedPreferences.userNumber =
                         '${UpdateNumberCtrl.find.currentCountryCode}'
                             '${UpdateNumberCtrl.find.phoneNumberCtrl.text}';
-
                         UpdateNumberCtrl.find.fetchUpdateNumber(
                           phone: MySharedPreferences.userNumber,
                           context: context,
                           userID: MySharedPreferences.userId.toString(),
                         );
+
 
                         // ResetPassStep1Controller().fetchOtpData(
                         //     context: context,

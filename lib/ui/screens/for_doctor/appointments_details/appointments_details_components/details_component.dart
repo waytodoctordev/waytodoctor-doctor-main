@@ -154,7 +154,7 @@ class DetailsComponent extends StatelessWidget {
           text: TextSpan(
             children: <TextSpan>[
               TextSpan(
-                text: 'Payment Method : '.tr,
+                text: 'Payment Method :'.tr,
                 style: GoogleFonts.tajawal(
                   fontSize: 14,
                   color: MyColors.blue14B,

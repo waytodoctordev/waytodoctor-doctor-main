@@ -121,11 +121,10 @@ class _DoctorAppointmentDetailsScreenState
                           child: PageView(
                             // physics: const NeverScrollableScrollPhysics(),
                             controller: controller.pageController,
-                            // onPageChanged: (value) => controller.getCurrentIndex(value),
+                            onPageChanged: (value) =>controller.getCurrentIndex(value),
                             children: [
                               AppointmentDetails(
                                   appointmentData: snapshot.data!.data),
-                              SizedBox(height:2),
                               PatientPersonalInformationComponent(
                                 fullName:
                                     '${snapshot.data!.data.user!.name} ${snapshot.data!.data.user!.secondName} ${snapshot.data!.data.user!.thirdName} ${snapshot.data!.data.user!.lastName}',

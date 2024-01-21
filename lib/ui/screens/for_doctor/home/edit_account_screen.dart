@@ -15,6 +15,7 @@ import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 import '../../../../controller/registration/specialization_ctrl.dart';
+import '../../for_center/screens/center_home_screen.dart';
 
 class EditAccountScreen extends StatefulWidget {
   const EditAccountScreen({super.key});
@@ -37,93 +38,78 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
       return !controller.isPersonalInformation;
     }
   }
+  void editAddress(){
+    final splitNames =  MySharedPreferences.address.split('|');
+    List splitList = [];
+    for (int i = 0; i < splitNames.length; i++){
+      splitList.add(splitNames[i]);
+    }
+    formCtrl.currentCountry=  splitNames[0];
+    formCtrl.currentCity=  splitNames[1];
+    formCtrl.addressCtrl.text = splitList[2];
+  }
 
   @override
   Widget build(BuildContext context) {
+    !MySharedPreferences.isDoctor?
+    editAddress():null;
     return Scaffold(
       body: SafeArea(
         child: GetBuilder<EditAccountCtrl>(
           init: EditAccountCtrl(),
           builder: (controller) => Column(
-          children: [
-            const EditAccountAppbar(),
-            Expanded(
-                child: ListView(
-                  physics: const BouncingScrollPhysics(),
-                  padding: const EdgeInsets.only(
-                      top: 20, right: 37, left: 37, bottom: 0),
-                  children: [
-                    BaseSwitchSlider(
-                      margin:
-                      const EdgeInsets.only(top: 0, bottom: 0, right: 0),
-                      textColor1: controller.isPersonalInformation
-                          ? MyColors.white
-                          : MyColors.blue14B,
-                      textColor2: controller.isPersonalInformation
-                          ? MyColors.blue14B
-                          : MyColors.white,
-                      color: MyColors.blue9D1,
-                      title1: 'Personal information'.tr,
-                      title2: 'Password'.tr,
+            children: [
+              const EditAccountAppbar(),
+              Expanded(
+                  child: ListView(
+                physics: const BouncingScrollPhysics(),
+                padding: const EdgeInsets.only(
+                    top: 20, right: 37, left: 37, bottom: 0),
+                children: [
+                  BaseSwitchSlider(
+                    margin: const EdgeInsets.only(top: 0, bottom: 0, right: 0),
+                    textColor1: controller.isPersonalInformation
+                        ? MyColors.white
+                        : MyColors.blue14B,
+                    textColor2: controller.isPersonalInformation
+                        ? MyColors.blue14B
+                        : MyColors.white,
+                    color: MyColors.blue9D1,
+                    title1: 'Personal information'.tr,
+                    title2: 'Password'.tr,
 
-                      isFirst: check(),
-                      // MySharedPreferences.language == 'en'
-                      //     ? controller.isPersonalInformation
-                      //     : !controller.isPersonalInformation,
-                      buttonColor: MyColors.blue14B,
+                    isFirst: check(),
+                    // MySharedPreferences.language == 'en'
+                    //     ? controller.isPersonalInformation
+                    //     : !controller.isPersonalInformation,
+                    buttonColor: MyColors.blue14B,
+                  ),
+                  const SizedBox(height: 20),
+                  SizedBox(
+                    height: Get.height * .7,
+                    child: PageView(
+                      physics: const NeverScrollableScrollPhysics(),
+                      controller: controller.pageCtrl,
+                      scrollDirection: Axis.horizontal,
+                      onPageChanged: (index) {
+                        if (index > 0) {
+                          controller.setIsPersonalBool(false);
+                        } else {
+                          controller.setIsPersonalBool(true);
+                        }
+                        controller.getCurrentPage(index);
+                      },
+                      children: const [
+                        PersonalInfoComponent(),
+                        PasswordComponent(),
+                      ],
                     ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      height: Get.height * .7,
-                      child: PageView(
-                        physics: const NeverScrollableScrollPhysics(),
-                        controller: controller.pageCtrl,
-                        scrollDirection: Axis.horizontal,
-                        onPageChanged: (index) {
-                          if (index > 0) {
-                            controller.setIsPersonalBool(false);
-                          } else {
-                            controller.setIsPersonalBool(true);
-                          }
-                          controller.getCurrentPage(index);
-                        },
-                        children: const [
-                          PersonalInfoComponent(),
-                          PasswordComponent(),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    // OutlinedButton(
-                    //   onPressed: () {
-                    //     MySharedPreferences.clearProfile();
-                    //     Get.deleteAll(force: true);
-                    //     Get.offAll(
-                    //       () => const RegistrationScreen(),
-                    //       binding: RegestirationBinding(),
-                    //     );
-                    //   },
-                    //   style: ButtonStyle(
-                    //     shape: MaterialStateProperty.all(
-                    //       RoundedRectangleBorder(
-                    //         borderRadius: BorderRadius.circular(24.0),
-                    //         side: const BorderSide(width: 10, color: MyColors.red),
-                    //       ),
-                    //     ),
-                    //     backgroundColor: MaterialStateProperty.all(Colors.white),
-                    //   ),
-                    //   child: Text(
-                    //     'Sign out'.tr,
-                    //     style: const TextStyle(
-                    //       fontSize: 14,
-                    //       color: MyColors.red101,
-                    //     ),
-                    //   ),
-                    // ),
-                  ],
-                ))
-          ],
-        ),
+                  ),
+                  const SizedBox(height: 10),
+                ],
+              ))
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Padding(
@@ -168,7 +154,6 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                   onPressed: () {
                     if (controller.currentPage == 0) {
                       if (controller.personalFormKey.currentState!.validate()) {
-
                         MySharedPreferences.isDoctor
                             ? controller
                             .updateInformation(
@@ -179,31 +164,25 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                           Get.offAll(() => const DoctorBaseNavBar(),
                               binding: DoctorBaseNavBarBinding());
                         })
-                            :specializationCtrl.professionalLicenseRequest(
+                            : specializationCtrl
+                            .professionalLicenseRequest(
                             context: context,
                             name: controller.nameCtrl.text,
                             phone: controller.phoneNumberCtrl.text,
-                            imageProfile: formCtrl.image,
-                            address: formCtrl.addressCtrl.text,
-                            professionalLicense: specializationCtrl.professionalLicense);
-                        // centerCtrl.editCenterInfo(
-                        //   name: controller.nameCtrl.text,
-                        //   context: context,
-                        //   profileImage: MySharedPreferences.userImage,   );
-                          // phone: controller.phoneNumberCtrl.text,
+                            imageProfile: MySharedPreferences.profileImage,
+                            address: '${formCtrl.currentCountry}'
+                                '|${formCtrl.currentCity}'
+                                '|${formCtrl.addressCtrl.text}',
+                            professionalLicense:
+                            specializationCtrl.professionalLicense,
+                            isEditCenterInfo:true
+                        );
 
 
-
-                        //     .whenComplete(() {
-                        //   Get.offAll(() =>  CenterHomeScreen(),
-                        //    );
-                        // });
-                      }
-                      else{
+                      } else {
                         print('in valid');
                       }
-                    }
-                    else if (controller.currentPage == 1) {
+                    } else if (controller.currentPage == 1) {
                       if (controller.passwordFormKey.currentState!.validate()) {
                         controller.updatePassword(
                             password: controller.newPasswordCtrl.text,

@@ -15,9 +15,9 @@ class TransactionStatusApi {
         'Content-Type': 'application/json',
         'X-localization': MySharedPreferences.language,
       };
-      log("Response::Transaction Model Response\nUrl:: $url\nheaders:: $headers");
+      // log("Response::Transaction Model Response\nUrl:: $url\nheaders:: $headers");
       http.Response response = await http.get(uri, headers: headers);
-      log("Transaction Model StatusCode:: ${response.statusCode} Transaction Model Body:: ${response.body}");
+      // log("Transaction Model StatusCode:: ${response.statusCode} Transaction Model Body:: ${response.body}");
       TransactionModel pageModel =
           TransactionModel.fromJson(json.decode(response.body));
 

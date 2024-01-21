@@ -12,7 +12,8 @@ class CenterHomeScreen extends StatelessWidget {
    CenterHomeScreen({super.key});
   CenterCtrl centerCtrl = Get.put(CenterCtrl());
 
-  @override
+
+   @override
   Widget build(BuildContext context) {
 
     return GetBuilder<CenterCtrl>(

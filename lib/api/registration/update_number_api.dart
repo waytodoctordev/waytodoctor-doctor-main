@@ -21,10 +21,10 @@ class UpdateNumberApi {
         "phone": phone,
         'active': '2',
       });
-      log("Response:: UpdateUserPhoneResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
+      // log("Response:: UpdateUserPhoneResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
       http.Response response =
           await http.post(uri, body: body, headers: headers);
-      log("UpdateUserPhoneStatusCode:: ${response.statusCode}  UpdateUserPhoneBody:: ${response.body}");
+      // log("UpdateUserPhoneStatusCode:: ${response.statusCode}  UpdateUserPhoneBody:: ${response.body}");
       UpdateNumberModel updateNumberModel =
           UpdateNumberModel.fromJson(json.decode(response.body));
       if (response.statusCode == 200) {
@@ -56,10 +56,10 @@ class UpdateNumberApi {
         "phone": phone,
         'active': '2',
       });
-      log("Response:: UpdateUserPhoneResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
+      // log("Response:: UpdateUserPhoneResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
       http.Response response =
           await http.post(uri, body: body, headers: headers);
-      log("UpdateUserPhoneStatusCode:: ${response.statusCode}  UpdateUserPhoneBody:: ${response.body}");
+      // log("UpdateUserPhoneStatusCode:: ${response.statusCode}  UpdateUserPhoneBody:: ${response.body}");
       UpdateNumberModel updateNumberModel =
           UpdateNumberModel.fromJson(json.decode(response.body));
       if (response.statusCode == 200) {

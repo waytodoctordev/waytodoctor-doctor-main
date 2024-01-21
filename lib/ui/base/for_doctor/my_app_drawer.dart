@@ -77,7 +77,7 @@ class MyAppDrawer extends StatelessWidget {
                       contentPadding:
                       const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () {
-                        Get.to(() =>  JoiningCenter());
+                        Get.to(() =>  const JoiningCenter());
                       },
                       horizontalTitleGap: 20,
                       title: Text(

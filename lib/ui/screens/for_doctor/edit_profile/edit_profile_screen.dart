@@ -23,80 +23,79 @@ class DoctorDetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    MySharedPreferences.id = int.parse(doctorId!);
     return Scaffold(
       body: GetBuilder<DoctorDetailsCtrl>(
         builder: (controller) => SafeArea(
-          child: FutureBuilder<DoctorDetailsModel?>(
-            future: controller.initializeDoctorDetailsFuture,
-            builder: (context, snapshot) {
-              switch (snapshot.connectionState) {
-                case ConnectionState.waiting:
-                  return const DoctorDetailsShimmer();
-                case ConnectionState.done:
-                default:
-                  if (snapshot.hasData) {
-                    return Stack(
-                      alignment: Alignment.bottomCenter,
+      child: FutureBuilder<DoctorDetailsModel?>(
+        future: controller.initializeDoctorDetailsFuture,
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.waiting:
+              return const DoctorDetailsShimmer();
+            case ConnectionState.done:
+            default:
+              if (snapshot.hasData) {
+                return Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    Column(
                       children: [
-                        Column(
-                          children: [
-                            const DoctorScreenlAppbar(),
-                            Expanded(
-                              child: ListView(
-                                physics: const BouncingScrollPhysics(),
-                                padding: const EdgeInsets.only(
-                                    right: 37, left: 37, bottom: 50),
-                                children: [
-                                  DoctorScreenHeader(
-                                    doctorDetails: snapshot.data!,
-                                  ),
-                                  const SizedBox(height: 20),
-                                  DescriptionComponent(
-                                      description: snapshot
-                                          .data!.data!.description
-                                          .toString()),
-                                  const SizedBox(height: 10),
-                                  // Text(
-                                  //   MySharedPreferences.language == 'ar'
-                                  //       ? 'ملاحظة : اضغط ضغطة مطولة علي الصور لفتحها'
-                                  //       : "Note : Long press on the images to open it",
-                                  //   style: const TextStyle(
-                                  //     color: MyColors.blue14B,
-                                  //     fontSize: 12,
-                                  //   ),
-                                  // ),
-                                  Text(
-                                   'Long press to delete'.tr,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      color: MyColors.blue14B,
-                                      // fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  PaymentComponent(doctor: snapshot.data!),
-                                  const SizedBox(height: 10),
-                                  CertificateComponent(doctor: snapshot.data!),
-                                  const SizedBox(height: 30),
-                                  ResearchesComponent(doctor: snapshot.data!),
-                                  const SizedBox(height: 30),
-                                  ClinicImagesComponent(doctor: snapshot.data!),
-                                ],
+                        const DoctorScreenlAppbar(),
+                        Expanded(
+                          child: ListView(
+                            physics: const BouncingScrollPhysics(),
+                            padding: const EdgeInsets.only(
+                                right: 37, left: 37, bottom: 50),
+                            children: [
+                              DoctorScreenHeader(
+                                doctorDetails: snapshot.data!,
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 20),
+                              DescriptionComponent(
+                                  description: snapshot
+                                      .data!.data!.description
+                                      .toString()),
+                              const SizedBox(height: 10),
+                              // Text(
+                              //   MySharedPreferences.language == 'ar'
+                              //       ? 'ملاحظة : اضغط ضغطة مطولة علي الصور لفتحها'
+                              //       : "Note : Long press on the images to open it",
+                              //   style: const TextStyle(
+                              //     color: MyColors.blue14B,
+                              //     fontSize: 12,
+                              //   ),
+                              // ),
+                              Text(
+                                'Long press to delete'.tr,
+                                overflow: TextOverflow.ellipsis,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: MyColors.blue14B,
+                                  // fontWeight: FontWeight.w700,
+                                ),
+                              ),
+                              PaymentComponent(doctor: snapshot.data!),
+                              const SizedBox(height: 10),
+                              CertificateComponent(doctor: snapshot.data!),
+                              const SizedBox(height: 30),
+                              ResearchesComponent(doctor: snapshot.data!),
+                              const SizedBox(height: 30),
+                              ClinicImagesComponent(doctor: snapshot.data!),
+                            ],
+                          ),
                         ),
                       ],
-                    );
-                  } else {
-                    return const FailedWidget();
-                  }
+                    ),
+                  ],
+                );
+              } else {
+                return const FailedWidget();
               }
-            },
-          ),
-        ),
+          }
+        },
       ),
-    );
+    ),),);
+
+
   }
 }

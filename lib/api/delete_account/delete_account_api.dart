@@ -11,7 +11,7 @@ class DeleteAccount {
     try {
       String url = MySharedPreferences.isDoctor
           ? '${ApiUrl.mainUrl}${ApiUrl.deleteAccount}/${MySharedPreferences.userId}'
-          :'${ApiUrl.mainUrl}${ApiUrl.deleteCenter}/${MySharedPreferences.userId}';
+          :'${ApiUrl.mainUrl}${ApiUrl.deleteCenter}/${MySharedPreferences.centerID}';
 
       Uri uri = Uri.parse(url);
       var headers = {
@@ -25,9 +25,11 @@ class DeleteAccount {
 
       DeleteModel deleteModel =
           DeleteModel.fromJson(json.decode(response.body));
+
       if (response.statusCode == 200) {
         return deleteModel;
       } else {
+
         throw "delete account   Error";
       }
     } catch (e) {

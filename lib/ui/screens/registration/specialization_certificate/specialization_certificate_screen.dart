@@ -151,8 +151,8 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
                                  height: Get.height *.30,
                                  child:
                              Image.asset(
-                                   width: Get.width, // Adjust the size as needed
-                                   height: Get.height,//213231342
+                                   width: Get.width,
+                                   height: Get.height,
                                    MySharedPreferences.isDoctor
                                        ? controller.specializationCertificate.path
                                        : controller.professionalLicense.path,
@@ -172,9 +172,12 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
                       if (controller.isAttachmentAdded.value) {
                         MySharedPreferences.professionalLicense =
                             controller.professionalLicense;
+                        MySharedPreferences.isDoctor
+                            ? controller.checkSpecialization(context: context)
+                            : null;
                         Get.to(() => const SpecializationEndScreen(),
                             binding: SpecializationBinding());
-                        controller.checkSpecialization(context: context);
+
                       } else {
                         AppConstants().showMsgToast(
                           context,

@@ -48,6 +48,7 @@ class AppConstants {
   static String get updatedSuccessfully => 'Updated Successfully'.tr;
   static String get addedSuccessfully => 'Added Successfully'.tr;
   static String get deletedSuccessfully => 'Deleted Successfully'.tr;
+  static String get userNotFound => 'Deleted Successfully'.tr;
 
   Stream<QuerySnapshot<AgoraModel>> fireAgoraStreamForCall() {
     return FirebaseFirestore.instance

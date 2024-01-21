@@ -38,7 +38,7 @@ class CategoryCentersData {
   String? image;
   String? centerCategoryId;
   String? showAppointment;
-  int? subscriptionId;
+  String? subscriptionId;
   int? userId;
   bool? isSub;
 
