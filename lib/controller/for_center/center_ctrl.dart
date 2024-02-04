@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
@@ -192,6 +194,13 @@ class CenterCtrl extends GetxController {
         centerCategoryId = centerLoginModel!.data!.data!.centerCategoryId;
         centerId = centerLoginModel!.data!.data!.id;
         MySharedPreferences.password = passwordCtrl.text;
+        FirebaseMessaging.instance.getToken().then((value) async {
+          MySharedPreferences.deviceToken = value!;
+          log("deviceToken******************:: $value");
+          if (MySharedPreferences.accessToken.isNotEmpty) {
+            DeviceTokenService().updateDeviceToken(value);
+          }
+        });
         Loader.hide();
         AppConstants().showMsgToast(context,
             msg: 'Welcome '.tr + MySharedPreferences.fName);
@@ -252,6 +261,13 @@ class CenterCtrl extends GetxController {
       MySharedPreferences.userImage = centerSignUpModel!.data!.data!.image;
       centerName.value = centerSignUpModel!.data!.data!.name;
       MySharedPreferences.password = passwordCtrl.text;
+      FirebaseMessaging.instance.getToken().then((value) async {
+        MySharedPreferences.deviceToken = value!;
+        log("deviceToken******************:: $value");
+        if (MySharedPreferences.accessToken.isNotEmpty) {
+          DeviceTokenService().updateDeviceToken(value);
+        }
+      });
       AppConstants()
           .showMsgToast(context, msg: 'Welcome '.tr + centerName.value);
       Loader.hide();

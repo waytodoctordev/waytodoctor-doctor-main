@@ -20,6 +20,8 @@ class DoctorsCenterCtrl extends GetxController {
       {required int categoryId,
         required String search,
         required int centerId}) async {
+
+    doctorsCentersModel=null;
     doctorsCentersModel = await DoctorsCenterApi.data(
         categoryId: categoryId,
         centerId: centerId,

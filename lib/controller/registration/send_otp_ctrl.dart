@@ -46,17 +46,14 @@ class SendOtpCtrl {
       print('${checkOtpModel!.msg}!');
       MySharedPreferences.userNumber = phone;
       if (MySharedPreferences.isDoctor) {
-        updateDoctorNumber(
-            phone: phone,
-            userID: MySharedPreferences.id.toString(),
-            context: context);
-        if (int.parse(MySharedPreferences.subscriptionId) > 0) {
+        print('is doctor');
+        if (MySharedPreferences.subscriptionId.isNotEmpty ) {
           Get.to(() => const DoctorBaseNavBar(),
               binding: DoctorBaseNavBarBinding());
         }
         else{
           Get.to(() => const RegistrationEnd(),
-              );
+          );
         }
       }
     }
@@ -70,6 +67,7 @@ class SendOtpCtrl {
       AppConstants().showMsgToast(context, msg: checkOtpModel!.msg!);
       Loader.hide();
     }
+    Loader.hide();
   }
 
   UpdateNumberModel? updateNumberModel;
@@ -78,19 +76,22 @@ class SendOtpCtrl {
       {required String phone,
       required String userID,
       required BuildContext context}) async {
-    // OverLayLoader.showLoading(context);
+    print('updateDoctorNumber');
+    OverLayLoader.showLoading(context);
     updateNumberModel =
         await UpdateNumberApi().doctorPhone(phone: phone, userID: userID);
     if (updateNumberModel == null) {
+      print('updateNumberModel!.code == null');
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
       Loader.hide();
       return;
     }
     if (updateNumberModel!.code == 200) {
+      print('updateNumberModel!.code == 200');
       await UpdateNumberApi()
           .data(phone: phone, userID: MySharedPreferences.userId.toString());
-      MySharedPreferences.lastScreen = 'RegistrationEnd';
-      Get.offAll(() => const RegistrationEnd());
+      // MySharedPreferences.lastScreen = 'RegistrationEnd';
+      // Get.offAll(() => const RegistrationEnd());
     } else if (updateNumberModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: checkOtpModel!.msg!);
     } else {

@@ -252,7 +252,6 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
                   child: CustomElevatedButton(
                     title: 'Send code'.tr,
                     onPressed: () {
-                      print(MySharedPreferences.skipOtp );
                       if (_formKey.currentState!.validate()) {
                         FocusManager.instance.primaryFocus?.unfocus();
                         MySharedPreferences.userNumber = phoneNumberCtrl.text;

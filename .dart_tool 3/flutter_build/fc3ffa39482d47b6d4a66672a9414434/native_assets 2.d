@@ -1,0 +1,1 @@
+ /Users/user/Library/Mobile\ Documents/com~apple~CloudDocs/waytodoctor-doctor-main/.dart_tool/flutter_build/fc3ffa39482d47b6d4a66672a9414434/native_assets.yaml: 

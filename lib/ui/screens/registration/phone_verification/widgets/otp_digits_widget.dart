@@ -86,13 +86,13 @@ class _OTPDigitsWidgetState extends State<OTPDigitsWidget> {
               title: 'Confirm'.tr,
               onPressed: () {
                 log( MySharedPreferences.skipOtp.toString());
-                // log(MySharedPreferences.verificationId);
+                log(widget.phoneNum);
                 if (_formKey.currentState!.validate()) {
                   FocusManager.instance.primaryFocus?.unfocus();
                   if (MySharedPreferences.skipOtp == 0) {
                     SendOtpCtrl.find.fetchOtpData(
                       context: context,
-                      phone: widget.phoneNum,
+                      phone:widget.phoneNum,
                       code: digitsCtrl.text.trim(),
                     );
                   } else {

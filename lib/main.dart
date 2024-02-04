@@ -54,7 +54,7 @@ Future<void> main() async {
   // MySharedPreferences.isSubscriped = false;
   // MySharedPreferences.step = '0';
   // MySharedPreferences.clearProfile();
-  /// nancy you have commit this 3 lines
+  /// nancy you have committed this 3 lines
   // MySharedPreferences.language = MySharedPreferences.isPassedLanguage
   //     ? MySharedPreferences.language
   //     : 'en';
@@ -125,8 +125,8 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     FirebaseMessaging.instance.requestPermission().then((value) {});
 
     //  check if needed for ios
-    // // FirebaseMessaging.instance.getToken().then((token) {});
-    // // FirebaseMessaging.instance.getAPNSToken().then((aPNStoken) {});
+    // FirebaseMessaging.instance.getToken().then((token) {});
+    // FirebaseMessaging.instance.getAPNSToken().then((aPNStoken) {});
 
     FirebaseMessaging.instance
         .getInitialMessage()
@@ -198,7 +198,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         Locale('ar', 'JO'),
         Locale('tr', 'TR'),
       ],
-
       locale: MySharedPreferences.language.isNotEmpty
           ? Locale(MySharedPreferences.language)
           : Get.deviceLocale,

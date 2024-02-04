@@ -80,7 +80,7 @@ class SubscriptionEnd extends StatelessWidget {
                           title: 'continue'.tr,
                           width: MediaQuery.of(context).size.width,
                           onPressed: () {
-                            MySharedPreferences.isSubscriped=true;
+                          MySharedPreferences.isSubscriped=true;
                             if (MySharedPreferences.subscriptionId.isNotEmpty ) {
                               if (MySharedPreferences.isDoctor) {
                                 Get.offAll(() => const DoctorBaseNavBar(),
@@ -88,10 +88,12 @@ class SubscriptionEnd extends StatelessWidget {
                               } else {
                                 Get.offAll( () => CenterHomeScreen(), );
                               }
-                            } else {
+                            }
+                            else {
                               Get.to(() => const SpecializationScreen(),
                                   binding: SpecializationBinding());
                             }
+
                           },
                         )
                       ],

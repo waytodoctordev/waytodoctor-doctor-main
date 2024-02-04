@@ -81,7 +81,7 @@ class DoctorLoginData {
     this.certificates,
     this.studies,
     this.isBlock,
-    // this.subscriptionId,
+    this.subscriptionId,
     // this.isSubscriped,
     this.pictures,
   });
@@ -89,7 +89,7 @@ class DoctorLoginData {
   int? id;
   int? userId;
   bool? isBlock;
-  // int? subscriptionId;
+  int? subscriptionId;
   String? name;
   String? image;
   String? address;
@@ -129,8 +129,8 @@ class DoctorLoginData {
         experience: json["experience"],
         description: json["description"],
         phone: json["phone"],
-        // subscriptionId: json["subscriptionId"],
-        // isSubscriped: json["isSubscriped"],
+        subscriptionId: json["subscription_id"],
+        // isSubscriped: json["is_sub"],
         lat: json["lat"].toDouble(),
         long: json["long"].toDouble(),
         clinicId: json["clinic_id"],
@@ -156,7 +156,7 @@ class DoctorLoginData {
         "category_name": categoryName,
         "user_count": userCount,
         "rating": rating,
-        // "subscriptionId": subscriptionId,
+        "subscriptionId": subscriptionId,
         // "isSubscriped": isSubscriped,
         "experience": experience,
         "description": description,

@@ -27,7 +27,7 @@ class ApiUrl {
   static const String plansforJordan = "/api/v1/plans-Jorden";
   static const String plansforOtherCountries = "/api/v1/other-plans";
   static const String currentPlan = "/api/v1/subscription";
-  static const String getSubscrib = "/api/v1/view-subscription";
+  static const String getSubscrib = "/api/v1/subscription";
   static const String createSubscription = "/api/v1/subscription-create";
   // subscription-create
 

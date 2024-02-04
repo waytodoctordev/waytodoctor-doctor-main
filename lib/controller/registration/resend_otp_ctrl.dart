@@ -21,18 +21,22 @@ class ResendOtpCtrl {
     required int userId,
     required String phone,
   }) async {
+    print('resendOtp');
     OverLayLoader.showLoading(context);
     resendOtpModel = await ReSendOtpApi.data(userId: userId);
     if (resendOtpModel == null) {
+      print('resendOtpModel == null');
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
       Loader.hide();
       return;
     }
     if (resendOtpModel!.code == 200) {
+      print('resendOtpModel == 200');
       OTPTimerCtrl.find.counter.value = 60;
       MySharedPreferences.userNumber = phone;
       AppConstants().showMsgToast(context, msg: resendOtpModel!.msg!);
     } else if (resendOtpModel!.code == 500) {
+      print('resendOtpModel == 500');
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
     } else {
       AppConstants().showMsgToast(context, msg: resendOtpModel!.msg!);

@@ -32,8 +32,6 @@ class DoctorBaseNavBarCtrl extends GetxController {
       return;
     }
     if (userModel!.code == 200) {
-      MySharedPreferences.subscriptionId =
-          userModel!.user!.subscriptionId!.toString();
       MySharedPreferences.isSubscriped = userModel!.user!.isSubscriped!;
       update();
     } else if (userModel!.code == 500) {}

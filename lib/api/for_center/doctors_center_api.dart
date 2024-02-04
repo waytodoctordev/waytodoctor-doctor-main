@@ -17,8 +17,8 @@ class DoctorsCenterApi {
       };
       var body = jsonEncode({
         "value": search,
-        "center_id": categoryId,
-        "category_id": centerId,
+        "center_id":centerId ,
+        "category_id":  categoryId,
       });
       http.Response response =
           await http.post(uri, headers: headers, body: body);

@@ -15,7 +15,6 @@ class CenterHomeScreen extends StatelessWidget {
 
    @override
   Widget build(BuildContext context) {
-
     return GetBuilder<CenterCtrl>(
         builder: (ctrl) {
           if (MySharedPreferences.isSubscriped) {

@@ -182,7 +182,8 @@ class _EditAccountScreenState extends State<EditAccountScreen> {
                       } else {
                         print('in valid');
                       }
-                    } else if (controller.currentPage == 1) {
+                    }
+                    else if (controller.currentPage == 1) {
                       if (controller.passwordFormKey.currentState!.validate()) {
                         controller.updatePassword(
                             password: controller.newPasswordCtrl.text,

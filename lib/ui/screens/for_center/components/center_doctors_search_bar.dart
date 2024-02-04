@@ -44,7 +44,7 @@ class CenterDoctorsSearchBar extends StatelessWidget {
         ),
         title: SizedBox(
             height: Get.height*.05,
-            child: Text( 'Doctors Center'.tr)),//centerInfo.name ??
+            child: Text( 'Center\'s Doctors'.tr)),//centerInfo.name ??
       ),
     );
   }

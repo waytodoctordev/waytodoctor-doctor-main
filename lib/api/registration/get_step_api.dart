@@ -17,7 +17,7 @@ class GetStepApi {
         'Authorization': 'Bearer $token',
         'X-localization': MySharedPreferences.language,
       };
-      log("Response:: Step Response\nUrl:: $url\nheaders:: $headers");
+      // log("Response:: Step Response\nUrl:: $url\nheaders:: $headers");
       http.Response response = await http.get(uri, headers: headers);
       // log("Step StatusCode:: ${response.statusCode}  Step Body:: ${response.body}");
       UserModel stepAndActiveModel =

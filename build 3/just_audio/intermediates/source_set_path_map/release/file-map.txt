@@ -1,0 +1,18 @@
+com.ryanheise.just_audio-jetified-media2-common-1.2.1-0 /Users/user/.gradle/caches/transforms-3/2cee13a63a96795b67fcf3a50560308c/transformed/jetified-media2-common-1.2.1/res
+com.ryanheise.just_audio-jetified-window-1.0.0-beta04-1 /Users/user/.gradle/caches/transforms-3/5a878bda361795bb9d47596a2722339a/transformed/jetified-window-1.0.0-beta04/res
+com.ryanheise.just_audio-media-1.4.1-2 /Users/user/.gradle/caches/transforms-3/5e127ccb99ddc18a7af601f664f18f35/transformed/media-1.4.1/res
+com.ryanheise.just_audio-jetified-window-java-1.0.0-beta04-3 /Users/user/.gradle/caches/transforms-3/631eb4a80b8a02b2e616745e7530d7c0/transformed/jetified-window-java-1.0.0-beta04/res
+com.ryanheise.just_audio-jetified-annotation-experimental-1.1.0-4 /Users/user/.gradle/caches/transforms-3/878129607db69539ad0bada531d3f717/transformed/jetified-annotation-experimental-1.1.0/res
+com.ryanheise.just_audio-jetified-exoplayer-core-2.18.7-5 /Users/user/.gradle/caches/transforms-3/a6b63e293b466acf41e74f9438254207/transformed/jetified-exoplayer-core-2.18.7/res
+com.ryanheise.just_audio-core-1.7.0-6 /Users/user/.gradle/caches/transforms-3/b3a1b4ef78b507cc7006ce87a9a95fc1/transformed/core-1.7.0/res
+com.ryanheise.just_audio-lifecycle-runtime-2.3.1-7 /Users/user/.gradle/caches/transforms-3/cedcb94ebb3ec5415c35174e05fd4229/transformed/lifecycle-runtime-2.3.1/res
+com.ryanheise.just_audio-jetified-media2-session-1.2.1-8 /Users/user/.gradle/caches/transforms-3/d5d4cbefc476e1e07b40a92b651a0256/transformed/jetified-media2-session-1.2.1/res
+com.ryanheise.just_audio-main-9 /Users/user/.pub-cache/hosted/pub.dev/just_audio-0.9.35/android/src/main/res
+com.ryanheise.just_audio-release-10 /Users/user/.pub-cache/hosted/pub.dev/just_audio-0.9.35/android/src/release/res
+com.ryanheise.just_audio-packaged_res-11 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audio_session/intermediates/packaged_res/release
+com.ryanheise.just_audio-pngs-12 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/generated/res/pngs/release
+com.ryanheise.just_audio-resValues-13 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/generated/res/resValues/release
+com.ryanheise.just_audio-rs-14 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/generated/res/rs/release
+com.ryanheise.just_audio-mergeReleaseResources-15 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/intermediates/incremental/release/mergeReleaseResources/merged.dir
+com.ryanheise.just_audio-mergeReleaseResources-16 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+com.ryanheise.just_audio-merged_res-17 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/just_audio/intermediates/merged_res/release

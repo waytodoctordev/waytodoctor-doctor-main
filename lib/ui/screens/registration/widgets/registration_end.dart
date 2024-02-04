@@ -8,9 +8,6 @@ import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/icons.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
-import '../../../../binding/registration/specialization_binding.dart';
-import '../specialization_certificate/specialization_certificate_screen.dart';
-
 class RegistrationEnd extends StatelessWidget {
   const RegistrationEnd({super.key});
 
@@ -93,7 +90,9 @@ class RegistrationEnd extends StatelessWidget {
                           title: 'Subscriptions'.tr,
                           width: MediaQuery.of(context).size.width,
                           onPressed: () {
+                            // print( MySharedPreferences.subscriptionId );
                             MySharedPreferences.lastScreen = 'RegistrationEnd';
+
                             // Get.to(const SpecializationScreen(),binding: SpecializationBinding());
                             Get.to(() => const PlansScreen(), binding: PlansBinding());
                           },

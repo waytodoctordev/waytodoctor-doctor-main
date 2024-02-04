@@ -1,0 +1,13 @@
+io.flutter.plugins.webviewflutter.webview_flutter_android-core-1.6.0-0 /Users/user/.gradle/caches/transforms-3/103b3ce55a7e1ad968a07c12a47b4715/transformed/core-1.6.0/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-webkit-1.7.0-1 /Users/user/.gradle/caches/transforms-3/3ea2d0509cd24b0fede65643ec40f239/transformed/webkit-1.7.0/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-jetified-window-1.0.0-beta04-2 /Users/user/.gradle/caches/transforms-3/5a878bda361795bb9d47596a2722339a/transformed/jetified-window-1.0.0-beta04/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-jetified-window-java-1.0.0-beta04-3 /Users/user/.gradle/caches/transforms-3/631eb4a80b8a02b2e616745e7530d7c0/transformed/jetified-window-java-1.0.0-beta04/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-jetified-annotation-experimental-1.1.0-4 /Users/user/.gradle/caches/transforms-3/878129607db69539ad0bada531d3f717/transformed/jetified-annotation-experimental-1.1.0/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-main-5 /Users/user/.pub-cache/hosted/pub.dev/webview_flutter_android-3.10.1/android/src/main/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-release-6 /Users/user/.pub-cache/hosted/pub.dev/webview_flutter_android-3.10.1/android/src/release/res
+io.flutter.plugins.webviewflutter.webview_flutter_android-pngs-7 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/generated/res/pngs/release
+io.flutter.plugins.webviewflutter.webview_flutter_android-resValues-8 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/generated/res/resValues/release
+io.flutter.plugins.webviewflutter.webview_flutter_android-rs-9 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/generated/res/rs/release
+io.flutter.plugins.webviewflutter.webview_flutter_android-mergeReleaseResources-10 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/intermediates/incremental/release/mergeReleaseResources/merged.dir
+io.flutter.plugins.webviewflutter.webview_flutter_android-mergeReleaseResources-11 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+io.flutter.plugins.webviewflutter.webview_flutter_android-merged_res-12 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/webview_flutter_android/intermediates/merged_res/release

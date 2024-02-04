@@ -14,8 +14,10 @@ class CurrentPlanCtrl extends GetxController {
   }
 
   Future<SubscriptionModel?> fetchCurrentPlan() async {
+    print( 'MySharedPreferences.subscriptionId ${MySharedPreferences.subscriptionId}');
     subscriptionModel = await CurrentPlanApi.getCurrentplan(
         subId: MySharedPreferences.subscriptionId);
+
     if (subscriptionModel!.code == 200) {
       return subscriptionModel;
     }

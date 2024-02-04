@@ -22,9 +22,10 @@ import '../../for_doctor/edit_profile/edit_profile_screen.dart';
 
 class DoctorCenterComponent extends StatelessWidget {
   // final Centers centerInfo;
-  const DoctorCenterComponent({
+   DoctorCenterComponent({
     super.key,
   }); //required this.centerInfo
+  DoctorsCenterCtrl controller = Get.put(DoctorsCenterCtrl());
 
   @override
   Widget build(BuildContext context) {

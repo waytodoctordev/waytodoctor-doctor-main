@@ -1,0 +1,15 @@
+io.agora.agora_rtc_ng.agora_rtc_engine-core-1.6.0-0 /Users/user/.gradle/caches/transforms-3/103b3ce55a7e1ad968a07c12a47b4715/transformed/core-1.6.0/res
+io.agora.agora_rtc_ng.agora_rtc_engine-jetified-iris-rtc-4.2.2-build.1-1 /Users/user/.gradle/caches/transforms-3/3ec9bf60efe8c99a8efea17e86328cf5/transformed/jetified-iris-rtc-4.2.2-build.1/res
+io.agora.agora_rtc_ng.agora_rtc_engine-jetified-window-1.0.0-beta04-2 /Users/user/.gradle/caches/transforms-3/5a878bda361795bb9d47596a2722339a/transformed/jetified-window-1.0.0-beta04/res
+io.agora.agora_rtc_ng.agora_rtc_engine-jetified-window-java-1.0.0-beta04-3 /Users/user/.gradle/caches/transforms-3/631eb4a80b8a02b2e616745e7530d7c0/transformed/jetified-window-java-1.0.0-beta04/res
+io.agora.agora_rtc_ng.agora_rtc_engine-jetified-full-sdk-4.2.2-4 /Users/user/.gradle/caches/transforms-3/752d272d5b39bd2f9f19c0e7ca5de0c3/transformed/jetified-full-sdk-4.2.2/res
+io.agora.agora_rtc_ng.agora_rtc_engine-jetified-annotation-experimental-1.1.0-5 /Users/user/.gradle/caches/transforms-3/878129607db69539ad0bada531d3f717/transformed/jetified-annotation-experimental-1.1.0/res
+io.agora.agora_rtc_ng.agora_rtc_engine-main-6 /Users/user/.pub-cache/hosted/pub.dev/agora_rtc_engine-6.2.2/android/src/main/res
+io.agora.agora_rtc_ng.agora_rtc_engine-release-7 /Users/user/.pub-cache/hosted/pub.dev/agora_rtc_engine-6.2.2/android/src/release/res
+io.agora.agora_rtc_ng.agora_rtc_engine-pngs-8 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/generated/res/pngs/release
+io.agora.agora_rtc_ng.agora_rtc_engine-resValues-9 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/generated/res/resValues/release
+io.agora.agora_rtc_ng.agora_rtc_engine-rs-10 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/generated/res/rs/release
+io.agora.agora_rtc_ng.agora_rtc_engine-mergeReleaseResources-11 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/intermediates/incremental/release/mergeReleaseResources/merged.dir
+io.agora.agora_rtc_ng.agora_rtc_engine-mergeReleaseResources-12 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+io.agora.agora_rtc_ng.agora_rtc_engine-merged_res-13 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/agora_rtc_engine/intermediates/merged_res/release
+io.agora.agora_rtc_ng.agora_rtc_engine-packaged_res-14 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/iris_method_channel/intermediates/packaged_res/release

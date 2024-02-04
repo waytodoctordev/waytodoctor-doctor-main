@@ -394,5 +394,7 @@ const Map<String, String> tr = {
   'Monthly':'Aylık',
   'Yearly':'Yıllık',
   'Success':'Başarı',
+  'Find a Doctor, for example: Moustafa':'Bir Doktor Bulun, örneğin: Moustafa',
+  'Center\'s Doctors':'Doktorlar Merkezi'
 
 };

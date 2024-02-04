@@ -16,13 +16,14 @@ class DoctorsCenterScreen extends StatefulWidget {
 }
 
 class _DoctorsCenterScreenState extends State<DoctorsCenterScreen> {
-  CenterCtrl centerCtrl = Get.find<CenterCtrl>();
+  CenterCtrl centerCtrl = Get.put(CenterCtrl());
+  DoctorsCenterCtrl controller = Get.put(DoctorsCenterCtrl());
   @override
   void initState() {
     MySharedPreferences.lastScreen = 'DoctorsCenterScreen';
 
     // DoctorsCenterCtrl
-    Get.lazyPut(() => DoctorsCenterCtrl());
+    // Get.lazyPut(() => DoctorsCenterCtrl());
     DoctorsCenterCtrl.find.init(
         categoryId: int.parse(MySharedPreferences.centerCategoryID),
         search: '',
@@ -50,7 +51,7 @@ class _DoctorsCenterScreenState extends State<DoctorsCenterScreen> {
               Expanded(
                 child: ListView(
                   physics: const BouncingScrollPhysics(),
-                  children: const [
+                  children:  [
                     DoctorCenterComponent(),
                   ],
                 ),

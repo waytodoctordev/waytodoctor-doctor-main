@@ -10,19 +10,31 @@ class ReSendOtpApi {
     required int userId,
   }) async {
     try {
-      String url = '${ApiUrl.mainUrl}${ApiUrl.updateUserNumber}/$userId';
+      print(' MySharedPreferences.userNumber ${ MySharedPreferences.userNumber}');
+      String url = '${ApiUrl.mainUrl}${ApiUrl.resetPassStep1}';
       Uri uri = Uri.parse(url);
       var headers = {
         'Content-Type': 'application/json',
         'X-localization': MySharedPreferences.language,
       };
-      http.Response response = await http.post(uri, headers: headers);
+      var body = jsonEncode({
+        "phone": MySharedPreferences.userNumber,
+      });
+      http.Response response = await http.post(uri, headers: headers,body: body);
+      print(response.body);
+
       ResendOtpModel resendOtpModel = ResendOtpModel.fromJson(json.decode(response.body));
+     print(resendOtpModel.status);
       if (response.statusCode == 200) {
+        print('response.statusCode == 200');
         return resendOtpModel;
-      } else if (response.statusCode == 500) {
+      }
+      else if (response.statusCode == 500) {
+        print('response.statusCode == 500');
+
         return resendOtpModel;
-      } else {
+      }
+      else {
         throw "Edit Number Error";
       }
     } catch (e) {

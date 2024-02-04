@@ -135,7 +135,8 @@ class _CurrentPlanScreenState extends State<CurrentPlanScreen> {
                             ),
                           ],
                         );
-                      } else {
+                      }
+                      else {
                         return const FailedWidget();
                       }
                   }

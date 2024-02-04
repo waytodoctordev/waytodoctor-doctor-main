@@ -22,10 +22,10 @@ class UpdateClinicPasswordByDoctorApi {
         "password": password,
         // "phone": MySharedPreferences.userNumber,
       });
-      log("Response:: Clinic PasswordResponse\nUrl:: $url\nheaders:: $headers");
+      // log("Response:: Clinic PasswordResponse\nUrl:: $url\nheaders:: $headers");
       http.Response response =
           await http.post(uri, body: body, headers: headers);
-      log("Clinic PasswordStatusCode:: ${response.statusCode}  Clinic PasswordBody:: ${response.body}");
+      // log("Clinic PasswordStatusCode:: ${response.statusCode}  Clinic PasswordBody:: ${response.body}");
       UserModel userModel = UserModel.fromJson(json.decode(response.body));
 
       if (response.statusCode == 200) {

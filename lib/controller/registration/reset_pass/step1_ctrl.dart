@@ -35,12 +35,8 @@ class ResetPassStep1Controller extends GetxController {
       return;
     }
     if (resetPassStep1Model!.code == 200) {
-      if(true){
-        Get.to(() =>  PhoneVerificationScreen(veriId: MySharedPreferences.verificationId,),
-            binding: PhoneVerificationBinding());
-      }else{ Get.to(() => const ResetPassCodeVerificationScreen(skip: 0, verId: ''),
-          binding: CodeVerificationBinding());}
-
+      Get.to(() =>  ResetPassCodeVerificationScreen(skip: MySharedPreferences.skipOtp, verId: MySharedPreferences.verificationId),
+          binding: CodeVerificationBinding());
     } else if (resetPassStep1Model!.code == 500) {
       AppConstants().showMsgToast(context, msg: "Code not sent User not found");
     } else {

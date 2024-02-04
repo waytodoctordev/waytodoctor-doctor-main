@@ -136,6 +136,8 @@ class SignInCtrl extends GetxController {
       MySharedPreferences.long = doctorLoginModel!.data!.doctorLogindata!.long!;
       MySharedPreferences.doctorClinicId =
       doctorLoginModel!.data!.doctorLogindata!.categoryId!;
+      MySharedPreferences.subscriptionId= doctorLoginModel!.data!.doctorLogindata!.subscriptionId.toString();
+      print('MySharedPreferences.subscriptionId ${MySharedPreferences.subscriptionId}');
       MySharedPreferences.password = password;
       FirebaseMessaging.instance.getToken().then((value) async {
         MySharedPreferences.deviceToken = value!;

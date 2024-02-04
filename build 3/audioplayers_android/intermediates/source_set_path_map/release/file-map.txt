@@ -1,0 +1,14 @@
+xyz.luan.audioplayers.audioplayers_android-jetified-core-ktx-1.8.0-0 /Users/user/.gradle/caches/transforms-3/23e028f11468e8ba6ea7727d1a77eef0/transformed/jetified-core-ktx-1.8.0/res
+xyz.luan.audioplayers.audioplayers_android-jetified-window-1.0.0-beta04-1 /Users/user/.gradle/caches/transforms-3/5a878bda361795bb9d47596a2722339a/transformed/jetified-window-1.0.0-beta04/res
+xyz.luan.audioplayers.audioplayers_android-jetified-window-java-1.0.0-beta04-2 /Users/user/.gradle/caches/transforms-3/631eb4a80b8a02b2e616745e7530d7c0/transformed/jetified-window-java-1.0.0-beta04/res
+xyz.luan.audioplayers.audioplayers_android-jetified-annotation-experimental-1.1.0-3 /Users/user/.gradle/caches/transforms-3/878129607db69539ad0bada531d3f717/transformed/jetified-annotation-experimental-1.1.0/res
+xyz.luan.audioplayers.audioplayers_android-core-1.8.0-4 /Users/user/.gradle/caches/transforms-3/a5de5e90e2bfa9986fde9543a6149eae/transformed/core-1.8.0/res
+xyz.luan.audioplayers.audioplayers_android-lifecycle-runtime-2.3.1-5 /Users/user/.gradle/caches/transforms-3/cedcb94ebb3ec5415c35174e05fd4229/transformed/lifecycle-runtime-2.3.1/res
+xyz.luan.audioplayers.audioplayers_android-main-6 /Users/user/.pub-cache/hosted/pub.dev/audioplayers_android-2.0.0/android/src/main/res
+xyz.luan.audioplayers.audioplayers_android-release-7 /Users/user/.pub-cache/hosted/pub.dev/audioplayers_android-2.0.0/android/src/release/res
+xyz.luan.audioplayers.audioplayers_android-pngs-8 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/generated/res/pngs/release
+xyz.luan.audioplayers.audioplayers_android-resValues-9 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/generated/res/resValues/release
+xyz.luan.audioplayers.audioplayers_android-rs-10 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/generated/res/rs/release
+xyz.luan.audioplayers.audioplayers_android-mergeReleaseResources-11 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/intermediates/incremental/release/mergeReleaseResources/merged.dir
+xyz.luan.audioplayers.audioplayers_android-mergeReleaseResources-12 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/intermediates/incremental/release/mergeReleaseResources/stripped.dir
+xyz.luan.audioplayers.audioplayers_android-merged_res-13 /Users/user/Library/Mobile Documents/com~apple~CloudDocs/waytodoctor-doctor-main/build/audioplayers_android/intermediates/merged_res/release

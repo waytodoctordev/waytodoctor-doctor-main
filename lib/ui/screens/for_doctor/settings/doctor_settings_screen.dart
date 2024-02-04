@@ -123,7 +123,8 @@ class _DoctorSettingsScreenState extends State<DoctorSettingsScreen> {
                           context: context,
                         );
                       }
-                    } else if (controller.currentTabbrIndex == 1) {
+                    }
+                    else if (controller.currentTabbrIndex == 1) {
                       if (controller.communicationFormKey.currentState!
                           .validate()) {
                         controller.updateCommunication(
@@ -134,7 +135,8 @@ class _DoctorSettingsScreenState extends State<DoctorSettingsScreen> {
                           context: context,
                         );
                       }
-                    } else if (controller.currentTabbrIndex == 2) {
+                    }
+                    else if (controller.currentTabbrIndex == 2) {
                       if (controller.clinicUserNameFormKey.currentState!
                           .validate()) {
                         // print(MySharedPreferences.userId);

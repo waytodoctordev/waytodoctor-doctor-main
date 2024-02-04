@@ -108,7 +108,8 @@ class EditAccountCtrl extends GetxController {
       MySharedPreferences.password = password;
       AppConstants()
           .showMsgToast(context, msg: AppConstants.updatedSuccessfully);
-        Get.to(()=>CenterHomeScreen());
+      print('is doctor ? nancy look here and jeolus alaa ${MySharedPreferences.isDoctor}');
+
     } else if (userModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
     } else {

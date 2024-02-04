@@ -452,5 +452,7 @@ const Map<String, String> en = {
   'Monthly':'Monthly',
   'Yearly':'Yearly',
   'Success':'Success',
+  'Find a Doctor, for example: Moustafa':'Find a Doctor, for example: Moustafa',
+  'Center\'s Doctors':'Doctors Center',
 
 };

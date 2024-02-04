@@ -12,6 +12,7 @@ import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 import '../../../../api/logout/logout_api.dart';
+import 'components/account_component/password_component.dart';
 import 'components/clinic_working_hours_component/working_hours_component.dart';
 
 class ClinicSettingsScreen extends StatefulWidget {
@@ -169,17 +170,17 @@ class _ClinicSettingsScreenState extends State<ClinicSettingsScreen> {
                               );
                             }
                           }
-                          // else if (controller.currentTabbrIndex == 2) {
-                          //   if (controller.currentPage == 0) {
-                          //     if (controller.personalFormKey.currentState!.validate()) {
-                          //       controller.updateInformation(userName: controller.nameCtrl.text, email: controller.emailCtrl.text, phone: controller.phoneNumberCtrl.text, context: context);
-                          //     }
-                          //   } else {
-                          //     if (controller.passwordFormKey.currentState!.validate()) {
-                          //       // controller.updatePassword(password: controller.newPasswordCtrl.text, context: context);
-                          //     }
-                          //   }
-                          // }
+                          else if (controller.currentTabbrIndex == 2) {
+                            if (controller.currentPage == 0) {
+                              if (controller.personalFormKey.currentState!.validate()) {
+                                controller.updateInformation(userName: controller.nameCtrl.text, email: controller.emailCtrl.text, phone: controller.phoneNumberCtrl.text, context: context);
+                              }
+                            } else {
+                              if (controller.passwordFormKey.currentState!.validate()) {
+                                controller.updatePassword(password: controller.newPasswordCtrl.text, context: context);
+                              }
+                            }
+                          }
                         },
                       )
                     : OutlinedButton(

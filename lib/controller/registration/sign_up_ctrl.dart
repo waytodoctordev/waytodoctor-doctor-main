@@ -66,6 +66,7 @@ class SignUpCtrl extends GetxController {
       MySharedPreferences.password = password;
       MySharedPreferences.isDoctor = true;
       MySharedPreferences.lastScreen = 'PhoneSignUpScreen';
+      MySharedPreferences.subscriptionId='';
       Get.to(() => const PhoneSignUpScreen(), binding: UpdateNumberBinding());
       AppConstants().showMsgToast(context, msg: 'Welcome '.tr + name);
     } else if (doctorSignUpModel!.code == 500) {
