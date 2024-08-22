@@ -449,5 +449,10 @@ const Map<String, String> ar = {
   'Success': 'تم بنجاح',
   'Find a Doctor, for example: Moustafa':
       'ابحث عن طبيب ، على سبيل المثال: مصطفى',
-  'Center\'s Doctors': 'اطباء المركز'
+  'Center\'s Doctors': 'اطباء المركز',
+ 'Monthly Subscription': 'اشتراك شهري',
+  'Annual Subscription':'اشتراك سنوي',
+"Your subscription has been successfully canceled. Thank you for being with us":"تم إلغاء اشتراكك بنجاح. شكرا لكونك معنا",
+'Please select the language of the application':'من فضلك قم بإختيار لغة التطبيق',
+
 };

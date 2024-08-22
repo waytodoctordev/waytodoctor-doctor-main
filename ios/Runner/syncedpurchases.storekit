@@ -1,0 +1,158 @@
+{
+  "identifier" : "F69CE198",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6470757869",
+    "_developerTeamID" : "YC2BHS53RG",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 739627286.70788801,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : {
+          "index" : 2,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : {
+          "index" : 1,
+          "type" : "purchase"
+        },
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : {
+          "index" : 1,
+          "type" : "generic"
+        },
+        "enabled" : true,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21476047",
+      "localizations" : [
+
+      ],
+      "name" : "Premium Access.",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "179.0",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6502235381",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Hesabınız bir yıl boyunca aktif olacaktır",
+              "displayName" : "Yıllık Abonelik",
+              "locale" : "tr"
+            },
+            {
+              "description" : "سيتم تفعيل حسابك لمدة سنة",
+              "displayName" : "اشتراك سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Your account will be activated for one year",
+              "displayName" : "Annual Subscription",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "Premium_Annual_Subscription",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Annual subscription",
+          "subscriptionGroupID" : "21476047",
+          "type" : "RecurringSubscription"
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "14.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6502235334",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "سيتم تفعيل حسابك لمدة شهر",
+              "displayName" : "اشتراك شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Hesabınız bir ay boyunca aktif olacak",
+              "displayName" : " Aylık Abonelik",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Your account will be activated for a month",
+              "displayName" : "Monthly Subscription",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "Premium_Monthly_Subscription",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly subscribtion",
+          "subscriptionGroupID" : "21476047",
+          "type" : "RecurringSubscription"
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 3,
+    "minor" : 0
+  }
+}

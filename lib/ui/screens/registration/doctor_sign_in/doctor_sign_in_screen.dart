@@ -31,7 +31,7 @@ class _DoctorSignInScreenState extends State<DoctorSignInScreen> {
   SignInCtrl controller = Get.find<SignInCtrl>();
   @override
   void initState() {
-    MySharedPreferences.lastScreen = '';
+    // MySharedPreferences.lastScreen = '';
     // SignInCtrl.find.getCountriesList();
     MySharedPreferences.isDoctor = true;
 

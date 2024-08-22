@@ -37,15 +37,15 @@ class DoctorHomeScreen extends StatelessWidget {
               children: [
                 controller.urgentsAppointments != 0
                     ? FadeInRight(
-                        from: 20,
-                        duration: const Duration(seconds: 1),
-                        child: DoctorAlert(
-                            urgentsAppointmentsCount:
-                                controller.urgentsAppointments))
+                    from: 20,
+                    duration: const Duration(seconds: 1),
+                    child: DoctorAlert(
+                        urgentsAppointmentsCount:
+                        controller.urgentsAppointments))
                     : const SizedBox(),
                 Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 37, vertical: 10),
+                  const EdgeInsets.symmetric(horizontal: 37, vertical: 10),
                   child: Row(
                     children: [
                       Expanded(

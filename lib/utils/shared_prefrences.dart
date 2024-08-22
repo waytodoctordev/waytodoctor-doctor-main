@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MySharedPreferences {
-  static late SharedPreferences _sharedPreferences;
+  static late SharedPreferences sharedPreferences;
 
   static const String keyIsDoctor = "key_is_doctor";
   static const String keyIsSubscriped = "key_is_subscriped";
@@ -65,7 +65,7 @@ class MySharedPreferences {
 
 
   static Future init() async {
-    _sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences = await SharedPreferences.getInstance();
   }
 
   static void clearProfile() {
@@ -122,216 +122,216 @@ class MySharedPreferences {
   }
 
   static String get accessToken =>
-      _sharedPreferences.getString(keyAccessToken) ?? "";
+      sharedPreferences.getString(keyAccessToken) ?? "";
   static set accessToken(String value) =>
-      _sharedPreferences.setString(keyAccessToken, value);
+      sharedPreferences.setString(keyAccessToken, value);
 
-  static String get password => _sharedPreferences.getString(keyPassword) ?? "";
+  static String get password => sharedPreferences.getString(keyPassword) ?? "";
   static set password(String value) =>
-      _sharedPreferences.setString(keyPassword, value);
+      sharedPreferences.setString(keyPassword, value);
 
-  static int get id => _sharedPreferences.getInt(keyDoctorId) ?? 0;
-  static set id(int value) => _sharedPreferences.setInt(keyDoctorId, value);
+  static int get id => sharedPreferences.getInt(keyDoctorId) ?? 0;
+  static set id(int value) => sharedPreferences.setInt(keyDoctorId, value);
 
   static String get verificationId =>
-      _sharedPreferences.getString(keyVerificationId) ?? "";
+      sharedPreferences.getString(keyVerificationId) ?? "";
   static set verificationId(String value) =>
-      _sharedPreferences.setString(keyVerificationId, value);
+      sharedPreferences.setString(keyVerificationId, value);
 
   static String get subscriptionId =>
-      _sharedPreferences.getString(keySubscriptionId) ?? '';
+      sharedPreferences.getString(keySubscriptionId) ?? '';
   static set subscriptionId(String value) =>
-      _sharedPreferences.setString(keySubscriptionId, value);
+      sharedPreferences.setString(keySubscriptionId, value);
 
-  static int get userId => _sharedPreferences.getInt(keyUserId) ?? 0;
-  static set userId(int value) => _sharedPreferences.setInt(keyUserId, value);
+  static int get userId => sharedPreferences.getInt(keyUserId) ?? 0;
+  static set userId(int value) => sharedPreferences.setInt(keyUserId, value);
 
-  static bool get isDoctor => _sharedPreferences.getBool(keyIsDoctor) ?? false;
+  static bool get isDoctor => sharedPreferences.getBool(keyIsDoctor) ?? false;
   static set isDoctor(bool value) =>
-      _sharedPreferences.setBool(keyIsDoctor, value);
+      sharedPreferences.setBool(keyIsDoctor, value);
 
   static int get countryDigits =>
-      _sharedPreferences.getInt(keyCountryDigits) ?? 0;
+      sharedPreferences.getInt(keyCountryDigits) ?? 0;
   static set countryDigits(int value) =>
-      _sharedPreferences.setInt(keyCountryDigits, value);
+      sharedPreferences.setInt(keyCountryDigits, value);
 
-  static int get skipOtp => _sharedPreferences.getInt(keySkipOtp) ?? 0;
-  static set skipOtp(int value) => _sharedPreferences.setInt(keySkipOtp, value);
+  static int get skipOtp => sharedPreferences.getInt(keySkipOtp) ?? 0;
+  static set skipOtp(int value) => sharedPreferences.setInt(keySkipOtp, value);
   static bool get isSubscriped =>
-      _sharedPreferences.getBool(keyIsSubscriped) ?? false;
+      sharedPreferences.getBool(keyIsSubscriped) ?? false;
   static set isSubscriped(bool value) =>
-      _sharedPreferences.setBool(keyIsSubscriped, value);
+      sharedPreferences.setBool(keyIsSubscriped, value);
 
   static bool get isPassedLanguage =>
-      _sharedPreferences.getBool(keyIsPassedIntro) ?? false;
+      sharedPreferences.getBool(keyIsPassedIntro) ?? false;
   static set isPassedLanguage(bool value) =>
-      _sharedPreferences.setBool(keyIsPassedIntro, value);
+      sharedPreferences.setBool(keyIsPassedIntro, value);
 
-  static String get language => _sharedPreferences.getString(keyLanguage) ?? "";
+  static String get language => sharedPreferences.getString(keyLanguage) ?? "";
   static set language(String value) =>
-      _sharedPreferences.setString(keyLanguage, value);
+      sharedPreferences.setString(keyLanguage, value);
 
-  static String get step => _sharedPreferences.getString(keyStep) ?? "";
-  static set step(String value) => _sharedPreferences.setString(keyStep, value);
+  static String get step => sharedPreferences.getString(keyStep) ?? "";
+  static set step(String value) => sharedPreferences.setString(keyStep, value);
 
-  static String get active => _sharedPreferences.getString(keyActive) ?? "";
+  static String get active => sharedPreferences.getString(keyActive) ?? "";
   static set active(String value) =>
-      _sharedPreferences.setString(keyActive, value);
+      sharedPreferences.setString(keyActive, value);
 
   static String get insurance =>
-      _sharedPreferences.getString(keyInsurance) ?? "";
+      sharedPreferences.getString(keyInsurance) ?? "";
   static set insurance(String value) =>
-      _sharedPreferences.setString(keyInsurance, value);
+      sharedPreferences.setString(keyInsurance, value);
 
   static String get clinicUserID =>
-      _sharedPreferences.getString(keyClinicUserID) ?? "";
+      sharedPreferences.getString(keyClinicUserID) ?? "";
   static set clinicUserID(String value) =>
-      _sharedPreferences.setString(keyClinicUserID, value);
+      sharedPreferences.setString(keyClinicUserID, value);
 
-  static String get country => _sharedPreferences.getString(keyCountry) ?? "";
+  static String get country => sharedPreferences.getString(keyCountry) ?? "";
   static set country(String value) =>
-      _sharedPreferences.setString(keyCountry, value);
+      sharedPreferences.setString(keyCountry, value);
 
-  static String get city => _sharedPreferences.getString(keyCity) ?? "";
-  static set city(String value) => _sharedPreferences.setString(keyCity, value);
+  static String get city => sharedPreferences.getString(keyCity) ?? "";
+  static set city(String value) => sharedPreferences.setString(keyCity, value);
 
   static String get countryCode =>
-      _sharedPreferences.getString(keyCountryCode) ?? "";
+      sharedPreferences.getString(keyCountryCode) ?? "";
   static set countryCode(String value) =>
-      _sharedPreferences.setString(keyCountryCode, value);
+      sharedPreferences.setString(keyCountryCode, value);
 
-  static String get email => _sharedPreferences.getString(keyEmail) ?? "";
+  static String get email => sharedPreferences.getString(keyEmail) ?? "";
   static set email(String value) =>
-      _sharedPreferences.setString(keyEmail, value);
+      sharedPreferences.setString(keyEmail, value);
 
-  static String get fName => _sharedPreferences.getString(keyFname) ?? "";
+  static String get fName => sharedPreferences.getString(keyFname) ?? "";
   static set fName(String value) =>
-      _sharedPreferences.setString(keyFname, value);
+      sharedPreferences.setString(keyFname, value);
 
-  static String get sName => _sharedPreferences.getString(keySname) ?? "";
+  static String get sName => sharedPreferences.getString(keySname) ?? "";
   static set sName(String value) =>
-      _sharedPreferences.setString(keySname, value);
+      sharedPreferences.setString(keySname, value);
 
-  static String get tName => _sharedPreferences.getString(keyTname) ?? "";
+  static String get tName => sharedPreferences.getString(keyTname) ?? "";
   static set tName(String value) =>
-      _sharedPreferences.setString(keyTname, value);
+      sharedPreferences.setString(keyTname, value);
 
-  static String get lName => _sharedPreferences.getString(keyLname) ?? "";
+  static String get lName => sharedPreferences.getString(keyLname) ?? "";
   static set lName(String value) =>
-      _sharedPreferences.setString(keyLname, value);
+      sharedPreferences.setString(keyLname, value);
 
   static String get categoryName =>
-      _sharedPreferences.getString(keySname) ?? "";
+      sharedPreferences.getString(keySname) ?? "";
   static set categoryName(String value) =>
-      _sharedPreferences.setString(keySname, value);
+      sharedPreferences.setString(keySname, value);
 
-  static String get description => _sharedPreferences.getString(keyTname) ?? "";
+  static String get description => sharedPreferences.getString(keyTname) ?? "";
   static set description(String value) =>
-      _sharedPreferences.setString(keyTname, value);
+      sharedPreferences.setString(keyTname, value);
 
-  static int get categoryId => _sharedPreferences.getInt(keyCategoryId) ?? 0;
+  static int get categoryId => sharedPreferences.getInt(keyCategoryId) ?? 0;
   static set categoryId(int value) =>
-      _sharedPreferences.setInt(keyCategoryId, value);
+      sharedPreferences.setInt(keyCategoryId, value);
 
   static String get deviceToken =>
-      _sharedPreferences.getString(keyDeviceToken) ?? "";
+      sharedPreferences.getString(keyDeviceToken) ?? "";
   static set deviceToken(String value) =>
-      _sharedPreferences.setString(keyDeviceToken, value);
+      sharedPreferences.setString(keyDeviceToken, value);
 
   static String get userImage =>
-      _sharedPreferences.getString(keyUserImage) ?? "";
+      sharedPreferences.getString(keyUserImage) ?? "";
   static set userImage(String value) =>
-      _sharedPreferences.setString(keyUserImage, value);
+      sharedPreferences.setString(keyUserImage, value);
 
   static String get userNumber =>
-      _sharedPreferences.getString(keyUserNumber) ?? "";
+      sharedPreferences.getString(keyUserNumber) ?? "";
   static set userNumber(String value) =>
-      _sharedPreferences.setString(keyUserNumber, value);
+      sharedPreferences.setString(keyUserNumber, value);
 
   static String get nationalId =>
-      _sharedPreferences.getString(keyNationalId) ?? "";
+      sharedPreferences.getString(keyNationalId) ?? "";
   static set nationalId(String value) =>
-      _sharedPreferences.setString(keyNationalId, value);
+      sharedPreferences.setString(keyNationalId, value);
 
   static String get dateOfBirth =>
-      _sharedPreferences.getString(keyDateOfBirth) ?? "";
+      sharedPreferences.getString(keyDateOfBirth) ?? "";
   static set dateOfBirth(String value) =>
-      _sharedPreferences.setString(keyDateOfBirth, value);
+      sharedPreferences.setString(keyDateOfBirth, value);
 
-  static String get gender => _sharedPreferences.getString(keyGender) ?? "";
+  static String get gender => sharedPreferences.getString(keyGender) ?? "";
   static set gender(String value) =>
-      _sharedPreferences.setString(keyGender, value);
+      sharedPreferences.setString(keyGender, value);
 
-  static String get status => _sharedPreferences.getString(keyStatus) ?? "";
+  static String get status => sharedPreferences.getString(keyStatus) ?? "";
   static set status(String value) =>
-      _sharedPreferences.setString(keyStatus, value);
+      sharedPreferences.setString(keyStatus, value);
 
-  static String get address => _sharedPreferences.getString(keyAddress) ?? "";
+  static String get address => sharedPreferences.getString(keyAddress) ?? "";
   static set address(String value) =>
-      _sharedPreferences.setString(keyAddress, value);
+      sharedPreferences.setString(keyAddress, value);
 
   static int get formCurrentIndex =>
-      _sharedPreferences.getInt(keyFormCurrentIndex) ?? 0;
+      sharedPreferences.getInt(keyFormCurrentIndex) ?? 0;
   static set formCurrentIndex(int value) =>
-      _sharedPreferences.setInt(keyFormCurrentIndex, value);
+      sharedPreferences.setInt(keyFormCurrentIndex, value);
 
-  static int get userCount => _sharedPreferences.getInt(keyUserCount) ?? 0;
+  static int get userCount => sharedPreferences.getInt(keyUserCount) ?? 0;
   static set userCount(int value) =>
-      _sharedPreferences.setInt(keyUserCount, value);
+      sharedPreferences.setInt(keyUserCount, value);
 
-  static double get rating => _sharedPreferences.getDouble(keyRating) ?? 0.0;
+  static double get rating => sharedPreferences.getDouble(keyRating) ?? 0.0;
   static set rating(double value) =>
-      _sharedPreferences.setDouble(keyRating, value);
+      sharedPreferences.setDouble(keyRating, value);
 
-  static int get experience => _sharedPreferences.getInt(keyExperience) ?? 0;
+  static int get experience => sharedPreferences.getInt(keyExperience) ?? 0;
   static set experience(int value) =>
-      _sharedPreferences.setInt(keyExperience, value);
+      sharedPreferences.setInt(keyExperience, value);
 
   static int get doctorClinicId =>
-      _sharedPreferences.getInt(keyDoctorClinicId) ?? 0;
+      sharedPreferences.getInt(keyDoctorClinicId) ?? 0;
   static set doctorClinicId(int value) =>
-      _sharedPreferences.setInt(keyDoctorClinicId, value);
+      sharedPreferences.setInt(keyDoctorClinicId, value);
 
-  static double get lat => _sharedPreferences.getDouble(keyLat) ?? 0.0;
-  static set lat(double value) => _sharedPreferences.setDouble(keyLat, value);
+  static double get lat => sharedPreferences.getDouble(keyLat) ?? 0.0;
+  static set lat(double value) => sharedPreferences.setDouble(keyLat, value);
 
-  static double get long => _sharedPreferences.getDouble(keyLong) ?? 0.0;
-  static set long(double value) => _sharedPreferences.setDouble(keyLong, value);
+  static double get long => sharedPreferences.getDouble(keyLong) ?? 0.0;
+  static set long(double value) => sharedPreferences.setDouble(keyLong, value);
   static int get formIndicatorCurrentIndex =>
-      _sharedPreferences.getInt(keyFormIndicatorCurrentIndex) ?? 0;
+      sharedPreferences.getInt(keyFormIndicatorCurrentIndex) ?? 0;
   static set formIndicatorCurrentIndex(int value) =>
-      _sharedPreferences.setInt(keyFormIndicatorCurrentIndex, value);
+      sharedPreferences.setInt(keyFormIndicatorCurrentIndex, value);
 
   static String get lastScreen =>
-      _sharedPreferences.getString(keyLastScreen) ?? "";
+      sharedPreferences.getString(keyLastScreen) ?? "";
   static set lastScreen(String value) =>
-      _sharedPreferences.setString(keyLastScreen, value);
+      sharedPreferences.setString(keyLastScreen, value);
 
   static int get currentSectionId =>
-      _sharedPreferences.getInt(keyCurrentSectionId) ?? 1;
+      sharedPreferences.getInt(keyCurrentSectionId) ?? 1;
   static set currentSectionId(int value) =>
-      _sharedPreferences.setInt(keyCurrentSectionId, value);
+      sharedPreferences.setInt(keyCurrentSectionId, value);
 
   static int get currentQuestionId =>
-      _sharedPreferences.getInt(keyCurrentQuestionId) ?? 0;
+      sharedPreferences.getInt(keyCurrentQuestionId) ?? 0;
   static set currentQuestionId(int value) =>
-      _sharedPreferences.setInt(keyCurrentQuestionId, value);
+      sharedPreferences.setInt(keyCurrentQuestionId, value);
 
   static int get currentQuestionIndex =>
-      _sharedPreferences.getInt(keyCurrentQuestionIndex) ?? 0;
+      sharedPreferences.getInt(keyCurrentQuestionIndex) ?? 0;
   static set currentQuestionIndex(int value) =>
-      _sharedPreferences.setInt(keyCurrentQuestionIndex, value);
+      sharedPreferences.setInt(keyCurrentQuestionIndex, value);
 
   static int get currentIndicatorIndex =>
-      _sharedPreferences.getInt(keyCurrentIndicatorIndex) ?? 0;
+      sharedPreferences.getInt(keyCurrentIndicatorIndex) ?? 0;
   static set currentIndicatorIndex(int value) =>
-      _sharedPreferences.setInt(keyCurrentIndicatorIndex, value);
+      sharedPreferences.setInt(keyCurrentIndicatorIndex, value);
 
   static set isProfileImage(bool value) =>
-      _sharedPreferences.setBool(keyCurrentIndicatorIndex, value);
+      sharedPreferences.setBool(keyCurrentIndicatorIndex, value);
 
   static bool get isProfileImage =>
-      _sharedPreferences.getBool(keyCurrentQuestionIndex) ?? false;
+      sharedPreferences.getBool(keyCurrentQuestionIndex) ?? false;
 
 
 }

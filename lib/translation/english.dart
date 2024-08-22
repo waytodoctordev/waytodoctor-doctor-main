@@ -454,5 +454,10 @@ const Map<String, String> en = {
   'Success':'Success',
   'Find a Doctor, for example: Moustafa':'Find a Doctor, for example: Moustafa',
   'Center\'s Doctors':'Doctors Center',
+  'Monthly Subscription':'Monthly Subscription',
+  'Annual Subscription':'Annual Subscription',
+  "Your subscription has been successfully canceled. Thank you for being with us":"Your subscription has been successfully canceled. Thank you for being with us",
+  'Please select the language of the application':'Please select the language of the application'
+
 
 };

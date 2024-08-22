@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -7,6 +9,10 @@ import 'package:way_to_doctor_doctor/ui/widgets/custom_elevated_button.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/icons.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
+
+import '../../../../binding/for_doctor/doctor_base_nav_bar_binding.dart';
+import '../../../base/for_doctor/doctor_base_nav_bar.dart';
+import '../plans/subscription_screen.dart';
 
 class RegistrationEnd extends StatelessWidget {
   const RegistrationEnd({super.key});
@@ -41,7 +47,9 @@ class RegistrationEnd extends StatelessWidget {
                 child: Center(
                   child: Container(
                     height: 300,
-                    decoration: BoxDecoration(color: MyColors.grey7f8, borderRadius: BorderRadius.circular(26)),
+                    decoration: BoxDecoration(
+                        color: MyColors.grey7f8,
+                        borderRadius: BorderRadius.circular(26)),
                     width: MediaQuery.of(context).size.width,
                     child: Column(
                       children: [
@@ -77,7 +85,8 @@ class RegistrationEnd extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
-                            'Go to the next step to continue creating your account as a doctor in our medical network.'.tr,
+                            'Go to the next step to continue creating your account as a doctor in our medical network.'
+                                .tr,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                               color: MyColors.textColor,
@@ -94,7 +103,14 @@ class RegistrationEnd extends StatelessWidget {
                             MySharedPreferences.lastScreen = 'RegistrationEnd';
 
                             // Get.to(const SpecializationScreen(),binding: SpecializationBinding());
-                            Get.to(() => const PlansScreen(), binding: PlansBinding());
+                            MySharedPreferences.isSubscriped
+                                ? Get.offAll(() => const DoctorBaseNavBar(),
+                                    binding: DoctorBaseNavBarBinding())
+                                : Get.to(
+                                    () => Platform.isIOS
+                                        ? const SubscriptionScreen()
+                                        : const PlansScreen(),
+                                    binding: PlansBinding());
                           },
                         )
                       ],

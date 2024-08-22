@@ -30,7 +30,7 @@ class SendOtpCtrl {
   Future fetchOtpData({
     required BuildContext context,
     required String phone,
-    required String code,
+    required int code,
   }) async {
     OverLayLoader.showLoading(context);
     checkOtpModel = await SendOtpApi.data(phone: phone, code: code);

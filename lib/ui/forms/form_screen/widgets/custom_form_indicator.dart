@@ -1,9 +1,9 @@
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_slider/carousel_slider.dart' as cs;
 import 'package:flutter/material.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 
 class CustomFormIndicator extends StatelessWidget {
-  final CarouselController carouselController;
+  final cs.CarouselController carouselController;
   final int currentIndex;
   final int count;
 
@@ -16,7 +16,7 @@ class CustomFormIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CarouselSlider.builder(
+    return cs.CarouselSlider.builder(
       itemCount: count,
       carouselController: carouselController,
       itemBuilder: (context, index, realIndex) => CircleAvatar(
@@ -32,12 +32,12 @@ class CustomFormIndicator extends StatelessWidget {
           ),
         ),
       ),
-      options: CarouselOptions(
+      options: cs.CarouselOptions(
         height: 50,
         enlargeCenterPage: true,
         viewportFraction: .2,
         initialPage: currentIndex,
-        enlargeStrategy: CenterPageEnlargeStrategy.height,
+        enlargeStrategy: cs.CenterPageEnlargeStrategy.height,
         scrollPhysics: const NeverScrollableScrollPhysics(),
         enableInfiniteScroll: false,
       ),

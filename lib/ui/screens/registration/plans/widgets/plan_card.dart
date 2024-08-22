@@ -6,6 +6,9 @@ import 'package:way_to_doctor_doctor/ui/widgets/custom_elevated_button.dart';
 import 'package:way_to_doctor_doctor/utils/app_constants.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 
+import '../../../../../binding/registration/specialization_binding.dart';
+import '../../specialization_certificate/specialization_certificate_screen.dart';
+
 class PlanCard extends StatelessWidget {
   final String content;
   // final String price;
@@ -72,15 +75,17 @@ class PlanCard extends StatelessWidget {
               width: double.maxFinite,
               color: const Color(0xFF14B9D1),
               onPressed: () {
-                if (controller.isActive == 1) {
-                  controller.checkout(
-                      planId: planId,
-                      context: context,
-                      amount: controller.price.toStringAsFixed(2),
-                      daysOfPlan: daysOfPlan);
-                } else if (controller.isActive == 0) {
-                  AppConstants().showMsgToast(context, msg: 'Currently unavailable'.tr);
-                }
+                   // Get.to(const SpecializationScreen(),binding: SpecializationBinding());
+                   if (controller.isActive == 1) {
+                     controller.checkout(
+                         planId: planId,
+                         context: context,
+                         amount: controller.price.toStringAsFixed(2),
+                         daysOfPlan: daysOfPlan);
+                   } else if (controller.isActive == 0) {
+                     AppConstants().showMsgToast(context, msg: 'Currently unavailable'.tr);
+                   }
+
               },
             ),
           ],

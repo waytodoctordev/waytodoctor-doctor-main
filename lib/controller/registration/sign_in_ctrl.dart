@@ -6,6 +6,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:way_to_doctor_doctor/api/for_clinic/view_clinic_by_user_id_api.dart';
 import 'package:way_to_doctor_doctor/api/registration/clinic_login_api.dart';
 import 'package:way_to_doctor_doctor/api/registration/countries_api.dart';
@@ -97,6 +98,7 @@ class SignInCtrl extends GetxController {
       return;
     }
     if (doctorLoginModel!.code == 200) {
+      MySharedPreferences.isDoctor = true;
       MySharedPreferences.accessToken = doctorLoginModel!.data!.token!;
       MySharedPreferences.userId =
       doctorLoginModel!.data!.doctorLogindata!.userId!;
@@ -116,6 +118,7 @@ class SignInCtrl extends GetxController {
       doctorLoginModel!.data!.doctorLogindata!.email!;
       MySharedPreferences.userNumber =
       doctorLoginModel!.data!.doctorLogindata!.phone!;
+      print(' MySharedPreferences.userNumber ${ MySharedPreferences.userNumber}');
       MySharedPreferences.userImage =
       doctorLoginModel!.data!.doctorLogindata!.image!;
       MySharedPreferences.address =
@@ -139,6 +142,14 @@ class SignInCtrl extends GetxController {
       MySharedPreferences.subscriptionId= doctorLoginModel!.data!.doctorLogindata!.subscriptionId.toString();
       print('MySharedPreferences.subscriptionId ${MySharedPreferences.subscriptionId}');
       MySharedPreferences.password = password;
+      LogInResult login= await Purchases.logIn(MySharedPreferences.userId.toString());
+      print(login.customerInfo);
+      print(login.created);
+      await Purchases.setAttributes({
+        'User ID': MySharedPreferences.userId.toString() ?? '',
+      });
+      CustomerInfo customerInfo = await Purchases.getCustomerInfo();
+      print('customerInfo $customerInfo');
       FirebaseMessaging.instance.getToken().then((value) async {
         MySharedPreferences.deviceToken = value!;
         // log("deviceToken******************:: $value");
@@ -178,9 +189,9 @@ class SignInCtrl extends GetxController {
                 binding: DoctorBaseNavBarBinding());
           }
         }
-        MySharedPreferences.isDoctor = true;
       }
-    } else if (doctorLoginModel!.code == 500) {
+    }
+    else if (doctorLoginModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: doctorLoginModel!.msg!);
     } else {
       AppConstants().showMsgToast(context, msg: doctorLoginModel!.msg!);

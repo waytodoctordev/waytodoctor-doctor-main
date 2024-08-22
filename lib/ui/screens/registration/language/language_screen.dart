@@ -19,16 +19,16 @@ class LanguageScreen extends StatelessWidget {
             const HeaderLogo(),
             const SizedBox(height: 60),
 
-            const Text(
-              'من فضلك قم بإختيار لغة التطبيق',
-              style: TextStyle(
+             Text(
+              'Please select the language of the application'.tr,
+              style: const TextStyle(
                 fontSize: 18,
                 color: MyColors.blue14B,
               ),
             ),
             const SizedBox(height: 20),
             CustomElevatedButton(
-              title: 'عربي',
+              title: 'Arabic'.tr,
               onPressed: () {
                 MySharedPreferences.language = 'ar';
                 MySharedPreferences.isPassedLanguage = true;
@@ -37,7 +37,7 @@ class LanguageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             CustomElevatedButton(
-              title: 'انجليزي',
+              title: 'English'.tr,
               onPressed: () {
                 MySharedPreferences.language = 'en';
                 MySharedPreferences.isPassedLanguage = true;
@@ -46,7 +46,7 @@ class LanguageScreen extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             CustomElevatedButton(
-              title: 'تركي',
+              title: 'Turkish'.tr,
               onPressed: () {
                 MySharedPreferences.language = 'tr';
                 MySharedPreferences.isPassedLanguage = true;

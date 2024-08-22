@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
@@ -10,6 +11,7 @@ import 'package:way_to_doctor_doctor/ui/screens/registration/plans/plans_screen.
 import 'package:way_to_doctor_doctor/ui/widgets/loading_indicator.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
+import '../../screens/registration/plans/subscription_screen.dart';
 
 class DoctorBaseNavBar extends StatefulWidget {
   const DoctorBaseNavBar({super.key});
@@ -20,20 +22,18 @@ class DoctorBaseNavBar extends StatefulWidget {
 class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
   @override
   void initState() {
-    MySharedPreferences.lastScreen='DoctorBaseNavBar';
+    MySharedPreferences.lastScreen = 'DoctorBaseNavBar';
     Get.put(UserLocationCtrl(), permanent: true);
     Get.put(MapController(), permanent: true);
     super.initState();
   }
 
-
   @override
   Widget build(BuildContext context) {
-    // print(DateTime.now().toString().split(' ').first);
     return GetBuilder<DoctorBaseNavBarCtrl>(
       builder: (ctrl) {
         if (ctrl.isPaymentActive == 1) {
-          if (MySharedPreferences.isSubscriped) {
+          if (MySharedPreferences.isSubscriped) { //MySharedPreferences.isSubscriped
             return ZoomDrawer(
               controller: ctrl.zoomDrawerController,
               menuScreen: const MyAppDrawer(),
@@ -85,8 +85,13 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
             );
           }
           if (!MySharedPreferences.isSubscriped) {
-            return const PlansScreen();
-          } else {
+            print(ctrl.isPaymentActive);
+            return Platform.isIOS
+                ? const PlansScreen()
+                :const SubscriptionScreen();
+            const Text('sd');
+          }
+          else {
             return Container();
           }
         }
@@ -94,7 +99,6 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
           return ZoomDrawer(
             controller: ctrl.zoomDrawerController,
             menuScreen: const MyAppDrawer(),
-            // mainScreenTapClose: false,
             isRtl: MySharedPreferences.language == 'ar' ? true : false,
             borderRadius: 24,
             style: DrawerStyle.defaultStyle,
@@ -105,7 +109,6 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
             shadowLayer2Color: MyColors.blue9D1,
             clipMainScreen: false,
             duration: const Duration(milliseconds: 650),
-            // mainScreenOverlayColor: Colors.red,
             menuBackgroundColor: MyColors.blue14B,
             angle: -0.0,
             mainScreenScale: .29,
@@ -118,11 +121,10 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
               confineInSafeArea: true,
               items: ctrl.navBarsItems(),
               handleAndroidBackButtonPress: true, // Default is true.
-              resizeToAvoidBottomInset:
-                  true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+              resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
               stateManagement: true, // Default is true.
-              hideNavigationBarWhenKeyboardShows:
-                  true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+              hideNavigationBarWhenKeyboardShows: true,
+              // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
               decoration: const NavBarDecoration(
                 colorBehindNavBar: Colors.white,
               ),

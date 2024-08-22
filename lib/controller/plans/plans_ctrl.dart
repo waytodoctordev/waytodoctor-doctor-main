@@ -26,6 +26,7 @@ import '../../ui/screens/registration/specialization_certificate/widgets/special
 
 class PlansCtrl extends GetxController {
   static PlansCtrl get find => Get.find();
+
   late PageController pageCtrl;
   int currentIndex = 0;
   double discount = 0.0;
@@ -200,7 +201,7 @@ class PlansCtrl extends GetxController {
     required int daysOfPlan,
     required BuildContext context,
   }) async {
-
+print('checkout');
     OverLayLoader.showLoading(context);
     String orderAmount = amount ;
     String orderNumber =
@@ -241,6 +242,7 @@ class PlansCtrl extends GetxController {
         "recurring_init": "true",
         "hash": hash.toString()
       });
+      print('MySharedPreferences.userNumber ${MySharedPreferences.userNumber} checkout');
       // log("Response:: CheckoutResponse\nUrl:: $url\nheaders:: ${headers.toString()}");
       http.Response response =
           await http.post(uri, headers: headers, body: body);
@@ -269,6 +271,7 @@ class PlansCtrl extends GetxController {
         // });
         return response;
       } else {
+        // log(MySharedPreferences.);
         CheckoutErrorModel checkoutErrorModel =
             CheckoutErrorModel.fromJson(json.decode(response.body));
         Loader.hide();

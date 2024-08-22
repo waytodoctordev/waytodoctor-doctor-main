@@ -75,7 +75,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: RotationTransition(
                 turns: const AlwaysStoppedAnimation(270 / 360),
                 child: GestureDetector(
-                  onTap: () => Get.back(),
+                  onTap: (){ Get.back();
+                    print('back');},
                   child: Container(
                     height: 20,
                     width: 20,

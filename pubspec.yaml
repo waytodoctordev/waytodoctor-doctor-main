@@ -1,9 +1,9 @@
 name: way_to_doctor_doctor
 description: A new Flutter project.
-
+# nancy with khaled
 publish_to: 'none' 
 
-version: 1.4.6+43
+version: 1.4.8+45
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
@@ -28,12 +28,12 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   photo_view: ^0.14.0
   image_picker: ^1.0.0
-  firebase_core: ^2.14.0
+  firebase_core: ^2.32.0
   firebase_messaging: ^14.6.4
   flutter_local_notifications: ^15.0.1
-  cloud_firestore: ^4.8.2
-  firebase_storage: ^11.2.4
-  firebase_ui_firestore: ^1.5.4
+  cloud_firestore: ^4.17.5
+  firebase_storage: ^11.7.7
+  firebase_ui_firestore: ^1.6.3
   syncfusion_flutter_pdfviewer: ^22.1.37
   agora_rtc_engine: ^6.2.1
   stop_watch_timer:
@@ -58,7 +58,7 @@ dependencies:
   calendar_agenda: ^0.0.2+3
   url_launcher: ^6.1.11
   mask_text_input_formatter: ^2.4.0
-  google_api_headers: ^2.0.0
+  google_api_headers: ^1.6.0
   geolocator: ^9.0.2
   google_maps_flutter: ^2.3.1
   geocoding: ^2.1.0
@@ -76,13 +76,16 @@ dependencies:
   crypto: ^3.0.3
   quiver: ^3.2.1
   eraser: ^2.0.1
+  in_app_purchase: ^3.2.0
+  in_app_purchase_storekit: ^0.3.16
+  purchases_flutter: ^7.0.2
 
 
 
 dependency_overrides:
   intl: ^0.17.0
   http: ^0.13.1
-  google_api_headers: ^1.0.0
+  google_api_headers: ^4.2.0
   flutter_svg: ^1.1.6
   syncfusion_flutter_core: ^22.1.37
 dev_dependencies:

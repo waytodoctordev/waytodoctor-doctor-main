@@ -1,6 +1,6 @@
 class ApiUrl {
-  static const String mainUrl = "https://waytodoctor.wecan.work/public";
-
+  static const String  secondaryUrl= "https://waytodoctor.wecan.work/public";
+  static const String mainUrl  = "https://waytodoctor.net";
 
   //registration
   static const String doctorSignIn = "/api/v1/doctor-login";
@@ -101,6 +101,7 @@ class ApiUrl {
   static const String editCenterInfo = "/api/v1/center-edit";
   static const String changeActivityStatus = "/api/v1/center-change-status";
   static const String joiningToCenter = "/api/v1/center-assign";
+  static const String applePurchase = "/api/v1/verify-purchase";
 
 
 

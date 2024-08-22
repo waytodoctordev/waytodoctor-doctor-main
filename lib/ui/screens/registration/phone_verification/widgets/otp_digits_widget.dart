@@ -93,7 +93,7 @@ class _OTPDigitsWidgetState extends State<OTPDigitsWidget> {
                     SendOtpCtrl.find.fetchOtpData(
                       context: context,
                       phone:widget.phoneNum,
-                      code: digitsCtrl.text.trim(),
+                      code: int.parse(digitsCtrl.text.trim()),
                     );
                   } else {
                     SendOtpCtrl.find.signInWithPhoneNumber(

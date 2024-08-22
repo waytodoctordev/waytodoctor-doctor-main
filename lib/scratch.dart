@@ -1,3 +1,10 @@
+// dependency_overrides:
+// intl: ^0.17.0
+// http: ^0.13.1
+// #  google_api_headers: ^4.2.0
+// flutter_svg: ^1.1.6
+// syncfusion_flutter_core: ^22.1.37
+
 // import 'package:flutter/cupertino.dart';
 // import 'package:flutter/material.dart';
 // import 'package:flutter_svg/flutter_svg.dart';

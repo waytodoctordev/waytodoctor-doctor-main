@@ -1,5 +1,6 @@
 //khaled basem awad .. my saved project // ...
 import 'dart:developer';
+import 'dart:io';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:eraser/eraser.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,6 +9,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
+import 'package:in_app_purchase/in_app_purchase.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:way_to_doctor_doctor/api/notifications/device_token_services.dart';
 import 'package:way_to_doctor_doctor/binding/for_clinic/clinic_base_nav_bar_binding.dart';
 import 'package:way_to_doctor_doctor/binding/for_doctor/doctor_base_nav_bar_binding.dart';
@@ -22,7 +26,6 @@ import 'package:way_to_doctor_doctor/ui/base/for_clinic/clinic_base_nav_bar.dart
 import 'package:way_to_doctor_doctor/ui/base/for_doctor/doctor_base_nav_bar.dart';
 import 'package:way_to_doctor_doctor/ui/forms/form_screen/form_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_center/components/doctor_center_screen.dart';
-import 'package:way_to_doctor_doctor/ui/screens/for_center/screens/center_home_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/check_practice/widgets/check_practice_end.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/language/language_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/registration/plans/widgets/subscription_end.dart';
@@ -48,12 +51,14 @@ Future<void> _onBackgroundMessage(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  InAppPurchase.instance;
+
   await Firebase.initializeApp();
   FirebaseMessaging.onBackgroundMessage(_onBackgroundMessage);
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+
   await MySharedPreferences.init();
-  // MySharedPreferences.isSubscriped = false;
-  // MySharedPreferences.step = '0';
-  // MySharedPreferences.clearProfile();
+
   /// nancy you have committed this 3 lines
   // MySharedPreferences.language = MySharedPreferences.isPassedLanguage
   //     ? MySharedPreferences.language
@@ -71,6 +76,11 @@ Future<void> main() async {
   );
   await SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+
+
+if(Platform.isIOS){
+  await Purchases.configure(PurchasesConfiguration('appl_qcOhbTzuTasmrDNUAFsUkqUBsFE'));
+}
   runApp(const MyApp());
   Eraser.clearAllAppNotifications();
 }
@@ -94,7 +104,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
+
     WidgetsBinding.instance.removeObserver(this);
+    MySharedPreferences.sharedPreferences.clear();
     super.dispose();
   }
 
@@ -103,7 +115,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
     FirebaseMessaging.instance.getToken().then((value) async {
       MySharedPreferences.deviceToken = value!;
-      log("deviceToken:: $value");
+      // log("deviceToken:: $value");
       if (MySharedPreferences.accessToken.isNotEmpty) {
         DeviceTokenService().updateDeviceToken(value);
       }
@@ -155,6 +167,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   _toggleScreen() {
+
     if (!MySharedPreferences.isPassedLanguage) {
       return const LanguageScreen();
     } else {
@@ -187,6 +200,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    // print('MySharedPreferences.language ${MySharedPreferences.language}');
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       initialBinding: _initialBinding(),

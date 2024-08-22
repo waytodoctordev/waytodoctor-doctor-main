@@ -39,7 +39,6 @@ class _SpecializationScreenState extends State<SpecializationScreen> {
               child: Column(
                 // physics: const BouncingScrollPhysics(),
                 crossAxisAlignment: CrossAxisAlignment.start,
-
                 children: [
                   Center(
                     child: Text(

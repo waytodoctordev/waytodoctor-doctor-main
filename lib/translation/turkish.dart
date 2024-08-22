@@ -395,6 +395,11 @@ const Map<String, String> tr = {
   'Yearly':'Yıllık',
   'Success':'Başarı',
   'Find a Doctor, for example: Moustafa':'Bir Doktor Bulun, örneğin: Moustafa',
-  'Center\'s Doctors':'Doktorlar Merkezi'
+  'Center\'s Doctors':'Doktorlar Merkezi',
+  'Monthly Subscription':'Aylık Abonelik',
+ 'Annual Subscription':'Yıllık Abonelik',
+  "Your subscription has been successfully canceled. Thank you for being with us":"Aboneliğiniz başarıyla iptal edildi. Bizimle olduğunuz için teşekkür ederiz",
+  'Please select the language of the application':'Lütfen uygulamanın dilini seçin',
+
 
 };

@@ -267,6 +267,7 @@ class _PhoneSignUpScreenState extends State<PhoneSignUpScreen> {
                       // print(MySharedPreferences.skipOtp);
                       print(MySharedPreferences.id);
                       if (_formKey.currentState!.validate()) {
+                        print('nancy in');
                         FocusManager.instance.primaryFocus?.unfocus();
                         MySharedPreferences.userNumber =
                         '${UpdateNumberCtrl.find.currentCountryCode}'

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:purchases_flutter/models/customer_info_wrapper.dart';
+import 'package:purchases_flutter/purchases_flutter.dart';
 import 'package:way_to_doctor_doctor/binding/advantges/advantages_binding.dart';
 import 'package:way_to_doctor_doctor/binding/for_doctor/doctor_base_nav_bar_binding.dart';
 import 'package:way_to_doctor_doctor/binding/for_doctor/doctor_details/doctor_details_binding.dart';
@@ -50,34 +52,51 @@ class MyAppDrawer extends StatelessWidget {
               child: ListView(
                 padding: const EdgeInsets.only(top: 50),
                 children: [
-                  MySharedPreferences.isSubscriped
-                      ? SizedBox(
-                          height: 50,
-                          child: ListTile(
-                            contentPadding: const EdgeInsetsDirectional.only(
-                                start: 25, end: 25),
-                            onTap: () {
-                              Get.to(() => const CurrentPlanScreen());
-                            }, // open new screen
-                            horizontalTitleGap: 20,
-                            title: Text(
-                              'Subscriptions'.tr,
-                              style: const TextStyle(
-                                fontSize: 18,
-                                color: MyColors.white,
-                              ),
-                            ),
-                          ),
-                        )
-                      : const SizedBox(),
+                  SizedBox(
+                    height: 50,
+                    child: ListTile(
+                      contentPadding:
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
+                      onTap: () async {
+                        CustomerInfo customerInfo =
+                            await Purchases.getCustomerInfo();
+                        print('customerInfo $customerInfo');
+                        final entitlement =
+                            customerInfo.entitlements.active.values.first;
+                        String currentPlan = entitlement.productIdentifier ==
+                                'Premium_Monthly_Subscription'
+                            ? 'Monthly Subscription'
+                            : 'Annual Subscription';
+                        final expirationDate =
+                            DateTime.parse(entitlement.expirationDate!);
+                        print('expirationDate $expirationDate');
+                        final now = DateTime.now();
+                        final remainingDays =
+                            expirationDate.difference(now).inDays;
+
+                        Get.to(() => CurrentPlanScreen(
+                            currentPlan: currentPlan,
+                            remainingDays: remainingDays));
+                      }, // open new screen
+                      horizontalTitleGap: 20,
+                      title: Text(
+                        'Subscriptions'.tr,
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: MyColors.white,
+                        ),
+                      ),
+                    ),
+                  ),
+
                   /// JOINING CENTER
                   SizedBox(
                     height: 50,
                     child: ListTile(
                       contentPadding:
-                      const EdgeInsetsDirectional.only(start: 25, end: 25),
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () {
-                        Get.to(() =>  const JoiningCenter());
+                        Get.to(() => const JoiningCenter());
                       },
                       horizontalTitleGap: 20,
                       title: Text(
@@ -113,7 +132,10 @@ class MyAppDrawer extends StatelessWidget {
                       contentPadding:
                           const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () {
-                        Get.to(() => const DoctorDetailsScreen(doctorId: '',),
+                        Get.to(
+                            () => const DoctorDetailsScreen(
+                                  doctorId: '',
+                                ),
                             binding: DoctorDetailsBinding());
                       },
                       horizontalTitleGap: 20,
@@ -172,7 +194,7 @@ class MyAppDrawer extends StatelessWidget {
                     height: 50,
                     child: ListTile(
                       contentPadding:
-                      const EdgeInsetsDirectional.only(start: 25, end: 25),
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () {
                         Get.to(() => const CallUsScreen());
                       }, // open new screen
@@ -195,7 +217,7 @@ class MyAppDrawer extends StatelessWidget {
                           binding: PolicyBinding()),
                       horizontalTitleGap: 20,
                       title: Text(
-                       'Return policy'.tr,
+                        'Return policy'.tr,
                         style: const TextStyle(
                           fontSize: 18,
                           color: MyColors.white,
@@ -214,7 +236,8 @@ class MyAppDrawer extends StatelessWidget {
                             binding: AdvantagesBinding());
                       }, // open new screen
                       horizontalTitleGap: 20,
-                      title: Text('Advantages and goals'.tr,
+                      title: Text(
+                        'Advantages and goals'.tr,
                         style: const TextStyle(
                           fontSize: 18,
                           color: MyColors.white,
@@ -244,64 +267,74 @@ class MyAppDrawer extends StatelessWidget {
                       ),
                     ),
                   ),
+
                   /// ARABIC LANGUAGE
                   SizedBox(
-                    height:50,
+                    height: 50,
                     child: ListTile(
                       contentPadding:
-                      const EdgeInsetsDirectional.only(start: 25, end: 25),
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () async {
                         MySharedPreferences.language = 'ar';
                         MySharedPreferences.isPassedLanguage = true;
                         Get.updateLocale(Locale(MySharedPreferences.language));
                       }, // open new screen
                       horizontalTitleGap: 20,
-                      title:  Text(
+                      title: Text(
                         'Arabic'.tr,
                         style: TextStyle(
                           fontSize: 18,
-                          color: MySharedPreferences.language == 'ar'?MyColors.greenc4e:MyColors.white,
+                          color: MySharedPreferences.language == 'ar'
+                              ? MyColors.greenc4e
+                              : MyColors.white,
                         ),
                       ),
                     ),
                   ),
+
                   /// ENGLISH LANGUAGE
                   SizedBox(
-                    height:40,
+                    height: 40,
                     child: ListTile(
                       contentPadding:
-                      const EdgeInsetsDirectional.only(start: 25, end: 25),
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () async {
                         MySharedPreferences.language = 'en';
                         MySharedPreferences.isPassedLanguage = true;
                         Get.updateLocale(Locale(MySharedPreferences.language));
                       }, // open new screen
                       horizontalTitleGap: 20,
-                      title:  Text('English'.tr,
+                      title: Text(
+                        'English'.tr,
                         style: TextStyle(
                           fontSize: 18,
-                          color: MySharedPreferences.language == 'en'?MyColors.greenc4e:MyColors.white,
+                          color: MySharedPreferences.language == 'en'
+                              ? MyColors.greenc4e
+                              : MyColors.white,
                         ),
                       ),
                     ),
                   ),
+
                   /// TURKISH LANGUAGE
                   SizedBox(
-                    height:40,
+                    height: 40,
                     child: ListTile(
                       contentPadding:
-                      const EdgeInsetsDirectional.only(start: 25, end: 25),
+                          const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () async {
                         MySharedPreferences.language = 'tr';
                         MySharedPreferences.isPassedLanguage = true;
                         Get.updateLocale(Locale(MySharedPreferences.language));
                       }, // open new screen
                       horizontalTitleGap: 20,
-                      title:  Text(
+                      title: Text(
                         'Turkish'.tr,
                         style: TextStyle(
                           fontSize: 18,
-                          color: MySharedPreferences.language == 'tr'?MyColors.greenc4e:MyColors.white,
+                          color: MySharedPreferences.language == 'tr'
+                              ? MyColors.greenc4e
+                              : MyColors.white,
                         ),
                       ),
                     ),

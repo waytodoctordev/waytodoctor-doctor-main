@@ -8,7 +8,7 @@ import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 class SendOtpApi {
   static Future<OtpModel?> data({
     required String phone,
-    required String code,
+    required int code,
   }) async {
     try {
       String url = '${ApiUrl.mainUrl}${ApiUrl.checkOtp}';
