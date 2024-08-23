@@ -1,8 +1,9 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:way_to_doctor_doctor/controller/for_doctor/doctor_base_nav_bar_ctrl.dart';
 import 'package:way_to_doctor_doctor/controller/map.dart';
 import 'package:way_to_doctor_doctor/controller/user_location_ctrl.dart';
@@ -11,6 +12,7 @@ import 'package:way_to_doctor_doctor/ui/screens/registration/plans/plans_screen.
 import 'package:way_to_doctor_doctor/ui/widgets/loading_indicator.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
+
 import '../../screens/registration/plans/subscription_screen.dart';
 
 class DoctorBaseNavBar extends StatefulWidget {
@@ -33,7 +35,8 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
     return GetBuilder<DoctorBaseNavBarCtrl>(
       builder: (ctrl) {
         if (ctrl.isPaymentActive == 1) {
-          if (MySharedPreferences.isSubscriped) { //MySharedPreferences.isSubscriped
+          if (MySharedPreferences.isSubscriped) {
+            //MySharedPreferences.isSubscriped
             return ZoomDrawer(
               controller: ctrl.zoomDrawerController,
               menuScreen: const MyAppDrawer(),
@@ -57,41 +60,37 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
                 controller: ctrl.navBarController,
                 context,
                 screens: ctrl.buildScreens(),
-                hideNavigationBar: false,
-                confineInSafeArea: true,
+                // hideNavigationBar: false,
+                // confineInSafeArea: true,
                 items: ctrl.navBarsItems(),
                 handleAndroidBackButtonPress: true, // Default is true.
-                resizeToAvoidBottomInset:
-                    true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+                resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
                 stateManagement: true, // Default is true.
-                hideNavigationBarWhenKeyboardShows:
-                    true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+                // hideNavigationBarWhenKeyboardShows:
+                //     true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
                 decoration: const NavBarDecoration(
                   colorBehindNavBar: Colors.white,
                 ),
-                popAllScreensOnTapOfSelectedTab: true,
-                popActionScreens: PopActionScreensType.all,
-                itemAnimationProperties: const ItemAnimationProperties(
-                  duration: Duration(milliseconds: 200),
-                  curve: Curves.ease,
-                ),
-                screenTransitionAnimation: const ScreenTransitionAnimation(
-                  animateTabTransition: true,
-                  curve: Curves.ease,
-                  duration: Duration(milliseconds: 200),
-                ),
+                // popAllScreensOnTapOfSelectedTab: true,
+                // popActionScreens: PopActionScreensType.all,
+                // itemAnimationProperties: const ItemAnimationProperties(
+                //   duration: Duration(milliseconds: 200),
+                //   curve: Curves.ease,
+                // ),
+                // screenTransitionAnimation: const ScreenTransitionAnimation(
+                //   animateTabTransition: true,
+                //   curve: Curves.ease,
+                //   duration: Duration(milliseconds: 200),
+                // ),
                 navBarStyle: NavBarStyle.style1,
               ),
             );
           }
           if (!MySharedPreferences.isSubscriped) {
             print(ctrl.isPaymentActive);
-            return Platform.isIOS
-                ? const PlansScreen()
-                :const SubscriptionScreen();
+            return Platform.isIOS ? const PlansScreen() : const SubscriptionScreen();
             const Text('sd');
-          }
-          else {
+          } else {
             return Container();
           }
         }
@@ -117,28 +116,28 @@ class _DoctorBaseNavBarState extends State<DoctorBaseNavBar> {
               controller: ctrl.navBarController,
               context,
               screens: ctrl.buildScreens(),
-              hideNavigationBar: false,
-              confineInSafeArea: true,
+              // hideNavigationBar: false,
+              // confineInSafeArea: true,
               items: ctrl.navBarsItems(),
               handleAndroidBackButtonPress: true, // Default is true.
               resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
               stateManagement: true, // Default is true.
-              hideNavigationBarWhenKeyboardShows: true,
+              // hideNavigationBarWhenKeyboardShows: true,
               // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
               decoration: const NavBarDecoration(
                 colorBehindNavBar: Colors.white,
               ),
-              popAllScreensOnTapOfSelectedTab: true,
-              popActionScreens: PopActionScreensType.all,
-              itemAnimationProperties: const ItemAnimationProperties(
-                duration: Duration(milliseconds: 200),
-                curve: Curves.ease,
-              ),
-              screenTransitionAnimation: const ScreenTransitionAnimation(
-                animateTabTransition: true,
-                curve: Curves.ease,
-                duration: Duration(milliseconds: 200),
-              ),
+              // popAllScreensOnTapOfSelectedTab: true,
+              // popActionScreens: PopActionScreensType.all,
+              // itemAnimationProperties: const ItemAnimationProperties(
+              //   duration: Duration(milliseconds: 200),
+              //   curve: Curves.ease,
+              // ),
+              // screenTransitionAnimation: const ScreenTransitionAnimation(
+              //   animateTabTransition: true,
+              //   curve: Curves.ease,
+              //   duration: Duration(milliseconds: 200),
+              // ),
               navBarStyle: NavBarStyle.style1,
             ),
           );

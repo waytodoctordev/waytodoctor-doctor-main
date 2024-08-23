@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_clinic/clinic_appointments/clinic_appointments_screen.dart';
-import 'package:way_to_doctor_doctor/ui/screens/for_clinic/clinic_settings/clinic_settings_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_clinic/clinic_home/clinic_home_screen.dart';
+import 'package:way_to_doctor_doctor/ui/screens/for_clinic/clinic_settings/clinic_settings_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/notifications/doctor_notifications_screen.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/icons.dart';
@@ -30,8 +30,7 @@ class ClinicBaseNavBarCtrl extends GetxController {
       return;
     }
     if (userModel!.code == 200) {
-      MySharedPreferences.subscriptionId =
-          userModel!.user!.subscriptionId!.toString();
+      MySharedPreferences.subscriptionId = userModel!.user!.subscriptionId!.toString();
       MySharedPreferences.isSubscriped = userModel!.user!.isSubscriped!;
       update();
     } else if (userModel!.code == 500) {}

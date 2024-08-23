@@ -4,15 +4,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 import 'package:way_to_doctor_doctor/api/plans/plans_api.dart';
 import 'package:way_to_doctor_doctor/api/registration/get_step_api.dart';
 import 'package:way_to_doctor_doctor/model/plans_model/plans_model.dart';
 import 'package:way_to_doctor_doctor/model/user/user_model.dart';
-import 'package:way_to_doctor_doctor/ui/screens/for_doctor/home/doctor_home_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_doctor/appointments/doctor_appointments_screen.dart';
-import 'package:way_to_doctor_doctor/ui/screens/notifications/doctor_notifications_screen.dart';
+import 'package:way_to_doctor_doctor/ui/screens/for_doctor/home/doctor_home_screen.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_doctor/settings/doctor_settings_screen.dart';
+import 'package:way_to_doctor_doctor/ui/screens/notifications/doctor_notifications_screen.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/icons.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
@@ -70,9 +70,12 @@ class DoctorBaseNavBarCtrl extends GetxController {
       const NotificationsScreen(),
     ];
   }
-  List<Widget> centerScreens(){
-    return [DoctorsCenterScreen(),];
-}
+
+  List<Widget> centerScreens() {
+    return [
+      DoctorsCenterScreen(),
+    ];
+  }
 
   List<PersistentBottomNavBarItem> navBarsItems() {
     return [
