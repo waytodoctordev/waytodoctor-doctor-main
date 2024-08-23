@@ -42,11 +42,9 @@ class _ClinicBaseNavBarState extends State<ClinicBaseNavBar> {
               confineInSafeArea: true,
               items: ctrl.navBarsItems(),
               handleAndroidBackButtonPress: true, // Default is true.
-              resizeToAvoidBottomInset:
-                  true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+              resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
               stateManagement: true, // Default is true.
-              hideNavigationBarWhenKeyboardShows:
-                  true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+              hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
               decoration: const NavBarDecoration(
                 colorBehindNavBar: Colors.white,
               ),
@@ -72,8 +70,7 @@ class _ClinicBaseNavBarState extends State<ClinicBaseNavBar> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      'Sorry, you cannot use the application until the doctor renews the subscription.'
-                          .tr,
+                      'Sorry, you cannot use the application until the doctor renews the subscription.'.tr,
                       textAlign: TextAlign.center,
                       style: const TextStyle(
                         fontSize: 14,
@@ -96,12 +93,10 @@ class _ClinicBaseNavBarState extends State<ClinicBaseNavBar> {
                         shape: MaterialStateProperty.all(
                           RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(24.0),
-                            side: const BorderSide(
-                                width: 10, color: MyColors.red),
+                            side: const BorderSide(width: 10, color: MyColors.red),
                           ),
                         ),
-                        backgroundColor:
-                            MaterialStateProperty.all(Colors.white),
+                        backgroundColor: MaterialStateProperty.all(Colors.white),
                       ),
                       child: Text(
                         'Sign out'.tr,
@@ -129,11 +124,9 @@ class _ClinicBaseNavBarState extends State<ClinicBaseNavBar> {
             confineInSafeArea: true,
             items: ctrl.navBarsItems(),
             handleAndroidBackButtonPress: true, // Default is true.
-            resizeToAvoidBottomInset:
-                true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
+            resizeToAvoidBottomInset: true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
             stateManagement: true, // Default is true.
-            hideNavigationBarWhenKeyboardShows:
-                true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
+            hideNavigationBarWhenKeyboardShows: true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
             decoration: const NavBarDecoration(
               colorBehindNavBar: Colors.white,
             ),

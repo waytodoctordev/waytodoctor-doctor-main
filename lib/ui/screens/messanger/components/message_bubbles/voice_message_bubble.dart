@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:voice_message_package/voice_message_package.dart';
 import 'package:way_to_doctor_doctor/model/chat_model.dart';
-import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/images.dart';
-import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 class VoiceMessageBubble extends StatelessWidget {
   final ChatModel chatModel;
@@ -32,19 +29,21 @@ class VoiceMessageBubble extends StatelessWidget {
               strokeWidth: 2,
             ),
           )
-        : VoiceMessage(
-            audioSrc: chatModel.fileUrl!,
-            played: false, // To show played badge or not.
-            me: chatModel.userId == MySharedPreferences.id
-                ? true
-                : false, // Set message side.
-            contactBgColor: MyColors.blue9D1,
-            contactFgColor: MyColors.blue14B,
-            contactPlayIconColor: MyColors.white,
-
-            meBgColor: MyColors.blue14B,
-            meFgColor: MyColors.white,
-            mePlayIconColor: MyColors.blue14B,
-          );
+        : const SizedBox.shrink();
+    //TODO: Deprecated -- Nancy
+    // VoiceMessage(
+    //         audioSrc: chatModel.fileUrl!,
+    //         played: false, // To show played badge or not.
+    //         me: chatModel.userId == MySharedPreferences.id
+    //             ? true
+    //             : false, // Set message side.
+    //         contactBgColor: MyColors.blue9D1,
+    //         contactFgColor: MyColors.blue14B,
+    //         contactPlayIconColor: MyColors.white,
+    //
+    //         meBgColor: MyColors.blue14B,
+    //         meFgColor: MyColors.white,
+    //         mePlayIconColor: MyColors.blue14B,
+    //       );
   }
 }

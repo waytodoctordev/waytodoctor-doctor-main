@@ -1,13 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_google_places/flutter_google_places.dart';
+import 'package:flutter_google_places_hoc081098/flutter_google_places_hoc081098.dart';
+import 'package:flutter_google_places_hoc081098/google_maps_webservice_places.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:google_api_headers/google_api_headers.dart' show GoogleApiHeaders;
+import 'package:google_api_headers/google_api_headers.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:google_maps_webservice/places.dart';
 import 'package:way_to_doctor_doctor/controller/user_location_ctrl.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/overlay_loader.dart';
 import 'package:way_to_doctor_doctor/utils/app_constants.dart';
@@ -68,15 +68,16 @@ class MapController extends GetxController {
         language: "ar",
         components: [Component(Component.country, "JO")],
         startText: "city",
-        decoration: InputDecoration(
-          hintText: 'Search',
-          focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(20),
-            borderSide: const BorderSide(
-              color: Colors.white,
-            ),
-          ),
-        ),
+        //TODO: Deprecated -- Nancy
+        // decoration: InputDecoration(
+        //   hintText: 'Search',
+        //   focusedBorder: OutlineInputBorder(
+        //     borderRadius: BorderRadius.circular(20),
+        //     borderSide: const BorderSide(
+        //       color: Colors.white,
+        //     ),
+        //   ),
+        // ),
       );
       displayPrediction(p);
     } catch (e) {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:svg_drawing_animation/svg_drawing_animation.dart';
 import 'package:way_to_doctor_doctor/controller/for_doctor/doctor_base_nav_bar_ctrl.dart';
 import 'package:way_to_doctor_doctor/ui/screens/for_doctor/home/edit_account_screen.dart';
 import 'package:way_to_doctor_doctor/ui/widgets/custom_network_image.dart';
@@ -26,8 +25,7 @@ class HomeAppBar extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 GestureDetector(
-                  onTap: () => controller.zoomDrawerController.toggle!(
-                      forceToggle: true),
+                  onTap: () => controller.zoomDrawerController.toggle!(forceToggle: true),
                   child: CircleAvatar(
                     radius: 30,
                     backgroundColor: MyColors.blue14B.withOpacity(0.2),
@@ -102,11 +100,12 @@ class HomeAppBar extends StatelessWidget {
                     child: SizedBox(
                       height: 80,
                       width: 80,
-                      child: SvgDrawingAnimation(
-                        SvgProvider.asset(MyIcons.drawerLine),
-                        // curve: Curves.easeIn,
-                        duration: const Duration(seconds: 2),
-                      ),
+                      //TODO: Deprecated -- Nancy
+                      // child: SvgDrawingAnimation(
+                      //   SvgProvider.asset(MyIcons.drawerLine),
+                      //   // curve: Curves.easeIn,
+                      //   duration: const Duration(seconds: 2),
+                      // ),
                     ),
                   ),
                 )
@@ -122,10 +121,11 @@ class HomeAppBar extends StatelessWidget {
                       child: SizedBox(
                         height: 80,
                         width: 80,
-                        child: SvgDrawingAnimation(
-                          SvgProvider.asset(MyIcons.drawerLine),
-                          duration: const Duration(seconds: 2),
-                        ),
+                        //TODO: Deprecated -- Nancy
+                        // child: SvgDrawingAnimation(
+                        //   SvgProvider.asset(MyIcons.drawerLine),
+                        //   duration: const Duration(seconds: 2),
+                        // ),
                       ),
                       // child: Image.asset(
                       //   MyImages.drawer,

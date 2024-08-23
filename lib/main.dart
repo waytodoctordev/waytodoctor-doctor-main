@@ -1,6 +1,7 @@
 //khaled basem awad .. my saved project // ...
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:eraser/eraser.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,10 +36,12 @@ import 'package:way_to_doctor_doctor/ui/widgets/no_internet.dart';
 import 'package:way_to_doctor_doctor/utils/colors.dart';
 import 'package:way_to_doctor_doctor/utils/material_theme.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
+
 import 'ui/screens/registration/phone_sign_up/phone_sign_up_screen.dart';
 import 'ui/screens/registration/phone_verification/phone_verification_screen.dart';
 import 'ui/screens/registration/registration/registration_screen.dart';
 
+//TODO: Deprecated -- Nancy
 
 Map<String, dynamic> notificationsMap = {};
 
@@ -74,13 +77,11 @@ Future<void> main() async {
       systemNavigationBarDividerColor: MyColors.white,
     ),
   );
-  await SystemChrome.setPreferredOrientations(
-      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-
-if(Platform.isIOS){
-  await Purchases.configure(PurchasesConfiguration('appl_qcOhbTzuTasmrDNUAFsUkqUBsFE'));
-}
+  if (Platform.isIOS) {
+    await Purchases.configure(PurchasesConfiguration('appl_qcOhbTzuTasmrDNUAFsUkqUBsFE'));
+  }
   runApp(const MyApp());
   Eraser.clearAllAppNotifications();
 }
@@ -104,7 +105,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-
     WidgetsBinding.instance.removeObserver(this);
     MySharedPreferences.sharedPreferences.clear();
     super.dispose();
@@ -140,12 +140,9 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
     // FirebaseMessaging.instance.getToken().then((token) {});
     // FirebaseMessaging.instance.getAPNSToken().then((aPNStoken) {});
 
-    FirebaseMessaging.instance
-        .getInitialMessage()
-        .then(CloudMessagingService().terminated);
+    FirebaseMessaging.instance.getInitialMessage().then(CloudMessagingService().terminated);
     FirebaseMessaging.onMessage.listen(CloudMessagingService().foreground);
-    FirebaseMessaging.onMessageOpenedApp
-        .listen(CloudMessagingService().background);
+    FirebaseMessaging.onMessageOpenedApp.listen(CloudMessagingService().background);
     super.initState();
   }
 
@@ -167,7 +164,6 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
   }
 
   _toggleScreen() {
-
     if (!MySharedPreferences.isPassedLanguage) {
       return const LanguageScreen();
     } else {
@@ -177,7 +173,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         case 'ClinicBaseNavBar':
           return const ClinicBaseNavBar();
         case 'DoctorsCenterScreen':
-          return const  DoctorsCenterScreen();
+          return const DoctorsCenterScreen();
         case 'PhoneSignUpScreen':
           return const PhoneSignUpScreen();
         case 'PhoneVerificationScreen':
@@ -212,9 +208,7 @@ class _MyAppState extends State<MyApp> with WidgetsBindingObserver {
         Locale('ar', 'JO'),
         Locale('tr', 'TR'),
       ],
-      locale: MySharedPreferences.language.isNotEmpty
-          ? Locale(MySharedPreferences.language)
-          : Get.deviceLocale,
+      locale: MySharedPreferences.language.isNotEmpty ? Locale(MySharedPreferences.language) : Get.deviceLocale,
       fallbackLocale: const Locale('en', 'US'),
       theme: AppThemeData().materialTheme,
       home: internetConnection ? _toggleScreen() : const NoInternet(),

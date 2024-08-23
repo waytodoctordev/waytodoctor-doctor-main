@@ -2,7 +2,7 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:carousel_slider/carousel_controller.dart' as cs;
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
@@ -26,7 +26,7 @@ import '../registration/specialization_ctrl.dart';
 class FormCtrl extends GetxController {
   static FormCtrl get find => Get.find();
   late PageController formPageCtrl;
-  var formPageIndicatorCtrl = cs.CarouselController();
+  var formPageIndicatorCtrl = CarouselController();
 
   late TextEditingController firstNameCtrl;
   late TextEditingController secondNameCtrl;
@@ -39,25 +39,18 @@ class FormCtrl extends GetxController {
   late TextEditingController addressCtrl;
   final GlobalKey<FormState> formKey = GlobalKey();
 
-
   List<String> genders = [
     'Male'.tr,
     'Female'.tr,
   ];
-  String genderDropdownvalue = MySharedPreferences.gender == ''
-      ? 'Male'.tr
-      : MySharedPreferences.gender.capitalize
-          .toString()
-          .tr; // save local this value NOT to update to api
+  String genderDropdownvalue =
+      MySharedPreferences.gender == '' ? 'Male'.tr : MySharedPreferences.gender.capitalize.toString().tr; // save local this value NOT to update to api
 
   List<String> gendersEnglishToSendToApi = [
     'Male',
     'Female',
   ];
-  String genderDropdownvalueEnglish = MySharedPreferences.gender == ''
-      ? 'Male'
-      : MySharedPreferences.gender.capitalize
-          .toString(); // update with this value
+  String genderDropdownvalueEnglish = MySharedPreferences.gender == '' ? 'Male' : MySharedPreferences.gender.capitalize.toString(); // update with this value
 
   List<String> maritalStatusList = [
     'Single'.tr,
@@ -71,12 +64,8 @@ class FormCtrl extends GetxController {
     'Widower',
     'Divorced',
   ];
-  String maritalStatusValue = MySharedPreferences.status == ''
-      ? 'Single'.tr
-      : MySharedPreferences.status.capitalize.toString().tr;
-  String maritalStatusValueEngish = MySharedPreferences.status == ''
-      ? 'Single'
-      : MySharedPreferences.status.capitalize.toString();
+  String maritalStatusValue = MySharedPreferences.status == '' ? 'Single'.tr : MySharedPreferences.status.capitalize.toString().tr;
+  String maritalStatusValueEngish = MySharedPreferences.status == '' ? 'Single' : MySharedPreferences.status.capitalize.toString();
 // single','engaged','married','devorced','widowed
   setGender(String gender) {
     int index = genders.indexOf(gender);
@@ -92,26 +81,27 @@ class FormCtrl extends GetxController {
     update();
   }
 
-   File image=File('');
-  final RxString profileImage=''.obs ;
+  File image = File('');
+  final RxString profileImage = ''.obs;
   RxBool isImageAdded = false.obs;
 
- getFile(context) async {
-    FilePickerResult? result =
-        await FilePicker.platform.pickFiles(type: FileType.image);
+  getFile(context) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
     if (result != null) {
       File file = File(
-        result.files.single.path.toString(),);
+        result.files.single.path.toString(),
+      );
       image = file;
       profileImage.value = image.path;
       isImageAdded.value = true;
-      MySharedPreferences.profileImage=image;
-      MySharedPreferences.userImage = image.path;//profileImage.value;
+      MySharedPreferences.profileImage = image;
+      MySharedPreferences.userImage = image.path; //profileImage.value;
       update();
     } else {
       AppConstants().showMsgToast(context, msg: 'No file selected'.tr);
     }
   }
+
   Future<bool> editProfileImage({
     context,
     required String name,
@@ -119,25 +109,19 @@ class FormCtrl extends GetxController {
     required String phone,
     required String address,
   }) async {
-    FilePickerResult? result =
-    await FilePicker.platform.pickFiles(type: FileType.image);
+    FilePickerResult? result = await FilePicker.platform.pickFiles(type: FileType.image);
 
     if (result != null) {
       File file = File(
-        result.files.single.path.toString(),);
+        result.files.single.path.toString(),
+      );
       image = file;
       profileImage.value = image.path;
       isImageAdded.value = true;
-      MySharedPreferences.profileImage=image;
-      MySharedPreferences.userImage = image.path;//profileImage.value;
+      MySharedPreferences.profileImage = image;
+      MySharedPreferences.userImage = image.path; //profileImage.value;
       SpecializationCtrl.find.professionalLicenseRequest(
-          context: context,
-          name:name,
-          phone: phone,
-          imageProfile:image,
-          address: address,
-          professionalLicense:professionalLicense,
-          isEditCenterInfo:true);
+          context: context, name: name, phone: phone, imageProfile: image, address: address, professionalLicense: professionalLicense, isEditCenterInfo: true);
       update();
       return true;
     } else {
@@ -163,48 +147,23 @@ class FormCtrl extends GetxController {
 
   @override
   void onInit() {
-    formPageCtrl =
-        PageController(initialPage: MySharedPreferences.formCurrentIndex);
-    firstNameCtrl = TextEditingController(
-        text:
-            MySharedPreferences.fName.isEmpty ? '' : MySharedPreferences.fName);
-    secondNameCtrl = TextEditingController(
-        text:
-            MySharedPreferences.sName.isEmpty ? '' : MySharedPreferences.sName);
-    thirdNameCtrl = TextEditingController(
-        text:
-            MySharedPreferences.tName.isEmpty ? '' : MySharedPreferences.tName);
-    familyNameCtrl = TextEditingController(
-        text:
-            MySharedPreferences.lName.isEmpty ? '' : MySharedPreferences.lName);
-    nationalIdCtrl = TextEditingController(
-        text: MySharedPreferences.nationalId.isEmpty
-            ? ''
-            : MySharedPreferences.nationalId);
-    dayCtrl = TextEditingController(
-        text: MySharedPreferences.dateOfBirth.isEmpty
-            ? ''
-            : MySharedPreferences.dateOfBirth.split('-')[2]);
-    monthCtrl = TextEditingController(
-        text: MySharedPreferences.dateOfBirth.isEmpty
-            ? ''
-            : MySharedPreferences.dateOfBirth.split('-')[1]);
-    yearCtrl = TextEditingController(
-        text: MySharedPreferences.dateOfBirth.isEmpty
-            ? ''
-            : MySharedPreferences.dateOfBirth.split('-')[0]);
-    addressCtrl = TextEditingController(
-        text: MySharedPreferences.address.isEmpty
-            ? ''
-            : MySharedPreferences.address);
+    formPageCtrl = PageController(initialPage: MySharedPreferences.formCurrentIndex);
+    firstNameCtrl = TextEditingController(text: MySharedPreferences.fName.isEmpty ? '' : MySharedPreferences.fName);
+    secondNameCtrl = TextEditingController(text: MySharedPreferences.sName.isEmpty ? '' : MySharedPreferences.sName);
+    thirdNameCtrl = TextEditingController(text: MySharedPreferences.tName.isEmpty ? '' : MySharedPreferences.tName);
+    familyNameCtrl = TextEditingController(text: MySharedPreferences.lName.isEmpty ? '' : MySharedPreferences.lName);
+    nationalIdCtrl = TextEditingController(text: MySharedPreferences.nationalId.isEmpty ? '' : MySharedPreferences.nationalId);
+    dayCtrl = TextEditingController(text: MySharedPreferences.dateOfBirth.isEmpty ? '' : MySharedPreferences.dateOfBirth.split('-')[2]);
+    monthCtrl = TextEditingController(text: MySharedPreferences.dateOfBirth.isEmpty ? '' : MySharedPreferences.dateOfBirth.split('-')[1]);
+    yearCtrl = TextEditingController(text: MySharedPreferences.dateOfBirth.isEmpty ? '' : MySharedPreferences.dateOfBirth.split('-')[0]);
+    addressCtrl = TextEditingController(text: MySharedPreferences.address.isEmpty ? '' : MySharedPreferences.address);
     getCountriesList();
     super.onInit();
   }
 
   UserModel? userModel;
 
-  Future updateUserData(
-      {required Map dataBody, required BuildContext context}) async {
+  Future updateUserData({required Map dataBody, required BuildContext context}) async {
     OverLayLoader.showLoading(context);
     userModel = await UpdateUserDataApi().updateData(
       dataBody: dataBody,
@@ -227,8 +186,7 @@ class FormCtrl extends GetxController {
         MySharedPreferences.nationalId = userModel!.user!.nationalId.toString();
       }
       if (MySharedPreferences.formCurrentIndex == 2) {
-        MySharedPreferences.dateOfBirth =
-            userModel!.user!.dateOfBirth.toString();
+        MySharedPreferences.dateOfBirth = userModel!.user!.dateOfBirth.toString();
       }
       if (MySharedPreferences.formCurrentIndex == 3) {
         MySharedPreferences.gender = userModel!.user!.gender.toString();
@@ -243,8 +201,7 @@ class FormCtrl extends GetxController {
       }
 
       try {
-        formPageIndicatorCtrl
-            .animateToPage(MySharedPreferences.formIndicatorCurrentIndex + 1);
+        formPageIndicatorCtrl.animateToPage(MySharedPreferences.formIndicatorCurrentIndex + 1);
         MySharedPreferences.formCurrentIndex++;
         MySharedPreferences.formIndicatorCurrentIndex++;
       } on Exception catch (e) {
@@ -259,10 +216,8 @@ class FormCtrl extends GetxController {
     Loader.hide();
   }
 
-  String currentCountry =
-      MySharedPreferences.country == '' ? '' : MySharedPreferences.country;
-  String currentCity =
-      MySharedPreferences.city == '' ? '' : MySharedPreferences.city;
+  String currentCountry = MySharedPreferences.country == '' ? '' : MySharedPreferences.country;
+  String currentCity = MySharedPreferences.city == '' ? '' : MySharedPreferences.city;
 
   void getCurrentCountry(String country) {
     currentCountry = country;
@@ -328,13 +283,10 @@ class FormCtrl extends GetxController {
         citiesNames.add(city.name.toString());
       }
       if (MySharedPreferences.city == '') {
-        currentCity =
-            cities!.isNotEmpty ? cities![0].name.toString() : 'لا يوجد مدينة';
+        currentCity = cities!.isNotEmpty ? cities![0].name.toString() : 'لا يوجد مدينة';
       } else {
         int currentCityIndex = citiesNames.indexOf(MySharedPreferences.city);
-        currentCity = cities!.isNotEmpty
-            ? cities![currentCityIndex].name.toString()
-            : 'لا يوجد مدينة';
+        currentCity = cities!.isNotEmpty ? cities![currentCityIndex].name.toString() : 'لا يوجد مدينة';
       }
 
       // MySharedPreferences.city = currentCity;
@@ -363,8 +315,7 @@ class FormCtrl extends GetxController {
       return;
     }
     if (doctorDetailsModel!.code == 200) {
-      MySharedPreferences.address =
-          doctorDetailsModel!.data!.address.toString();
+      MySharedPreferences.address = doctorDetailsModel!.data!.address.toString();
     } else if (doctorDetailsModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
     } else {
@@ -401,8 +352,7 @@ class FormCtrl extends GetxController {
     Loader.hide();
   }
 
-  Future updateUserImage(
-      {required File profileImage, required BuildContext context}) async {
+  Future updateUserImage({required File profileImage, required BuildContext context}) async {
     OverLayLoader.showLoading(context);
     userModel = await UpdateUserDataApi.updateUserImage(
       profileImage: profileImage,
@@ -424,8 +374,7 @@ class FormCtrl extends GetxController {
     Loader.hide();
   }
 
-  Future updateDoctorImage(
-      {required File profileImage, required BuildContext context}) async {
+  Future updateDoctorImage({required File profileImage, required BuildContext context}) async {
     OverLayLoader.showLoading(context);
     doctorDetailsModel = await UpdateUserDataApi.updateDoctorImage(
       profileImage: profileImage,
@@ -437,8 +386,7 @@ class FormCtrl extends GetxController {
     }
     if (userModel!.code == 200) {
       MySharedPreferences.userImage = userModel!.user!.image.toString();
-      await updateUserData(
-          dataBody: {'step': '4'}, context: context); // payment passed step 1
+      await updateUserData(dataBody: {'step': '4'}, context: context); // payment passed step 1
       update();
     } else if (userModel!.code == 500) {
       AppConstants().showMsgToast(context, msg: AppConstants.failedMessage);
