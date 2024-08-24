@@ -97,7 +97,7 @@ MapController mapController =Get.put(MapController());
                     filled: true,
                     fillColor: Colors.white,
                     onTap: () {
-                      MapController.find.showSearchField(context);
+                      // MapController.find.showSearchField(context);
                     },
                     label: 'Start Searching'.tr,
                     prefixIcon: const Icon(Icons.search),

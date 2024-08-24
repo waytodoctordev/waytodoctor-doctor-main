@@ -2,7 +2,7 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:carousel_slider/carousel_controller.dart';
+import 'package:carousel_slider/carousel_controller.dart' ;
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
@@ -26,7 +26,7 @@ import '../registration/specialization_ctrl.dart';
 class FormCtrl extends GetxController {
   static FormCtrl get find => Get.find();
   late PageController formPageCtrl;
-  var formPageIndicatorCtrl = CarouselController();
+  var formPageIndicatorCtrl = CarouselSliderController();
 
   late TextEditingController firstNameCtrl;
   late TextEditingController secondNameCtrl;
