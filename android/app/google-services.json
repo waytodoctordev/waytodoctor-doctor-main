@@ -1,0 +1,106 @@
+{
+  "project_info": {
+    "project_number": "560929593008",
+    "project_id": "way-to-doctor-7a9d5",
+    "storage_bucket": "way-to-doctor-7a9d5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560929593008:android:02269d52ea728cd0af4d75",
+        "android_client_info": {
+          "package_name": "com.waytodoctors.wecan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560929593008-jn0qhlkjfocouij5v3iqhr7bglsgdmda.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waytodoctors.wecan",
+            "certificate_hash": "ba38362325d320ac608f7295d44ddea4997ed14f"
+          }
+        },
+        {
+          "client_id": "560929593008-a7o8gcmudje4hr4bd73nfea7qssfd2gq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH6dSlPI-vsI9bB1LgDjE9fVxg7O0Bqzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560929593008-a7o8gcmudje4hr4bd73nfea7qssfd2gq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560929593008-23qp0rpe9e3nbiersan82f2un0f2h19o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waytodoctorsdoctor.wecan"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:560929593008:android:2716cf6a109abf84af4d75",
+        "android_client_info": {
+          "package_name": "com.waytodoctorsdoctor.wecan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "560929593008-j6of8qk761rdmmg0j83p82ctvi8sja1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waytodoctorsdoctor.wecan",
+            "certificate_hash": "c21e6f3f0daa95be99b6a67a797eab7ac01b1a3d"
+          }
+        },
+        {
+          "client_id": "560929593008-rj7ekmktipgvp28l94o0l18eut0n6mkr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.waytodoctorsdoctor.wecan",
+            "certificate_hash": "cd683d10ec990f119cb853df346d1600766ec6a9"
+          }
+        },
+        {
+          "client_id": "560929593008-a7o8gcmudje4hr4bd73nfea7qssfd2gq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH6dSlPI-vsI9bB1LgDjE9fVxg7O0Bqzg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "560929593008-a7o8gcmudje4hr4bd73nfea7qssfd2gq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "560929593008-23qp0rpe9e3nbiersan82f2un0f2h19o.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.waytodoctorsdoctor.wecan"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

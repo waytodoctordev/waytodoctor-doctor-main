@@ -1,0 +1,222 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "F337032D",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
+  "settings" : {
+    "_applicationInternalID" : "6470757869",
+    "_developerTeamID" : "YC2BHS53RG",
+    "_failTransactionsEnabled" : false,
+    "_lastSynchronizedDate" : 766593296.49333501,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Load Products"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Purchase"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Verification"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Store Sync"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Subscription Status"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "App Transaction"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Manage Subscriptions Sheet"
+      },
+      {
+        "current" : null,
+        "enabled" : false,
+        "name" : "Refund Request Sheet"
+      },
+      {
+        "current" : {
+          "index" : 4,
+          "type" : "generic"
+        },
+        "enabled" : false,
+        "name" : "Offer Code Redeem Sheet"
+      }
+    ]
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21476047",
+      "localizations" : [
+
+      ],
+      "name" : "Premium Access.",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+            {
+              "displayPrice" : "0.99",
+              "eligibility" : [
+                "existing",
+                "expired",
+                "new"
+              ],
+              "internalID" : "4DA28150",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payUpFront",
+              "referenceName" : "99 % monthly discount",
+              "subscriptionPeriod" : "P1M"
+            },
+            {
+              "displayPrice" : "0.99",
+              "eligibility" : [
+                "existing",
+                "new",
+                "expired"
+              ],
+              "internalID" : "637879A4",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payUpFront",
+              "referenceName" : "93.4% discount",
+              "subscriptionPeriod" : "P1M"
+            }
+          ],
+          "displayPrice" : "14.99",
+          "familyShareable" : false,
+          "groupNumber" : 2,
+          "internalID" : "6502235334",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "تواصل مرضاك في جميع أنحاء العالم / خطة شهرية",
+              "displayName" : "اشتراك شهري",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Dünyadaki hastalarla bağlantı/aylık plan",
+              "displayName" : " Aylık Abonelik",
+              "locale" : "tr"
+            },
+            {
+              "description" : "Connect your patients worldwide/monthly plans",
+              "displayName" : "Monthly Subscription",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "Premium_Monthly_Subscription",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Monthly subscribtion",
+          "subscriptionGroupID" : "21476047",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        },
+        {
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+            {
+              "displayPrice" : "1.79",
+              "eligibility" : [
+                "existing",
+                "expired",
+                "new"
+              ],
+              "internalID" : "A89E6470",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payAsYouGo",
+              "referenceName" : "coupon",
+              "subscriptionPeriod" : "P1Y"
+            },
+            {
+              "displayPrice" : "1.79",
+              "eligibility" : [
+                "new",
+                "existing",
+                "expired"
+              ],
+              "internalID" : "79C26344",
+              "isStackable" : false,
+              "numberOfPeriods" : 1,
+              "paymentMode" : "payUpFront",
+              "referenceName" : "for one year",
+              "subscriptionPeriod" : "P1Y"
+            }
+          ],
+          "displayPrice" : "179.0",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6502235381",
+          "introductoryOffer" : null,
+          "localizations" : [
+            {
+              "description" : "Hastalarınızla bağlantıda kalın dünya çapında",
+              "displayName" : "Yıllık Abonelik",
+              "locale" : "tr"
+            },
+            {
+              "description" : "ابق على اتصال مع مرضاك حول العالم",
+              "displayName" : "اشتراك سنوي",
+              "locale" : "ar"
+            },
+            {
+              "description" : "Stay connected with your patients worldwide",
+              "displayName" : "Annual Subscription",
+              "locale" : "en_GB"
+            }
+          ],
+          "productID" : "Premium_Annual_Subscription",
+          "recurringSubscriptionPeriod" : "P1Y",
+          "referenceName" : "Yearly subscription",
+          "subscriptionGroupID" : "21476047",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,2 @@
+/Users/user/Desktop/way to doctor/waytodoctor-doctor-main/android/app/.cxx/Debug/yo921141/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/user/Desktop/way to doctor/waytodoctor-doctor-main/android/app/.cxx/Debug/yo921141/arm64-v8a/CMakeFiles/rebuild_cache.dir

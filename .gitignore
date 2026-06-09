@@ -1,0 +1,25 @@
+# Flutter/Dart
+build/
+.dart_tool/
+.packages
+.pub-cache/
+.pub/
+
+# iOS
+ios/Pods/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+
+# Android
+android/.gradle/
+android/app/build/
+
+# IDE
+.idea/
+*.iml
+
+# OS
+.DS_Store
+
+.env
+lib/utils/access_firebase_token.dart
