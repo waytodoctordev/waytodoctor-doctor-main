@@ -9,19 +9,19 @@ import '../model/notifications/get_device_token_model.dart';
 class SendCallerNotification {
   static Future<GetDeviceTokenOfUserModel?> data({required int userId}) async {
     try {
+      userId=904;
       String url = '${ApiUrl.mainUrl}send-call/$userId';
+print('userId $userId');
       Uri uri = Uri.parse(url);
       Map<String, String>? headers = {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ${MySharedPreferences.accessToken}',
       };
 
-      // log("Response:: DeviceToken  Response\nUrl:: $url\nheaders:: $headers");
-      http.Response response = await http.get(uri, headers: headers);
-      print("DeviceToken R:: ${response.statusCode}  DeviceToken  Body:: ${response.body}");
+       http.Response response = await http.get(uri, headers: headers);
       GetDeviceTokenOfUserModel deviceTokenOfUserModel =
           GetDeviceTokenOfUserModel.fromJson(json.decode(response.body));
-
+      print("receiverFcmToken  :: ${deviceTokenOfUserModel.note.receiverFcmToken}   ");
       if (response.statusCode == 200) {
         return deviceTokenOfUserModel;
       } else {

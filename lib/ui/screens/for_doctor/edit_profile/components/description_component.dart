@@ -9,10 +9,12 @@ import '../../../../../utils/icons.dart';
 
 class DescriptionComponent extends StatelessWidget {
   final String description;
+  final bool isMe;
 
   const DescriptionComponent({
     super.key,
     required this.description,
+    this.isMe=true,
   });
 
   @override
@@ -34,7 +36,7 @@ class DescriptionComponent extends StatelessWidget {
             ),
             const Spacer(),
             MySharedPreferences.isDoctor
-                ? IconButton(
+                ? isMe?IconButton(
                     onPressed: () => showDialog(
                       context: context,
                       builder: (context) => const EditDescriptionDialog(),
@@ -45,7 +47,7 @@ class DescriptionComponent extends StatelessWidget {
                       width: 14,
                       color: MyColors.blue14B,
                     ),
-                  )
+                  ):SizedBox.shrink()
                 : SizedBox(),
           ],
         ),

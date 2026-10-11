@@ -12,14 +12,16 @@ class CustomNetworkImage extends StatelessWidget {
   final double? height;
   final EdgeInsetsGeometry? margin;
   final BoxFit boxFit;
+   bool isCircle ;
 
-  const CustomNetworkImage({
+   CustomNetworkImage({
     super.key,
     required this.url,
     required this.radius,
     this.width,
     this.height,
     this.margin,
+    this.isCircle = false,
     this.boxFit = BoxFit.cover,
   });
 
@@ -32,6 +34,7 @@ class CustomNetworkImage extends StatelessWidget {
         height: height,
         margin: margin,
         decoration: BoxDecoration(
+            shape: isCircle ? BoxShape.circle : BoxShape.rectangle,
           borderRadius: BorderRadius.circular(radius),
           image: DecorationImage(
             image: imageProvider,

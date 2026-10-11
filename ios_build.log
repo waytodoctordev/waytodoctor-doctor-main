@@ -1,0 +1,235 @@
+
+┌─────────────────────────────────────────────────────────┐
+│ A new version of Flutter is available!                  │
+│                                                         │
+│ To update to the latest version, run "flutter upgrade". │
+└─────────────────────────────────────────────────────────┘
+Warning: Building for device with codesigning disabled. You will have to manually codesign before deploying to device.
+Building com.waytodoctors.doctor for device (ios-release)...
+To ensure your app continues to launch on upcoming iOS versions, UIScene lifecycle support will soon be required. Please see https://flutter.dev/to/uiscene-migration for the migration guide.
+
+Running Xcode build...                                          
+Xcode build done.                                           51.4s
+Failed to build iOS app
+Error output from Xcode build:
+↳
+    ** BUILD FAILED **
+
+    Error saving invocation record to resultBundlePath:Error Domain=NSCocoaErrorDomain Code=640 "You can’t save the file “temporary_xcresult_bundle” because the volume “Macintosh HD” is out of space." UserInfo={NSFilePath=/var/folders/pl/bxp0462173xdrwhpdrdb38m40000gn/T/flutter_tools.WUQS1L/flutter_ios_build_temp_dirD5LxUZ/temporary_xcresult_bundle, NSURL=file:///var/folders/pl/bxp0462173xdrwhpdrdb38m40000gn/T/flutter_tools.WUQS1L/flutter_ios_build_temp_dirD5LxUZ/temporary_xcresult_bundle, NSUnderlyingError=0xb749b1bc0 {Error Domain=NSPOSIXErrorDomain Code=28 "No space left on device"}}
+    2026-08-31 18:15:57.587 xcodebuild[87409:1157799] Error saving log: Error Domain=NSPOSIXErrorDomain Code=28 "No space left on device" UserInfo={NSFilePath=/Users/user/Library/Developer/Xcode/DerivedData/Runner-gybzaszbziemnqfwmoyjdrnudfmv/Logs/Build/D1D36EC9-094C-4F8C-A01A-621737CE6AF5.xcactivitylog, NSLocalizedDescription=No space left on device} | User info: {
+        NSFilePath = "/Users/user/Library/Developer/Xcode/DerivedData/Runner-gybzaszbziemnqfwmoyjdrnudfmv/Logs/Build/D1D36EC9-094C-4F8C-A01A-621737CE6AF5.xcactivitylog";
+        NSLocalizedDescription = "No space left on device";
+    }
+
+Xcode's output:
+↳
+    Writing result bundle at path:
+    	/var/folders/pl/bxp0462173xdrwhpdrdb38m40000gn/T/flutter_tools.WUQS1L/flutter_ios_build_temp_dirD5LxUZ/temporary_xcresult_bundle
+
+    /Users/user/.pub-cache/hosted/pub.dev/syncfusion_flutter_pdfviewer-31.2.18/ios/syncfusion_flutter_pdfviewer/Sources/syncfusion_flutter_pdfviewer/SyncfusionFlutterPdfViewerPlugin.swift:151:13: warning: initialization of immutable value 'imageRect' was never used; consider replacing with assignment to '_' or removing it
+            let imageRect = CGRect(x: 0,y: 0,width: width,height: height)
+            ~~~~^~~~~~~~~
+            _
+    /Users/user/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.25.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/SecTrustProxyAPIDelegate.swift:133:12: warning: 'SecTrustGetCertificateAtIndex' was deprecated in iOS 15.0: renamed to 'SecTrustCopyCertificateChain(_:)'
+        return SecTrustGetCertificateAtIndex(trust, ix)
+               ^
+    /Users/user/.pub-cache/hosted/pub.dev/webview_flutter_wkwebview-3.25.1/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/SecTrustProxyAPIDelegate.swift:133:12: note: use 'SecTrustCopyCertificateChain(_:)' instead
+        return SecTrustGetCertificateAtIndex(trust, ix)
+               ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+               SecTrustCopyCertificateChain
+    /Users/user/.pub-cache/hosted/pub.dev/permission_handler_apple-9.5.0/ios/permission_handler_apple/Sources/permission_handler_apple/strategies/PhonePermissionStrategy.m:50:35: warning: 'subscriberCellularProvider' is deprecated: first deprecated in iOS 12.0 [-Wdeprecated-declarations]
+       50 |     CTCarrier *carrier = [netInfo subscriberCellularProvider];
+          |                                   ^~~~~~~~~~~~~~~~~~~~~~~~~~
+          |                                   serviceSubscriberCellularProviders
+    In module 'CoreTelephony' imported from /Users/user/.pub-cache/hosted/pub.dev/permission_handler_apple-9.5.0/ios/permission_handler_apple/Sources/permission_handler_apple/strategies/PhonePermissionStrategy.m:8:
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework/Headers/CTTelephonyNetworkInfo.h:114:50: note: property 'subscriberCellularProvider' is declared deprecated here
+      114 | @property(readonly, retain, nullable) CTCarrier *subscriberCellularProvider API_DEPRECATED_WITH_REPLACEMENT("serviceSubscriberCellularProviders", ios(4.0, 12.0)) API_UNAVAILABLE(macos);
+          |                                                  ^
+    /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS.sdk/System/Library/Frameworks/CoreTelephony.framework/Headers/CTTelephonyNetworkInfo.h:114:50: note: 'subscriberCellularProvider' has been explicitly marked deprecated here
+    1 warning generated.
+    In file included from /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/IrisMethodChannelForward.mm:7:
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/iris_event.cc:212:43: warning: implicit conversion loses integer precision: 'intptr_t' (aka 'long') to 'int' [-Wshorten-64-to-32]
+      212 |         ret = dartMessageHandlerManager_->InitDartApiDL(data);
+          |             ~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~
+    1 warning generated.
+    In file included from /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/IrisMethodChannelPlugin.m:2:
+    In file included from /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/iris_event.h:4:
+    In file included from /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api_dl.h:10:
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:386:5: warning: '\return' command used in a comment that is attached to a function returning void [-Wdocumentation]
+      386 |  * \return On success, this function does not return.  On failure, the
+          |    ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      387 |  * process is terminated.
+          |  ~~~~~~~~~~~~~~~~~~~~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:384:11: warning: parameter 'An' not found in the function declaration [-Wdocumentation]
+      384 |  * \param An error handle (See Dart_IsError)
+          |           ^~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:384:11: note: did you mean 'handle'?
+      384 |  * \param An error handle (See Dart_IsError)
+          |           ^~
+          |           handle
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:447:5: warning: '\return' command used in a comment that is attached to a function returning void [-Wdocumentation]
+      447 |  * \return Success if the persistent handle was set
+          |    ~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      448 |  *   Otherwise, returns an error.
+          |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:589:43: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+      589 | DART_EXPORT const char* Dart_VersionString();
+          |                                           ^
+          |                                            void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:774:40: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+      774 | typedef void (*Dart_ThreadExitCallback)();
+          |                                        ^
+          |                                         void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:787:11: warning: parameter 'data' not found in the function declaration [-Wdocumentation]
+      787 |  * \param data Buffer allocated in the callback into which the contents
+          |           ^~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:790:11: warning: parameter 'file_length' not found in the function declaration [-Wdocumentation]
+      790 |  * \param file_length A variable into which the length of the file is returned.
+          |           ^~~~~~~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:792:11: warning: parameter 'stream' not found in the function declaration [-Wdocumentation]
+      792 |  * \param stream Handle to the opened file.
+          |           ^~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:795:11: warning: parameter 'data' not found in the function declaration [-Wdocumentation]
+      795 |  * \param data Buffer which needs to be written into the file.
+          |           ^~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:796:11: warning: parameter 'length' not found in the function declaration [-Wdocumentation]
+      796 |  * \param length Length of the buffer.
+          |           ^~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:797:11: warning: parameter 'stream' not found in the function declaration [-Wdocumentation]
+      797 |  * \param stream Handle to the opened file.
+          |           ^~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:800:11: warning: parameter 'stream' not found in the function declaration [-Wdocumentation]
+      800 |  * \param stream Handle to the opened file.
+          |           ^~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:827:54: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+      827 | typedef Dart_Handle (*Dart_GetVMServiceAssetsArchive)();
+          |                                                      ^
+          |                                                       void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:862:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      862 |  * \param version Identifies the version of the struct used by the client.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:864:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      864 |  * \param vm_isolate_snapshot A buffer containing a snapshot of the VM isolate
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:867:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      867 |  * \param instructions_snapshot A buffer containing a snapshot of precompiled
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:870:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      870 |  * \param initialize_isolate A function to be called during isolate
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:873:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      873 |  * \param create_group A function to be called during isolate group creation.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:875:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      875 |  * \param shutdown A function to be called right before an isolate is shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:877:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      877 |  * \param cleanup A function to be called after an isolate was shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:879:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      879 |  * \param cleanup_group A function to be called after an isolate group is shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:881:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      881 |  * \param get_service_assets A function to be called by the service isolate when
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:884:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      884 |  * \param code_observer An external code observer callback function.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:862:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      862 |  * \param version Identifies the version of the struct used by the client.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:864:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      864 |  * \param vm_isolate_snapshot A buffer containing a snapshot of the VM isolate
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:867:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      867 |  * \param instructions_snapshot A buffer containing a snapshot of precompiled
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:870:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      870 |  * \param initialize_isolate A function to be called during isolate
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:873:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      873 |  * \param create_group A function to be called during isolate group creation.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:875:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      875 |  * \param shutdown A function to be called right before an isolate is shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:877:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      877 |  * \param cleanup A function to be called after an isolate was shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:879:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      879 |  * \param cleanup_group A function to be called after an isolate group is shutdown.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:881:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      881 |  * \param get_service_assets A function to be called by the service isolate when
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:884:5: warning: '\param' command used in a comment that is not attached to a function declaration [-Wdocumentation]
+      884 |  * \param code_observer An external code observer callback function.
+          |     ^~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:928:55: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+      928 | DART_EXPORT DART_WARN_UNUSED_RESULT char* Dart_Cleanup();
+          |                                                       ^
+          |                                                        void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:976:31: warning: empty paragraph passed to '\param' command [-Wdocumentation]
+      976 |  * \param isolate_snapshot_data
+          |    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+      977 |  * \param isolate_snapshot_instructions Buffers containing a snapshot of the
+          |  ~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1016:11: warning: parameter 'isolate_data' not found in the function declaration [-Wdocumentation]
+     1016 |  * \param isolate_data The embedder-specific data associated with this isolate.
+          |           ^~~~~~~~~~~~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1016:11: note: did you mean 'child_isolate_data'?
+     1016 |  * \param isolate_data The embedder-specific data associated with this isolate.
+          |           ^~~~~~~~~~~~
+          |           child_isolate_data
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1049:23: warning: empty paragraph passed to '\param' command [-Wdocumentation]
+     1049 |  * \param kernel_buffer
+          |    ~~~~~~~~~~~~~~~~~~~^
+     1050 |  * \param kernel_buffer_size A buffer which contains a kernel/DIL program. Must
+          |  ~
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1082:38: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1082 | DART_EXPORT void Dart_ShutdownIsolate();
+          |                                      ^
+          |                                       void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1089:45: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1089 | DART_EXPORT Dart_Isolate Dart_CurrentIsolate();
+          |                                             ^
+          |                                              void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1095:42: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1095 | DART_EXPORT void* Dart_CurrentIsolateData();
+          |                                          ^
+          |                                           void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1107:55: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1107 | DART_EXPORT Dart_IsolateGroup Dart_CurrentIsolateGroup();
+          |                                                       ^
+          |                                                        void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1113:47: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1113 | DART_EXPORT void* Dart_CurrentIsolateGroupData();
+          |                                               ^
+          |                                                void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1129:39: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1129 | DART_EXPORT Dart_Handle Dart_DebugName();
+          |                                       ^
+          |                                        void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1190:38: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1190 | DART_EXPORT void Dart_NotifyLowMemory();
+          |                                      ^
+          |                                       void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1195:37: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1195 | DART_EXPORT void Dart_StartProfiling();
+          |                                     ^
+          |                                      void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1204:36: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1204 | DART_EXPORT void Dart_StopProfiling();
+          |                                    ^
+          |                                     void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1215:45: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1215 | DART_EXPORT void Dart_ThreadDisableProfiling();
+          |                                             ^
+          |                                              void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.2.5/ios/iris_method_channel/Sources/iris_method_channel/../../../../src/dart-sdk/include/dart_api.h:1225:44: warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+     1225 | DART_EXPORT void Dart_ThreadEnableProfiling();
+          |                                            ^
+          |                                             void
+    /Users/user/.pub-cache/hosted/pub.dev/iris_method_channel-2.isk is full
+
+Encountered error while building for device.

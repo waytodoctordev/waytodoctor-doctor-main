@@ -93,10 +93,9 @@ class _OTPDigitsResetPasswordWidgetState
                 if (_formKey.currentState!.validate()) {
                   FocusManager.instance.primaryFocus?.unfocus();
                   if (widget.skipOtp == 0) {
-                    print('hriwer ${widget.skipOtp}');
                     ResetPassStep2Controller.find.fetchResetPassStep2Data(
                       context: context,
-                      phone: MySharedPreferences.countryCode+widget.phoneNum,
+                      phone: widget.phoneNum,//MySharedPreferences.countryCode+
                       code: digitsCtrl.text.trim(),
                     );
                   } else {

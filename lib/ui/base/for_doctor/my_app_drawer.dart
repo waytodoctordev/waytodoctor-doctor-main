@@ -91,7 +91,7 @@ class MyAppDrawer extends StatelessWidget {
                           const EdgeInsetsDirectional.only(start: 25, end: 25),
                       onTap: () {
                         Get.to(
-                            () => DoctorDetailsScreen(
+                            () => EditProfileScreen(
                                   doctorId: MySharedPreferences.id.toString(),
                                 ),
                             binding: DoctorDetailsBinding());

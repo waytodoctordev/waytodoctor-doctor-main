@@ -31,19 +31,6 @@ class AppointmentsComponent extends StatelessWidget {
           );
         },
         firstPageProgressIndicatorBuilder: (context) {
-          // return SizedBox(
-          //   height: 160,
-          //   child: ListView.separated(
-          //     scrollDirection: Axis.horizontal,
-          //     physics: const NeverScrollableScrollPhysics(),
-          //     separatorBuilder: (context, index) =>
-          //         const SizedBox(height: 15),
-          //     itemCount: 4,
-          //     itemBuilder: (BuildContext context, int index) {
-          //       return const BaseVerticalListLoading();
-          //     },
-          //   ),
-          // );
           return SizedBox(
             height: Get.height ,
             width: MediaQuery.of(context).size.width,

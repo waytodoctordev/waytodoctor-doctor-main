@@ -6,15 +6,18 @@ import 'package:way_to_doctor_doctor/model/doctor_model/doctor_model.dart';
 
 import '../../../../../utils/api_url.dart';
 import '../../../../../utils/colors.dart';
+import '../../../../../utils/shared_prefrences.dart';
 import '../../../../widgets/custom_image_viewer.dart';
 import '../../../../widgets/custom_network_image.dart';
 
 class CertificateComponent extends StatelessWidget {
   final DoctorDetailsModel? doctor;
+  final bool isMe;
 
   const CertificateComponent({
     super.key,
     required this.doctor,
+    this.isMe=true,
   });
 
   @override
@@ -35,13 +38,13 @@ class CertificateComponent extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            IconButton(
+            MySharedPreferences.isDoctor&&isMe ? IconButton(
               onPressed: () => DoctorDetailsCtrl.find.getStudiesAndCertificatesAndPictures(context:context,isCertificate: true,isPicture: false,isStudy: false),
               icon: const Icon(
                 CupertinoIcons.add_circled_solid,
                 color: MyColors.blue14B,
               ),
-            ),
+            ):SizedBox.shrink(),
           ],
         ),
         const SizedBox(height: 5),
@@ -56,13 +59,13 @@ class CertificateComponent extends StatelessWidget {
             itemCount: doctor!.data!.certificates!.length,
             itemBuilder: (context, index) => GestureDetector(
               onLongPress: () async {
-                await DoctorDetailsCtrl.find.deletePaymentAndCertificateAndStudyAndPIC(
+                MySharedPreferences.isDoctor&&isMe ?  await DoctorDetailsCtrl.find.deletePaymentAndCertificateAndStudyAndPIC(
                     context: context,
                     id: doctor!.data!.certificates![index].id.toString(),
                 isPayment: false,
                 isPicture: false,
                 isStudy: false,
-                isCertificate: true);
+                isCertificate: true):null;
                 //   Get.to(() => CustomImageViewer(
                 //       image:
                 //           "${ApiUrl.mainUrl}/${doctor!.data!.certificates![index].image.toString()}"));
@@ -81,7 +84,7 @@ class CertificateComponent extends StatelessWidget {
                       width: 100,
                     ),
                   ),
-                  Container(
+                  MySharedPreferences.isDoctor&&isMe ? Container(
                     width: 100,
                     height: 100,
                     padding: const EdgeInsets.all(40),
@@ -92,7 +95,7 @@ class CertificateComponent extends StatelessWidget {
                       CupertinoIcons.trash,
                       color: MyColors.red,
                     ),
-                  )
+                  ):SizedBox.shrink()
                 ],
               ),
             ),

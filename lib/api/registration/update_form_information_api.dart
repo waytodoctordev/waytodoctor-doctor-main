@@ -62,6 +62,12 @@ class UpdateUserDataApi {
       request.files.add(multiProfileImageFile);
 
       var response = await request.send();
+      print("Status Code: ${response.statusCode}");
+
+      final responseBody = await response.stream.bytesToString();
+
+      print("Status Code: ${response.statusCode}");
+      print("Response Body: $responseBody");
 
       if (response.statusCode == 200) {
         print("updateUserImage response.statusCode == 200 ${response.statusCode == 200} ");
@@ -69,13 +75,15 @@ class UpdateUserDataApi {
         var responseString = String.fromCharCodes(responseData);
         var jsonData = jsonDecode(responseString);
         UserModel userImageModel = UserModel.fromJson(jsonData);
-
+        print("Response Body: ${userImageModel.user!.id}");
+        print("Response status: ${userImageModel.status}");
         return userImageModel;
       } else {
         throw "Profile Image Model Error";
+
       }
     } catch (e) {
-      log("Profile Image Model Error $e");
+      print("Profile Image Model Error $e");
       return null;
     }
   }
@@ -115,7 +123,7 @@ class UpdateUserDataApi {
         throw "Profile Image Model Error";
       }
     } catch (e) {
-      log("Profile Image Model Error $e");
+      print("Profile Image Model Error $e");
       return null;
     }
   }

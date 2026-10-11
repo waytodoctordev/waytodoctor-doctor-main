@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:way_to_doctor_doctor/services/secure_storage.dart';
 import 'package:way_to_doctor_doctor/utils/api_url.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
@@ -8,7 +9,7 @@ class SendNotification {
   Future<void> data(
     String title,
     String content,
-    String id,
+    String receiverFcmToken,
   ) async {
     try {
       String url = '${ApiUrl.mainUrl}${ApiUrl.sendNotification}';
@@ -18,11 +19,12 @@ class SendNotification {
         'X-localization': MySharedPreferences.language,
       };
       var body = jsonEncode({
-        'device_token': id,
+        'device_token': receiverFcmToken,
         'title': title,
         'content': content,
       });
-      print("Response:: send notification Response\nUrl:: $url\nheaders:: $headers");
+
+      // print("Response:: send notification Response\nUrl:: $url\nheaders:: $headers");
       http.Response response =
           await http.post(uri, body: body, headers: headers);
       print("send notification StatusCode:: ${response.statusCode} notificationBody:: ${response.body}");

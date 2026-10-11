@@ -106,7 +106,7 @@ Future<Directory> getTemporaryDirectory() async {
     isVoiceRecording = false;
   }
 
-  String deviceTokenToSend = '';
+  String receiverFcmToken = '';
 
   GetDeviceTokenOfUserModel? getDeviceTokenOfUserModelForCall;
   Future fetchDeviceTokenForCall({
@@ -125,10 +125,10 @@ Future<Directory> getTemporaryDirectory() async {
       return;
     }
     if (getDeviceTokenOfUserModelForCall!.code == 200) {
-      deviceTokenToSend = getDeviceTokenOfUserModelForCall!.note.deviceToken;
+      receiverFcmToken = getDeviceTokenOfUserModelForCall!.note.receiverFcmToken;
       await SendCallNotification().callNotification(
         status: 'CALL',
-        token: getDeviceTokenOfUserModelForCall!.note.deviceToken,
+        token: getDeviceTokenOfUserModelForCall!.note.receiverFcmToken,
         mbody: MySharedPreferences.language == 'ar' ? 'يتصل بك' : 'Calling You',
         title: agormaModel.doctorName,
         callToken: callToken,
@@ -168,18 +168,10 @@ Future<Directory> getTemporaryDirectory() async {
       return;
     }
     if (getDeviceTokenOfUserModelForChat!.code == 200) {
-      deviceTokenToSend = getDeviceTokenOfUserModelForChat!.note.deviceToken;
-      await SendCallNotification().chatNotification(
-        status: 'CHAT',
-        token: deviceTokenToSend,
-        mbody: mbody,
-        title: title,
-        context: context,
-        appointmentStatus: appointmentStatus,
-        bookingType: bookingType,
-        appointmentId: appointmentId,
-      );
+      receiverFcmToken = getDeviceTokenOfUserModelForChat!.note.receiverFcmToken;
       update();
+      Loader.hide();
+
       return getDeviceTokenOfUserModelForChat!;
     }
     else if (getDeviceTokenOfUserModelForChat!.code == 500) {

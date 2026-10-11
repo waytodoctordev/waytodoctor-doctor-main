@@ -16,6 +16,7 @@ import StoreKit
   ) -> Bool {
 
     FirebaseApp.configure()
+    GMSServices.provideAPIKey("AIzaSyAnfh0DpOOyJ9Y9LUduYyqTnffqCJm0teU")
     UNUserNotificationCenter.current().delegate = self
 
     // 🔥 Start Flutter engine

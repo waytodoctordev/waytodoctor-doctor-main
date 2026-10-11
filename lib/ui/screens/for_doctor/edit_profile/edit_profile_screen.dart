@@ -11,19 +11,19 @@ import 'components/description_component.dart';
 import 'components/doctor_screen_header.dart';
 import 'components/researches_component.dart';
 
-class DoctorDetailsScreen extends StatefulWidget {
+class EditProfileScreen extends StatefulWidget {
   final String doctorId;
-  const DoctorDetailsScreen({
+  const EditProfileScreen({
     super.key,
     required this.doctorId,
   });
 
   @override
-  State<DoctorDetailsScreen> createState() => _DoctorDetailsScreenState();
+  State<EditProfileScreen> createState() => _EditProfileScreenState();
 }
 
 
-class _DoctorDetailsScreenState extends State<DoctorDetailsScreen> {
+class _EditProfileScreenState extends State<EditProfileScreen> {
   @override
   void initState() {
     super.initState();

@@ -5,6 +5,7 @@ import 'package:way_to_doctor_doctor/services/notifications/cloud_messaging_serv
 import 'package:way_to_doctor_doctor/services/notifications/local_notifications_service.dart';
 import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 import '../../api/notifications/device_token_services.dart';
+import '../secure_storage.dart';
 
 class NotificationHandler {
   static Future<void> initializeFCM() async {
@@ -58,7 +59,6 @@ class NotificationHandler {
       //It can exist even if the user hasn’t logged in yet.
       if (fcmToken != null) {
         log('✅ FCM Token: $fcmToken');
-        MySharedPreferences.deviceToken = fcmToken;
 
         if (MySharedPreferences.accessToken.isNotEmpty) {
           await DeviceTokenService().updateDeviceToken(fcmToken);

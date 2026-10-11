@@ -8,7 +8,7 @@ import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 
 class DoctorLoginApi {
-  Future<DoctorLoginModel?> data({
+  Future<AuthModel?> data({
     required String phone,
     required String password,
     required BuildContext context,
@@ -28,13 +28,13 @@ class DoctorLoginApi {
       log("Response:: Doctor LoginResponse\nUrl:: $url\nheaders:: $headers\nbody:: $body");
       http.Response response = await http.post(uri, body: body, headers: headers);
       log("Doctor LoginStatusCode:: ${response.statusCode}  Doctor LoginBody:: ${response.body}");
-      DoctorLoginModel doctorLoginModel = DoctorLoginModel.fromJson(json.decode(response.body));
+      AuthModel authModel = AuthModel.fromJson(json.decode(response.body));
       if (response.statusCode == 200) {
-        return doctorLoginModel;
+        return authModel;
 
       } else if (response.statusCode == 500) {
         print('response.statusCode${response.statusCode}');
-        return doctorLoginModel;
+        return authModel;
       } else {
         throw "Doctor Login Error";
       }

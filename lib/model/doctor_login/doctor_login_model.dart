@@ -4,68 +4,68 @@
 
 import 'dart:convert';
 
-DoctorLoginModel? doctorLoginFromJson(String str) =>
-    DoctorLoginModel.fromJson(json.decode(str));
+AuthModel? doctorLoginFromJson(String str) =>
+    AuthModel.fromJson(json.decode(str));
 
-String doctorLoginToJson(DoctorLoginModel? data) => json.encode(data!.toJson());
+String doctorLoginToJson(AuthModel? data) => json.encode(data!.toJson());
 
-class DoctorLoginModel {
-  DoctorLoginModel({
+class AuthModel {
+  AuthModel({
     this.status,
     this.code,
     this.msg,
-    this.data,
+    this.authData,
   });
 
   bool? status;
   int? code;
   String? msg;
-  LoginData? data;
+  AuthData? authData;
 
-  factory DoctorLoginModel.fromJson(Map<String, dynamic> json) =>
-      DoctorLoginModel(
+  factory AuthModel.fromJson(Map<String, dynamic> json) =>
+      AuthModel(
         status: json["status"],
         code: json["code"],
         msg: json["msg"],
-        data: json['data'] != null ? LoginData.fromJson(json["data"]): null,
+        authData: json['data'] != null ? AuthData.fromJson(json["data"]): null,
       );
 
   Map<String, dynamic> toJson() => {
         "status": status,
         "code": code,
         "msg": msg,
-        "data": data!.toJson(),
+        "data": authData!.toJson(),
       };
 }
 
-class LoginData {
-  LoginData({
+class AuthData {
+  AuthData({
     this.token,
-    this.doctorLogindata,
+    this.doctor,
     this.firebaseToken,
   });
 
   String? token;
   String? firebaseToken;
-  DoctorLoginData? doctorLogindata;
+  Doctor? doctor;
 
 
-  factory LoginData.fromJson(Map<String, dynamic> json) => LoginData(
+  factory AuthData.fromJson(Map<String, dynamic> json) => AuthData(
         token: json["token"],
         firebaseToken: json['firebase_token'],
-    doctorLogindata: json['doctor'] != null ? DoctorLoginData.fromJson(json['doctor']) : null,
+    doctor: json['doctor'] != null ? Doctor.fromJson(json['doctor']) : null,
 
       );
 
   Map<String, dynamic> toJson() => {
         "token": token,
         'firebase_token':firebaseToken,
-        "doctor": doctorLogindata!.toJson(),
+        "doctor": doctor!.toJson(),
       };
 }
 
-class DoctorLoginData {
-  DoctorLoginData({
+class Doctor {
+  Doctor({
     this.id,
     this.userId,
     this.name,
@@ -117,8 +117,8 @@ class DoctorLoginData {
   List<Certificate>? studies;
   List<Certificate>? pictures;
 
-  factory DoctorLoginData.fromJson(Map<String, dynamic> json) =>
-      DoctorLoginData(
+  factory Doctor.fromJson(Map<String, dynamic> json) =>
+      Doctor(
         id: json["id"],
         isBlock: json["block"],
         name: json["name"],

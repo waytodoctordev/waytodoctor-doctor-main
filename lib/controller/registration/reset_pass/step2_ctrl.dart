@@ -32,9 +32,6 @@ class ResetPassStep2Controller extends GetxController {
 
     OverLayLoader.showLoading(context);
     try{
-      print('fetchResetPassStep2Data');
-      print(phone);
-      print('bodyt ${MySharedPreferences.email}');
       resetPassStep2Model = await apiRequestService.makeRequest(
           method: AppConstants.postMethod,
           url: '${ApiUrl.mainUrl}${ApiUrl.resetPassStep2}',
@@ -47,17 +44,19 @@ class ResetPassStep2Controller extends GetxController {
       },
 
       context: context);
-
-      print('resetPassStep2Model!.code == 200 ${resetPassStep2Model!.code == 200}');
       if (resetPassStep2Model!.code == 200) {
         Get.to(() => ResetPasswordScreen(phone: phone),
             binding: ResetPassBinding());
         Loader.hide();
       }
+      else {
+        resetPassStep2Model!.msg == ''
+            ? AppConstants().showMsgToast(context, msg:  AppConstants.failedMessage)
+            : AppConstants().showMsgToast(context, msg: resetPassStep2Model!.msg!);
+        Loader.hide();
+      }
     }catch(error){
-      print('eoor');
-      print('${ resetPassStep2Model!.msg}');
-      resetPassStep2Model!.msg ==''
+      resetPassStep2Model!.msg == ''
           ? AppConstants().showMsgToast(context, msg:  AppConstants.failedMessage)
           : AppConstants().showMsgToast(context, msg: resetPassStep2Model!.msg!);
       Loader.hide();

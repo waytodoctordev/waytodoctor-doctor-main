@@ -22,6 +22,8 @@ import '../../binding/registration/update_number_binding.dart';
 import '../../model/clinic_login/view_vclinic_by_user_id_model.dart';
 import '../../model/doctor_signup/doctor_signup_model.dart';
 import '../../services/api_request_handlers/api_service.dart';
+import '../../services/secure_storage.dart';
+import '../../services/subscriptions/revenueCat_service.dart';
 import '../../ui/screens/registration/check_practice/widgets/check_practice_end.dart';
 import '../../ui/screens/registration/phone_sign_up/phone_sign_up_screen.dart';
 import '../../ui/screens/registration/specialization_certificate/widgets/specialization_certificate_end.dart';
@@ -45,9 +47,7 @@ class SignInCtrl extends GetxController {
   List<Country>? countries;
 
 // MODELS
-  DoctorLoginModel? doctorLoginModel;
-  DoctorSignUpModel? doctorSignUpModel;
-  SignInModel? signInModel;
+  AuthModel? authModel;
   CountriesModel? countriesModel;
   UserModel? userModel;
 // FUNCTIONS AND METHODS
@@ -58,67 +58,59 @@ class SignInCtrl extends GetxController {
     required BuildContext context,
   }) async {
     OverLayLoader.showLoading(context);
-    print('phone nad pass not null $phone $password ');
-
     try {
-      doctorLoginModel = await apiRequestService.makeRequest(
+      authModel = await apiRequestService.makeRequest(
           method: AppConstants.postMethod,
           url: '${ApiUrl.mainUrl}${ApiUrl.doctorSignIn}',
-          fromJson: (json) => DoctorLoginModel.fromJson(json),
+          fromJson: (json) => AuthModel.fromJson(json),
           body: {
             "phone": phone,
             "password": password,
-          },//0797796861
+          },
           context: context);
-      if (doctorLoginModel!.code == 200) {
+      if (authModel!.code == 200) {
         final fbAuth.FirebaseAuth auth = fbAuth.FirebaseAuth.instance;
-        print('hey doctorLoginModel!.code==200');
-        doctorLoginModel!.data!.token!; //ySharedPreferences.accessToken
-        MySharedPreferences.userId =
-            doctorLoginModel!.data!.doctorLogindata!.userId!;
+       MySharedPreferences.userId =
+       authModel!.authData!.doctor!.userId!;
         await getStepAndSubscriptionInfo(
-          token: doctorLoginModel!.data!.token!,
+          token: authModel!.authData!.token!,
           context: context,
         );
-        MySharedPreferences.accessToken = doctorLoginModel!.data!.token!;
-        MySharedPreferences.userId =
-            doctorLoginModel!.data!.doctorLogindata!.userId!;
-        MySharedPreferences.id = doctorLoginModel!.data!.doctorLogindata!.id!;
-        MySharedPreferences.userId =
-            doctorLoginModel!.data!.doctorLogindata!.userId!;
+        MySharedPreferences.accessToken = authModel!.authData!.token!;
+       MySharedPreferences.id = authModel!.authData!.doctor!.id!;
         MySharedPreferences.clinicUserID =
-            doctorLoginModel!.data!.doctorLogindata!.clinicUserId.toString();
+            authModel!.authData!.doctor!.clinicUserId.toString();
         MySharedPreferences.fName =
-            doctorLoginModel!.data!.doctorLogindata!.name!;
+        authModel!.authData!.doctor!.name!;
         MySharedPreferences.email =
-            doctorLoginModel!.data!.doctorLogindata!.email!;
+        authModel!.authData!.doctor!.email!;
         MySharedPreferences.userNumber =
-            doctorLoginModel!.data!.doctorLogindata!.phone!;
+        authModel!.authData!.doctor!.phone!;
         MySharedPreferences.userImage =
-            doctorLoginModel!.data!.doctorLogindata!.image!;
+        authModel!.authData!.doctor!.image!;
         MySharedPreferences.address =
-            doctorLoginModel!.data!.doctorLogindata!.address!;
+        authModel!.authData!.doctor!.address!;
         MySharedPreferences.categoryId =
-            doctorLoginModel!.data!.doctorLogindata!.categoryId!;
+        authModel!.authData!.doctor!.categoryId!;
         MySharedPreferences.categoryName =
-            doctorLoginModel!.data!.doctorLogindata!.categoryName!;
+        authModel!.authData!.doctor!.categoryName!;
         MySharedPreferences.userCount =
-            doctorLoginModel!.data!.doctorLogindata!.userCount!;
+        authModel!.authData!.doctor!.userCount!;
         MySharedPreferences.rating =
-            doctorLoginModel!.data!.doctorLogindata!.rating!;
+        authModel!.authData!.doctor!.rating!;
         MySharedPreferences.experience =
-            doctorLoginModel!.data!.doctorLogindata!.experience!;
+        authModel!.authData!.doctor!.experience!;
         MySharedPreferences.description =
-            doctorLoginModel!.data!.doctorLogindata!.description!;
-        MySharedPreferences.lat = doctorLoginModel!.data!.doctorLogindata!.lat!;
+        authModel!.authData!.doctor!.description!;
+        MySharedPreferences.lat = authModel!.authData!.doctor!.lat!;
         MySharedPreferences.long =
-            doctorLoginModel!.data!.doctorLogindata!.long!;
+        authModel!.authData!.doctor!.long!;
         MySharedPreferences.doctorClinicId =
-            doctorLoginModel!.data!.doctorLogindata!.categoryId!;
+        authModel!.authData!.doctor!.categoryId!;
         MySharedPreferences.subscriptionId =
-            doctorLoginModel!.data!.doctorLogindata!.subscriptionId.toString();
+            authModel!.authData!.doctor!.subscriptionId.toString();
         MySharedPreferences.step =
-            doctorLoginModel!.data!.doctorLogindata!.step.toString();
+            authModel!.authData!.doctor!.step.toString();
 
         MySharedPreferences.password = password;
         if (Platform.isIOS) {
@@ -128,10 +120,14 @@ class SignInCtrl extends GetxController {
           });
         }
         await auth.signInWithCustomToken(
-            doctorLoginModel!.data!.firebaseToken.toString());
+            authModel!.authData!.firebaseToken.toString());
 
-        auth.currentUser;print(auth.currentUser?.uid);
+        fbAuth.User? user = auth.currentUser;
+        if (user != null) {
+          await Purchases.logIn(MySharedPreferences.id.toString());
 
+          await RevenueCatService.refreshCustomerInfo();
+        }
         Get.to(() => const DoctorBaseNavBar(),
             binding: DoctorBaseNavBarBinding());
         if (isBlock) {
@@ -175,8 +171,8 @@ class SignInCtrl extends GetxController {
         print('MySharedPreferences.step  ${MySharedPreferences.step}');
         Loader.hide();
       }
-      if (doctorLoginModel!.code == 500) {
-        AppConstants().showMsgToast(context, msg: doctorLoginModel!.msg!);
+      if (authModel!.code == 500) {
+        AppConstants().showMsgToast(context, msg: authModel!.msg!);
       }
 
       Loader.hide();
@@ -197,46 +193,46 @@ class SignInCtrl extends GetxController {
   }) async {
     OverLayLoader.showLoading(context);
     try {
-      doctorSignUpModel = await apiRequestService.makeRequest(
+      authModel = await apiRequestService.makeRequest(
           method: AppConstants.postMethod,
           url: '${ApiUrl.mainUrl}${ApiUrl.doctorSignUp}',
-          fromJson: (json) => DoctorSignUpModel.fromJson(json),
+          fromJson: (json) => AuthModel.fromJson(json),
           body: {
             "phone": email,
             "password": password,
             "email": email,
             "name": name,
           });
-      if (doctorSignUpModel!.code == 200) {
-        MySharedPreferences.accessToken = doctorSignUpModel!.data!.token!;
-        MySharedPreferences.id = doctorSignUpModel!.data!.userDoctor!.id!;
+      if (authModel!.code == 200) {
+        MySharedPreferences.accessToken = authModel!.authData!.token!;
+        MySharedPreferences.id = authModel!.authData!.doctor!.id!;
         MySharedPreferences.userId =
-            doctorSignUpModel!.data!.userDoctor!.userId!;
-        MySharedPreferences.fName = doctorSignUpModel!.data!.userDoctor!.name!;
-        MySharedPreferences.email = doctorSignUpModel!.data!.userDoctor!.email!;
-        MySharedPreferences.step = doctorSignUpModel!.data!.userDoctor!.step!;
+        authModel!.authData!.doctor!.userId!;
+        MySharedPreferences.fName = authModel!.authData!.doctor!.name!;
+        MySharedPreferences.email = authModel!.authData!.doctor!.email!;
+        MySharedPreferences.step = authModel!.authData!.doctor!.step!;
         MySharedPreferences.clinicUserID =
-            doctorSignUpModel!.data!.userDoctor!.clinicUserId.toString();
+            authModel!.authData!.doctor!.clinicUserId.toString();
         MySharedPreferences.userImage =
-            doctorSignUpModel!.data!.userDoctor!.image!;
+            authModel!.authData!.doctor!.image!;
         MySharedPreferences.address =
-            doctorSignUpModel!.data!.userDoctor!.address!;
+            authModel!.authData!.doctor!.address!;
         MySharedPreferences.categoryId =
-            doctorSignUpModel!.data!.userDoctor!.categoryId!;
+            authModel!.authData!.doctor!.categoryId!;
         MySharedPreferences.categoryName =
-            doctorSignUpModel!.data!.userDoctor!.categoryName!;
+            authModel!.authData!.doctor!.categoryName!;
         MySharedPreferences.userCount =
-            doctorSignUpModel!.data!.userDoctor!.userCount!;
+            authModel!.authData!.doctor!.userCount!;
         MySharedPreferences.rating =
-            doctorSignUpModel!.data!.userDoctor!.rating!;
+            authModel!.authData!.doctor!.rating!;
         MySharedPreferences.experience =
-            doctorSignUpModel!.data!.userDoctor!.experience!;
+            authModel!.authData!.doctor!.experience!;
         MySharedPreferences.description =
-            doctorSignUpModel!.data!.userDoctor!.description!;
-        MySharedPreferences.lat = doctorSignUpModel!.data!.userDoctor!.lat!;
-        MySharedPreferences.long = doctorSignUpModel!.data!.userDoctor!.long!;
+            authModel!.authData!.doctor!.description!;
+        MySharedPreferences.lat = authModel!.authData!.doctor!.lat!;
+        MySharedPreferences.long = authModel!.authData!.doctor!.long!;
         MySharedPreferences.doctorClinicId =
-            doctorSignUpModel!.data!.userDoctor!.categoryId!;
+            authModel!.authData!.doctor!.categoryId!;
         MySharedPreferences.password = password;
         MySharedPreferences.lastScreen = 'PhoneSignUpScreen';
         MySharedPreferences.subscriptionId = '';
@@ -246,7 +242,7 @@ class SignInCtrl extends GetxController {
           await fbAuth.FirebaseAuth.instance.signInAnonymously();
         } else {
           await fbAuth.FirebaseAuth.instance.signInWithEmailAndPassword(
-            email: doctorLoginModel!.data!.doctorLogindata!.email!,
+            email: authModel!.authData!.doctor!.email!,
             password: MySharedPreferences.password,
           );
           final uid = user.uid;
@@ -271,22 +267,21 @@ class SignInCtrl extends GetxController {
   }) async {
     try {
       OverLayLoader.showLoading(context);
-      signInModel = await apiRequestService.makeRequest(
+      authModel = await apiRequestService.makeRequest(
           method: AppConstants.postMethod,
           url: '${ApiUrl.mainUrl}${ApiUrl.signInUser}',
-          fromJson: (json) => SignInModel.fromJson(json),
+          fromJson: (json) => AuthModel.fromJson(json),
           body: {
             "phone": '${phone}0',
             "password": password,
           });
-      if (signInModel!.code == 200) {
-        log(signInModel!.data!.user!.id.toString());
+      if (authModel!.code == 200) {
         await fetchClinicData(
-            userId: signInModel!.data!.user!.id.toString(),
+            userId: authModel!.authData!.doctor!.id.toString(),
             context: context,
             phone: '${phone}0',
-            token: signInModel!.data!.token.toString(),
-            email: signInModel!.data!.user!.email.toString());
+            token: authModel!.authData!.token.toString(),
+            email: authModel!.authData!.doctor!.email.toString());
       }
     } catch (error) {
       AppConstants().showMsgToast(context, msg: error.toString());
@@ -364,7 +359,7 @@ class SignInCtrl extends GetxController {
       await apiRequestService.makeRequest(
           method: AppConstants.getMethod,
           url: '${ApiUrl.mainUrl}${ApiUrl.logout}',
-          fromJson: (json) => DoctorSignUpModel.fromJson(json),
+          fromJson: (json) => AuthModel.fromJson(json),
           headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ${MySharedPreferences.accessToken}',

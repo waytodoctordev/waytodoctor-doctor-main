@@ -45,7 +45,7 @@ class _DoctorCenterComponentState extends State<CenterDoctorsComponent> {
                               print( controller.doctorsCentersModel!
                                   .data![index].id.toString());
                               Get.to(
-                                      () => DoctorDetailsScreen(
+                                      () => EditProfileScreen(
                                     doctorId: controller.doctorsCentersModel!.data![index].id.toString(),
                                   ),
                                  );

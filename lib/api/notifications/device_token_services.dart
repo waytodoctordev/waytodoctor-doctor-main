@@ -7,7 +7,9 @@ import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 class DeviceTokenService {
   Future<void> updateDeviceToken(String token) async {
+
     try {
+      print('token updateDeviceToken $token');
       String url = '${ApiUrl.mainUrl}${ApiUrl.updateDeviceToken}';
       Uri uri = Uri.parse(url);
       var headers = {
@@ -18,9 +20,9 @@ class DeviceTokenService {
       var body = jsonEncode({
         'device_token': token,
       });
-      log("Response:: updateDeviceTokenResponse\nUrl:: $url\nheaders:: $headers");
+      // print("Response:: updateDeviceTokenResponse\nUrl:: $url\nheaders:: $headers");
       http.Response response = await http.post(uri, body: body, headers: headers);
-      log("updateDeviceTokenStatusCode:: ${response.statusCode} updateTokenBody:: ${response.body}");
+      print("updateDeviceTokenStatusCode:: ${response.statusCode} updateTokenBody:: ${response.body}");
     } catch (e) {
       log("deviceTokenError:: $e");
     }

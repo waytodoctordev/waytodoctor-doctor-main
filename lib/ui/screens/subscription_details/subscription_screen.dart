@@ -13,6 +13,7 @@ import '../../../utils/shared_prefrences.dart';
 import '../../base/for_doctor/no_need/privcy_screen.dart';
 import '../../base/for_doctor/no_need/terms_screen.dart';
 import '../registration/plans/widgets/subscription_card.dart';
+import '../registration/registration/registration_screen.dart';
 import 'controller/subscription_controller.dart';
 
 class SubscriptionScreen extends StatefulWidget {
@@ -40,8 +41,6 @@ class _PlansScreenState extends State<SubscriptionScreen> {
 
     products =
         current.availablePackages.map((pkg) => pkg.storeProduct).toList();
-
-    print('getttt offering ${offerings?.all}');
     setState(() {});
   }
 
@@ -53,6 +52,7 @@ class _PlansScreenState extends State<SubscriptionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
         body: Stack(
       children: [
         Positioned.fill(
@@ -70,35 +70,27 @@ class _PlansScreenState extends State<SubscriptionScreen> {
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: Get.height * .02),
                   child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Get.height * .02,
-                          vertical: 30,
-                        ),
-                        child: GestureDetector(
-                          child: RotatedBox(
-                            quarterTurns: MySharedPreferences.language == 'ar'
-                                ? 3
-                                : 5, // Rotate only for Arabic
-                            child: SvgPicture.asset(
-                              MyIcons.angleSmallRight,
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            'Subscriptions'.tr,
+                            style: const TextStyle(
+                              fontSize: 20,
                               color: MyColors.blue14B,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
-                          onTap: () => Get.back(),
                         ),
                       ),
-                      SizedBox(
-                        width: Get.width * .22,
-                      ),
-                      Text(
-                        'Subscriptions'.tr,
-                        style: const TextStyle(
-                          fontSize: 20,
-                          color: MyColors.blue14B,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: () => Get.offAll(RegistrationScreen()),
+                        child: const Padding(
+                          padding: EdgeInsets.all(16),
+                          child: Icon(
+                            Icons.close,
+                            color: MyColors.blue14B,
+                          ),
                         ),
                       ),
                     ],

@@ -56,14 +56,7 @@ class SubscriptionCard extends StatelessWidget {
               textAlign: TextAlign.center,
               text: TextSpan(
                 children: <TextSpan>[
-                  TextSpan(
-                    text: r'$',
-                    style: GoogleFonts.tajawal(
-                      fontSize: 25,
-                      color: MyColors.white,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+
                   TextSpan(
                     text: '$subscriptionPrice \n  ',
                     style: GoogleFonts.tajawal(
@@ -72,6 +65,14 @@ class SubscriptionCard extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                     ),
                   ),
+                  // TextSpan(
+                  //   text: r'$',
+                  //   style: GoogleFonts.tajawal(
+                  //     fontSize: 25,
+                  //     color: MyColors.white,
+                  //     fontWeight: FontWeight.w600,
+                  //   ),
+                  // ),
                   TextSpan(
                     text: '\n Connect with patients worldwide.'.tr,
                     style: GoogleFonts.tajawal(
@@ -90,7 +91,6 @@ class SubscriptionCard extends StatelessWidget {
               width: double.maxFinite,
               color: const Color(0xFF14B9D1),
               onPressed: () async {
-
                 final result =
                 await RevenueCatService.purchasePackage(
                   RevenueCatService.packages![0],
@@ -102,6 +102,8 @@ class SubscriptionCard extends StatelessWidget {
                     "Success",
                     "Subscription activated",
                   );
+                  Get.offAll(() => const DoctorBaseNavBar());
+
                 } else if (result.cancelled) {
                   Get.snackbar(
                     "Cancelled",

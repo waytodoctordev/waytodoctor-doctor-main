@@ -12,11 +12,12 @@ import '../../../../widgets/custom_network_image.dart';
 
 class ResearchesComponent extends StatelessWidget {
   final DoctorDetailsModel? doctor;
+  final bool isMe;
 
   const ResearchesComponent({
     super.key,
     required this.doctor,
-  });
+    this.isMe=true,  });
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class ResearchesComponent extends StatelessWidget {
               ),
             ),
             const Spacer(),
-            MySharedPreferences.isDoctor
+            MySharedPreferences.isDoctor && isMe
                 ? IconButton(
                     onPressed: () => DoctorDetailsCtrl.find.getStudiesAndCertificatesAndPictures(context:context,isCertificate: false,isPicture: false,isStudy: true),
                     icon: const Icon(
@@ -59,7 +60,7 @@ class ResearchesComponent extends StatelessWidget {
                   itemCount: doctor!.data!.studies!.length,
                   itemBuilder: (context, index) => GestureDetector(
                     onLongPress: () async {
-                      MySharedPreferences.isDoctor
+                      MySharedPreferences.isDoctor && isMe
                           ? await DoctorDetailsCtrl.find.deletePaymentAndCertificateAndStudyAndPIC(
                               context: context,
                               id: doctor!.data!.studies![index].id.toString(),
@@ -84,7 +85,7 @@ class ResearchesComponent extends StatelessWidget {
                             width: 100,
                           ),
                         ),
-                        MySharedPreferences.isDoctor
+                        MySharedPreferences.isDoctor &&isMe
                             ? Container(
                                 width: 100,
                                 height: 100,

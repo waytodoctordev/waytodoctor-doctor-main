@@ -15,10 +15,12 @@ import '../../ratings/rating_screen.dart';
 
 class DoctorScreenHeader extends StatelessWidget {
   final DoctorDetailsModel? doctorDetails;
+  final bool isMe;
 
   const DoctorScreenHeader({
     super.key,
     this.doctorDetails,
+    this.isMe = true,
   });
 
   @override
@@ -27,49 +29,51 @@ class DoctorScreenHeader extends StatelessWidget {
       builder: (controller) => Column(
         children: [
           GestureDetector(
-            onTap: () async {
-              print(doctorDetails!.data!.id!.toString());
-              MySharedPreferences.isDoctor
-                  ? await controller.getProfileImage(
-                      context: context,
-                      doctorId: doctorDetails!.data!.id!.toString(),
-                    )
-                  : print('i am a center');
-            },
+            onTap: () async => isMe
+                ? await controller.getProfileImage(
+                    context: context,
+                    doctorId: doctorDetails!.data!.id.toString())
+                : null,
             child: Stack(
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(26),
                   child: CustomNetworkImage(
                     url: doctorDetails!.data!.image.toString(),
-                    radius: 26,
-                    height: 125,
-                    width: 125,
+                    radius: 20,
+                    height: Get.height * .300,
+                    width: Get.width,
                   ),
                 ),
-                MySharedPreferences.isDoctor
-                    ? Container(
-                        height: 125,
-                        width: 125,
-                        padding: const EdgeInsets.all(50),
-                        decoration: BoxDecoration(
-                            color: MyColors.grey5d8.withOpacity(0.4),
-                            borderRadius: BorderRadius.circular(26)),
-                        child: SvgPicture.asset(
-                          MyIcons.edit,
-                          height: 8,
-                          width: 8,
-                          color: MyColors.blue14B,
+                isMe?
+                Container(
+                  height: Get.height * .300,
+                  width: Get.width,
+                  padding: const EdgeInsets.all(50),
+                  decoration: BoxDecoration(
+                      color: MyColors.grey5d8.withOpacity(0.25),
+                      borderRadius: BorderRadius.circular(26)),
+                  child: Center(
+                    child: SizedBox(
+                      width: 24,
+                      height: 24,
+                      child: SvgPicture.asset(
+                        MyIcons.edit,
+                        colorFilter: const ColorFilter.mode(
+                          MyColors.blue14B,
+                          BlendMode.srcIn,
                         ),
-                      )
-                    : SizedBox()
+                      ),
+                    ),
+                  ),
+                ):SizedBox()
               ],
             ),
           ),
           const SizedBox(height: 10),
           InkWell(
               onTap: () {
-                Get.to(() => const CategoriesScreen());
+                isMe?  Get.to(() => const CategoriesScreen()):null;
               },
               child: doctorDetails!.data!.categoryName!.isNotEmpty
                   ? Text(
@@ -77,14 +81,14 @@ class DoctorScreenHeader extends StatelessWidget {
                       // doctor.address.toString(),
                       overflow: TextOverflow.ellipsis,
                       maxLines: 3,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        decoration: TextDecoration.underline,
+                      style: TextStyle(
+                        fontSize: 20,
+                        decoration:isMe? TextDecoration.underline:TextDecoration.none,
                         color: MyColors.blue14B,
                         fontWeight: FontWeight.w400,
                       ),
                     )
-                  : Text(
+                  : isMe?Text(
                       'Categories'.tr,
                       // doctor.address.toString(),
                       overflow: TextOverflow.ellipsis,
@@ -95,14 +99,14 @@ class DoctorScreenHeader extends StatelessWidget {
                         color: MyColors.blue14B,
                         fontWeight: FontWeight.w400,
                       ),
-                    )),
+                    ):SizedBox()),
           const SizedBox(height: 10),
           SizedBox(
             height: 50,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                Column(
+               if(isMe) Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -115,8 +119,8 @@ class DoctorScreenHeader extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                    const SizedBox(height: 2),
-                    Text(
+                   const SizedBox(height: 2),
+                   Text(
                       doctorDetails!.data!.userCount.toString(),
                       overflow: TextOverflow.ellipsis,
                       style: const TextStyle(
@@ -125,16 +129,15 @@ class DoctorScreenHeader extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
+                    const VerticalDivider(color: MyColors.blue1dd4, width: 5)
                   ],
                 ),
-                const VerticalDivider(color: MyColors.blue1dd4, width: 5),
+
                 GestureDetector(
-                  onTap: () => MySharedPreferences.isDoctor
-                      ? showDialog(
-                          context: context,
-                          builder: (context) => const EditExperinceDialog(),
-                        )
-                      : null,
+                  onTap: () => isMe?showDialog(
+                    context: context,
+                    builder: (context) => const EditExperinceDialog(),
+                  ):null,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -165,10 +168,10 @@ class DoctorScreenHeader extends StatelessWidget {
                 ),
                 const VerticalDivider(color: MyColors.blue1dd4, width: 5),
                 GestureDetector(
-                  onTap: () => Get.to(
+                  onTap: () => isMe?Get.to(
                       () => DoctorRatingScreen(
                           doctorId: doctorDetails!.data!.id.toString()),
-                      binding: RatingsBinding()),
+                      binding: RatingsBinding()):null,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.center,

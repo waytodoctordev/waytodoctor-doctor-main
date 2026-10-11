@@ -4,6 +4,8 @@ import 'dart:io';
 import 'dart:ui';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:firebase_ui_firestore/firebase_ui_firestore.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,13 +33,10 @@ import 'package:way_to_doctor_doctor/utils/shared_prefrences.dart';
 
 import '../../../api/notifications/send_notification.dart';
 import '../../../utils/icons.dart';
+import '../../../utils/images.dart';
+import '../../widgets/custom_network_image.dart';
 import 'audio_call_screen.dart';
 import 'package:path_provider/path_provider.dart';
-// const token =
-// "007eJxTYFjloiinamk4q1Bvv1xCmqbgtGt/yx7pXpi+uE0u6izn/mkKDGmWhgYpxgYGlhamKSZGRkkWiaaWSUDSIjHZwMTS0iTf+1ByQyAjw8VpL1gYGSAQxOdgSMxITStNzEhjYAAAJSQfsw==";
-// const tosdasdken =
-//     "00685b2caaa870c49ee9b3766a9bbeed471IAB5AM+X2hfUxJ8jaqat852Gm9rj1Ynqv6eLcsCFNelBhwx+f9ij4OObEAAPe4bAsldjZAEAAQBCFGJk";
-// const channelName = "ahefuahf";
 
 class ChatScreen extends StatefulWidget {
   final int patientId;
@@ -47,6 +46,7 @@ class ChatScreen extends StatefulWidget {
   final String status;
 
   final String bookingType;
+  final String patientImageProfile;
   const ChatScreen({
     super.key,
     required this.patientId,
@@ -55,6 +55,7 @@ class ChatScreen extends StatefulWidget {
     required this.bookingType,
     required this.appointmentId,
     required this.status,
+    required this.patientImageProfile,
   });
 
   @override
@@ -268,6 +269,7 @@ class _ChatScreenState extends State<ChatScreen> {
       required PlatformFile? pickedFile,
       int? imageHeight,
       int? imageWidth}) async {
+
     DateTime serverTime;
     serverTime = await NTP.now();
     late Future<DocumentReference<Map<String, dynamic>>> initializeDocument;
@@ -282,12 +284,13 @@ class _ChatScreenState extends State<ChatScreen> {
       'imageHeight': imageHeight,
       'imageWidth': imageWidth,
     });
-    
-    scrollCtrl.animateTo(
-      scrollCtrl.position.minScrollExtent,
-      duration: const Duration(seconds: 1),
-      curve: Curves.fastOutSlowIn,
-    );
+    if (scrollCtrl.hasClients) {
+      scrollCtrl.animateTo(
+        scrollCtrl.position.minScrollExtent,
+        duration: const Duration(milliseconds: 300),
+        curve: Curves.easeOut,
+      );
+    }
 
     messageCtrl.clear();
     if (type != MessageType.text) {   
@@ -304,10 +307,9 @@ class _ChatScreenState extends State<ChatScreen> {
           bookingType: widget.bookingType,
           appointmentId: widget.appointmentId);
       await SendNotification()
-          .data(MySharedPreferences.fName, type, ChatCtrl.find.deviceTokenToSend);
+          .data(MySharedPreferences.fName, type, ChatCtrl.find.receiverFcmToken);
     }
     else {
-      print('appointmentId ${widget.appointmentId}');
     await ChatCtrl.find.fetchDeviceTokenForChat(
     status: 'CHAT',
     mbody: message,
@@ -317,9 +319,9 @@ class _ChatScreenState extends State<ChatScreen> {
     context: context,
     bookingType: widget.bookingType,
     appointmentId: widget.appointmentId);
-    print('device token ChatCtrl.find.deviceTokenToSend ${ChatCtrl.find.deviceTokenToSend}');
+
     await SendNotification().data(
-        MySharedPreferences.fName, message, ChatCtrl.find.deviceTokenToSend);//widget.patientId.toString()
+        MySharedPreferences.fName, message, ChatCtrl.find.receiverFcmToken);//widget.patientId.toString()
 
     }
   }
@@ -436,17 +438,59 @@ class _ChatScreenState extends State<ChatScreen> {
             if (snapshot.hasData) {
               return Scaffold(
                 appBar: AppBar(
-                  title: Text(widget.patientName),
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      GestureDetector(
+                        child: CircleAvatar(
+                          radius: 30,
+                          // backgroundColor: MyColors.blue14B.withOpacity(0.2),
+                          child: Padding(
+                            padding: const EdgeInsets.all(2.0),
+                            child: MySharedPreferences.userImage.isNotEmpty
+                                ? CustomNetworkImage(
+                              url: widget.patientImageProfile,
+                              radius: 200,
+                              boxFit: BoxFit.cover,
+                            )
+                                : Image.asset(
+                              MyImages.blankProfile,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Text(widget.patientName.toString(),style: TextStyle(
+                        fontSize: 15,
+                      ),),
+                    ],
+                  ),
                   leading: IconButton(
                     onPressed: () => Get.back(),
-                    icon: RotatedBox(
-                      quarterTurns: 3,
+                    icon: MySharedPreferences.language == 'ar'
+                        ? RotationTransition(
+                      turns: const AlwaysStoppedAnimation(270 / 360),
                       child: SvgPicture.asset(
                         MyIcons.angleSmallRight,
+                        height: 7,
+                        width: 7,
+                        color: MyColors.blue14B,
+                      ),
+                    )
+                        : RotationTransition(
+                      turns: const AlwaysStoppedAnimation(90 / 360),
+                      child: SvgPicture.asset(
+                        MyIcons.angleSmallRight,
+                        height: 7,
+                        width: 7,
                         color: MyColors.blue14B,
                       ),
                     ),
                   ),
+
                   actions: [
                     StreamBuilder(
                       stream: AppConstants().fireAgoraStreamForCall(),
@@ -469,7 +513,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
 
                         final agoraModel2 = snapshot.data!.docs[0].data();
-      
+
                         if (agoraModel2.isActive &&
                             widget.bookingType == AppConstants.chat) {
                           return Row(
@@ -636,6 +680,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               //message text place
                                   : Expanded(
                                       child: CustomTextField(
+                                        hintText: 'Type a message...',
                                         controller: messageCtrl,
                                         onChanged: (p0) {
                                           if (p0.isEmpty) {

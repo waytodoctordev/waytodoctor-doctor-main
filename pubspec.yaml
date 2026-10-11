@@ -14,7 +14,7 @@ publish_to: 'none'
 #🍎 iOS (CFBundleVersion) in Xcode
 
 # This number should increase every time you upload a new version to the App Store or Play Store, even if the version stays the same.
-version: 1.6.5+65
+version: 1.6.6+66
 
 environment:
   sdk: '>=2.18.2 <3.0.0'
@@ -109,6 +109,7 @@ dependencies:
   google_places_flutter: ^2.0.9
   googleapis_auth: ^1.6.0
   flutter_chat_reactions: ^0.2.6
+  flutter_secure_storage: ^10.3.1
 
 
 
@@ -144,3 +145,4 @@ flutter:
     - assets/images/
     - assets/icons/
     - .env
+    - shorebird.yaml

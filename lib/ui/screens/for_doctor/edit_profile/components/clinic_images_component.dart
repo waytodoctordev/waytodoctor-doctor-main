@@ -13,11 +13,13 @@ import '../../../../widgets/custom_network_image.dart';
 
 class ClinicImagesComponent extends StatelessWidget {
   final DoctorDetailsModel? doctor;
+  final bool isMe;
 
   const ClinicImagesComponent({
     super.key,
     required this.doctor,
-  });
+    this.isMe=true,  });
+
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class ClinicImagesComponent extends StatelessWidget {
                 ),
               ),
               const Spacer(),
-              MySharedPreferences.isDoctor
+              MySharedPreferences.isDoctor&&isMe
                   ?
               IconButton(
                 onPressed: () => controller.getStudiesAndCertificatesAndPictures(context:context,isCertificate: false,isPicture: true,isStudy: false),
@@ -59,7 +61,7 @@ class ClinicImagesComponent extends StatelessWidget {
                     itemBuilder: (context, index, realIndex) {
                       return GestureDetector(
                         onLongPress: () async {
-                          MySharedPreferences.isDoctor
+                          MySharedPreferences.isDoctor&&isMe
                               ?
                           await controller.deletePaymentAndCertificateAndStudyAndPIC(
                               context: context,
@@ -85,7 +87,7 @@ class ClinicImagesComponent extends StatelessWidget {
                                 radius: 28,
                               ),
                             ),
-                            MySharedPreferences.isDoctor
+                            MySharedPreferences.isDoctor &&isMe
                                 ?
                             Container(
                               // width: 100,

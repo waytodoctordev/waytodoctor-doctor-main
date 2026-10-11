@@ -31,6 +31,7 @@ class RoutesService {
                 bookingType: notificationsMap['bookingType'],
                 appointmentId: int.parse(notificationsMap['appointmentId']),
                 status: notificationsMap['appointmentStatus'],
+                patientImageProfile: '',
               ));
         }
       } else {

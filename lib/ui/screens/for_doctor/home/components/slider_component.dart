@@ -26,6 +26,7 @@ class SliderComponent extends StatelessWidget {
           if (controller.data == null ||
               controller.data!.isEmpty) {
             return const FailedWidget();          }
+          // If there is data, show It
           return SizedBox(
             height: Get.height *.2,
             child: CarouselSlider.builder(

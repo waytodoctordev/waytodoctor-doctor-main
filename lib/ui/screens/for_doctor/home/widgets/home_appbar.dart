@@ -54,7 +54,7 @@ class HomeAppBar extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        controller.greeting(),
+                        controller.greeting().tr,
                         style: const TextStyle(
                           fontSize: 20,
                           color: MyColors.blue14B,
@@ -111,7 +111,6 @@ class HomeAppBar extends StatelessWidget {
                     child: SizedBox(
                       height: 80,
                       width: 80,
-                      //TODO: Deprecated -- Nancy
                       child: SvgPicture.asset(
                       MyIcons.drawerLine,
                       height: 15,

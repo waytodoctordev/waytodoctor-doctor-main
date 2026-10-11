@@ -397,6 +397,8 @@ class _DoctorAppointmentDetailsScreenState
                                                         .data!.data.user!.name!,
                                                     status: snapshot
                                                         .data!.data.status!,
+                                                      patientImageProfile:snapshot
+                                                          .data!.data.user!.image!,
                                                   ),
                                                 );
                                               }

@@ -11,6 +11,8 @@ class ApiUrl {
   static const String pages = "page"; // Privcy - FAQ ..
   static const String profile = "user";
   static const String logout = "logout";
+  static const String avaliableDoctors = "doctors";
+
   static const String doctorSignUp = "doctor-create";
   static const String clinicSignUp = "clinic-create";
   static const String centerSignUp = "center-create";

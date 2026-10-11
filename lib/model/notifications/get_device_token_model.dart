@@ -42,20 +42,20 @@ class GetDeviceTokenOfUserModel {
 class Note {
   Note({
     required this.id,
-    required this.deviceToken,
+    required this.receiverFcmToken,
   });
 
   int id;
 
-  String deviceToken;
+  String receiverFcmToken;
 
   factory Note.fromJson(Map<String, dynamic> json) => Note(
         id: json["id"],
-        deviceToken: json["device_token"],
+    receiverFcmToken: json["device_token"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
-        "device_token": deviceToken,
+        "device_token": receiverFcmToken,
       };
 }
