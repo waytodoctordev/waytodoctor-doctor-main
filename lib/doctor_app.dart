@@ -30,6 +30,7 @@ import 'ui/screens/registration/phone_sign_up/phone_sign_up_screen.dart';
 import 'ui/screens/registration/phone_verification/phone_verification_screen.dart';
 import 'ui/screens/registration/registration/registration_screen.dart';
 import 'ui/screens/registration/specialization_certificate/specialization_certificate_screen.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
 class DoctorApp extends StatefulWidget {
   const DoctorApp({super.key});

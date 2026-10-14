@@ -1,6 +1,8 @@
 //flutter build appbundle --release
 //flutter build ios --release
 
+/// shorebird patch --platforms=android --release-version=1.6.7+67
+
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';

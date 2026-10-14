@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:audio_waveforms/audio_waveforms.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,6 +31,8 @@ class _VoiceMessageBubbleState extends State<VoiceMessageBubble> {
   ChatCtrl controller = Get.find<ChatCtrl>();
   String localPath = '';
   bool _isPlaying = false;
+  StreamSubscription<PlayerState>? _playerStateSub;
+
   @override
   void initState() {
     _playerController = PlayerController();
@@ -37,31 +41,40 @@ class _VoiceMessageBubbleState extends State<VoiceMessageBubble> {
   }
 
   getfile() async {
-    localPath = await controller.downloadFile(widget.fileUrl);
-
-    if (localPath.isEmpty) return;
+    final path = await controller.downloadFile(widget.fileUrl);
+    if (!mounted || path.isEmpty) return;
+    localPath = path;
 
     await _playerController.preparePlayer(
       path: localPath,
       shouldExtractWaveform: true,
       noOfSamples: 80,
     );
+    if (!mounted) return;
+
     await Future.delayed(const Duration(milliseconds: 100));
+    if (!mounted) return;
 
     await _playerController.seekTo(10);
+    if (!mounted) return;
+
     // 👇 Listen for player state changes
-    _playerController.onPlayerStateChanged.listen((PlayerState state) {
+    _playerStateSub =
+        _playerController.onPlayerStateChanged.listen((PlayerState state) {
+      if (!mounted) return;
       if (state == PlayerState.stopped || state == PlayerState.paused) {
         setState(() {
           _isPlaying = false; // reset the icon to play
         });
       }
     });
+
     setState(() {});
   }
 
   @override
   void dispose() {
+    _playerStateSub?.cancel();
     _playerController.dispose();
     super.dispose();
   }

@@ -50,7 +50,7 @@ class NotificationHandler {
       if (Platform.isIOS) {
         final apnsToken = await messaging.getAPNSToken();
         log(apnsToken != null
-            ? '✅ APNs Token: $apnsToken'
+            ? '✅🍎 APNs Token: $apnsToken'
             : '❌ APNs token is null.');
       }
 
