@@ -46,9 +46,7 @@ class _DoctorAppState extends State<DoctorApp> with WidgetsBindingObserver {
   @override
   void initState() {
     super.initState();
-
     WidgetsBinding.instance.addObserver(this);
-
     // Monitor connectivity
     _connectivitySubscription =
         Connectivity().onConnectivityChanged.listen((status) {
